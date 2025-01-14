@@ -38,6 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
+  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -233,12 +234,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    m_Quality: 3
-    m_FrameInfluence: 0.1
-    m_JitterScale: 1
-    m_MipBias: 0
-    m_VarianceClampScale: 0.9
-    m_ContrastAdaptiveSharpening: 0
+    quality: 3
+    frameInfluence: 0.1
+    jitterScale: 1
+    mipBias: 0
+    varianceClampScale: 0.9
+    contrastAdaptiveSharpening: 0
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0
@@ -317,7 +318,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc76e0811cc4444b869484c269700ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetOffset: {x: 5, y: 2}
+  targetOffset: {x: 0, y: 2}
   playerObj: {fileID: 1525897754}
   Kp: 0.01
 --- !u!1 &619394800
@@ -429,7 +430,7 @@ Transform:
   m_GameObject: {fileID: 664999725}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.375, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -521,7 +522,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -0.024028864}
-  m_LocalScale: {x: 1, y: 2, z: 1}
+  m_LocalScale: {x: 1, y: 1.25, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1525897755}
@@ -764,6 +765,8 @@ GameObject:
   - component: {fileID: 1525897755}
   - component: {fileID: 1525897756}
   - component: {fileID: 1525897757}
+  - component: {fileID: 1525897759}
+  - component: {fileID: 1525897758}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -801,9 +804,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   grounded: 0
+  hasRocketJump: 0
   rb: {fileID: 1525897757}
   speed: 5
   jumpStrength: 5
+  rocketJumpStrength: 20
+  rocketJumpTime: 0.5
+  rocketJumpTimer: 0
   feetCollider: {fileID: 670996737}
 --- !u!50 &1525897757
 Rigidbody2D:
@@ -817,10 +824,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 0.5
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -832,6 +839,35 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 0
+--- !u!114 &1525897758
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525897754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6961c06cc4130b14fbfb4ce83040d1d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movement: {fileID: 1525897756}
+  pulse: {fileID: 1525897759}
+--- !u!114 &1525897759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1525897754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f81aead4830feea4287b9e40e7275c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  radius: 0
+  chargeTime: 0
+  chargeTimer: 0
 --- !u!1 &1554072134
 GameObject:
   m_ObjectHideFlags: 0
