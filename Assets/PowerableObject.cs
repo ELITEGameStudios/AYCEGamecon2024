@@ -16,7 +16,10 @@ public class PowerableObject : MonoBehaviour
     }
 
     public void Power(PlayerPulse pulseSource){
-        if(isSwitch){ active = !active; }
+        if(isSwitch && active){ 
+            active = false; 
+            onPoweredOffEvent.Invoke();
+        }
         else if(!active){
             active = true;
             onPoweredOnEvent.Invoke();
