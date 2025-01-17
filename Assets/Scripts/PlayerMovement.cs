@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -8,6 +9,7 @@ public class PlayerMovement : MonoBehaviour
 
     public Vector2 velocity { get; private set; }
     public float directionX { get; private set; }
+    public int flipDir { get; private set; } = 1;
     [SerializeField] private bool grounded;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed, jumpStrength, rocketJumpStrength, rocketJumpTime, rocketJumpTimer, chargeJumpMaxTime, chargeJumpTimer;
@@ -35,6 +37,7 @@ public class PlayerMovement : MonoBehaviour
         }
         else{  chargeJumpTimer = 0;  }
         grounded = feet.triggerList.Count > 0; 
+
     }
 
     void FixedUpdate(){
@@ -46,8 +49,11 @@ public class PlayerMovement : MonoBehaviour
             rocketJumpTimer -= Time.fixedDeltaTime;
             rb.AddForce(Vector2.up * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
             
-            Debug.Log("BEYONDD");
         }   
+
+        if(InputManager.X != 0){
+            flipDir = (int)(InputManager.X / Math.Abs(InputManager.X)); 
+        }
     }
 
     void Jump(){

@@ -15,7 +15,7 @@ public class FeetScript : MonoBehaviour
     }
     
     private void OnTriggerEnter2D(Collider2D other) {
-        if(other != playerCol){
+        if(other != playerCol && !other.isTrigger){
             triggerList.Add(other);
         }
     }

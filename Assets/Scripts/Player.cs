@@ -8,8 +8,12 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerPulse pulse;
     [SerializeField] private Rigidbody2D rb;
 
-    public static Player main {get; private set;}
+    public PlayerMovement Movement { get { return movement; } }
+    public PlayerPulse Pulse { get { return pulse; } }
     public Rigidbody2D Rb {get {return rb;}}
+    
+    
+    public static Player main {get; private set;}
     
     // Start is called before the first frame update
     void Awake()
