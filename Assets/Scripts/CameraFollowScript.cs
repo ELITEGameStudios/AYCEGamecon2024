@@ -14,6 +14,8 @@ public class CameraFollowScript : MonoBehaviour
     void Awake(){
         if(Instance == null) Instance = this;
         else if(Instance != this) Destroy(this);
+        target = null;
+        currentKp = Kp;
     }
 
     // Update is called once per frame
@@ -31,7 +33,7 @@ public class CameraFollowScript : MonoBehaviour
 
         // For player tracking only
         currentTargetOffset = defaultTargetOffset;
-        currentTargetOffset.x *= Player.main.Movement.flipDir;
+        currentTargetOffset.x *= Player.main.Movement.flipDirRaw;
 
         transform.position += (Vector3)direction * distance * currentKp;
     }

@@ -77,9 +77,9 @@ public class AudioSystem : MonoBehaviour
     }
     void BarUpdate(){
         Debug.Log("bar");
-        if(){// A sample is in queue
+        // if(){// A sample is in queue
 
-        }
+        // }
     }
     void MeasureUpdate(){
         Debug.Log("measure");

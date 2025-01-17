@@ -17,7 +17,10 @@ public class InputManager : MonoBehaviour
     // Directional input
     public static float X {get; private set;}
     public static float Y {get; private set;}
+    public static float XRaw {get; private set;}
+    public static float YRaw {get; private set;}
     public static Vector2 direction {get; private set;}
+    public static Vector2 directionNonNormal {get; private set;}
     public static Vector2 directionRaw {get; private set;}
 
     public struct InputState{
@@ -39,8 +42,13 @@ public class InputManager : MonoBehaviour
 
         X = Input.GetAxis("Horizontal");
         Y = Input.GetAxis("Vertical");
-        directionRaw = new(X, Y);
-        direction = directionRaw.normalized;
+
+        XRaw = Input.GetAxisRaw("Horizontal");
+        YRaw = Input.GetAxisRaw("Vertical");
+
+        directionNonNormal = new(X, Y);
+        directionRaw = new(XRaw, YRaw);
+        direction = directionNonNormal.normalized;
 
         // Updates all input states being recorded every frame
         UpdateKeyInput( ref jump );
