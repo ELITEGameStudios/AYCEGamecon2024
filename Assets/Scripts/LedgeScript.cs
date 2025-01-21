@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LedgeScript : MonoBehaviour
 {
-    public Vector2 offset {get; private set;} = new Vector2(0.75f, -0.25f); // Defult offset of the player to the centre of the ledge object
+    public Vector2 offset {get; private set;} = new Vector2(0.55f, -0.25f); // Defult offset of the player to the centre of the ledge object
     [SerializeField] private bool left; // flips the offset based on the intended direction
     [SerializeField] private bool ready {get {return timer <= 0;}}
     [SerializeField] private float cooldown = 0.5f, timer;
