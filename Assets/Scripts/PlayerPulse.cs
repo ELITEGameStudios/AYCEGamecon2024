@@ -12,6 +12,7 @@ public class PlayerPulse : MonoBehaviour
     public float PushTimer {get {return pushTimer;} }
     public bool ChargeReady {get{return chargeTimer < 0;}}
     public bool PushReady {get{return pushTimer < 0;}}
+    public bool u{get{return pushTimer < 0;}}
 
     void Pulse(){
         chargeTimer = chargeTime;
