@@ -24,4 +24,7 @@ public class Player : MonoBehaviour
         else if(main != this) Destroy(this);
     }
     
+    public void Die(Vector3 position){ // position is given to this function so that respawning at closest waypoint logic can be easier 
+        // code for death sequence
+    }
 }
