@@ -13,11 +13,14 @@ public class Player : MonoBehaviour
     public PlayerPulse Pulse { get { return pulse; } }
     public Rigidbody2D Rb {get {return rb;}}
     public  Collider2D MainCol {get {return mainCol;}}
-    
-    
     public static Player main {get; private set;}
     
-    // Start is called before the first frame update
+    public int powerLevel {get; private set;} = 0; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
+    public bool unlockedCharge {get {return powerLevel >= 1;}}
+    public bool unlockedWallRun {get {return powerLevel >= 1;}}
+    public bool unlockedPowerJump {get {return powerLevel >= 2;}}
+    
+    
     void Awake()
     {
         if(main == null) main = this;
@@ -27,4 +30,9 @@ public class Player : MonoBehaviour
     public void Die(Vector3 position){ // position is given to this function so that respawning at closest waypoint logic can be easier 
         // code for death sequence
     }
+
+    public void SetUnlock(int newUnlock){
+        main.powerLevel = newUnlock;
+    }
+    
 }

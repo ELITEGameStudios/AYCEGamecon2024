@@ -10,6 +10,7 @@ public class InputManager : MonoBehaviour
     public static KeyCode pushButton {get; private set;} = KeyCode.Q;
     public static KeyCode chargeButton {get; private set;} = KeyCode.E;
     public static KeyCode jumpButton {get; private set;} = KeyCode.Space;
+    public static KeyCode interactButton {get; private set;} = KeyCode.F;
     
     // Thresholds/deadzones
     public static float jumpInputThreshold {get; private set;} = 0.3f;
@@ -30,7 +31,7 @@ public class InputManager : MonoBehaviour
         public KeyCode key;
     }
 
-    public static InputState jump, charge, push;
+    public static InputState jump, charge, push, interact;
 
     void Awake(){
         if(Instance == null){ Instance = this;}
@@ -54,8 +55,8 @@ public class InputManager : MonoBehaviour
         UpdateKeyInput( ref jump );
         UpdateKeyInput( ref charge );
         UpdateKeyInput( ref push );
+        UpdateKeyInput( ref interact );
         
-    
     }
 
     static void UpdateKeyInput(ref InputState state){    
@@ -70,6 +71,7 @@ public class InputManager : MonoBehaviour
         jump.key = jumpButton;
         charge.key = chargeButton;
         push.key = pushButton;
+        interact.key = interactButton;
     }
 
 }

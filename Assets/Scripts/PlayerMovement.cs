@@ -15,6 +15,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed, jumpStrength, rocketJumpStrength, rocketJumpTime, rocketJumpTimer, chargeJumpMaxTime, chargeJumpTimer, magTime, magTimer, initGravScale;
     [SerializeField] private FeetScript feet; 
+    private float playerSide;
 
     public float Speed {get { return speed; }}
     public bool Grounded {get { return grounded; }}
@@ -51,7 +52,7 @@ public class PlayerMovement : MonoBehaviour
                 chargeJumpTimer += Time.deltaTime;
             }
             else if(InputManager.jump.releasedThisFrame){
-                rocketJumpTimer = Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold;
+                rocketJumpTimer = Player.main.powerLevel >= 2 ? Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold : 0;
                 chargeJumpTimer = 0;
                 Jump();
             }
@@ -67,7 +68,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
 
-        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, InputManager.X * flipDir); }
+        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -InputManager.X * flipDir); }
         else{ velocity = new(InputManager.X, 0); }    
         Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale;
 
@@ -101,6 +102,7 @@ public class PlayerMovement : MonoBehaviour
 
             if(magTimer <= 0){
                 moveState = PlayerMoveState.CLIMBING;
+                transform.position = magnetizeEndPoint;
 
             }
             else{
@@ -110,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
 
         if(moveState == PlayerMoveState.CLIMBING){
             transform.position = new Vector2(
-                wallCol.ClosestPoint(transform.position).x + (wallCol.transform.localScale.x / 2) * flipDir,
+                magnetizeEndPoint.x,
                 Mathf.Clamp(transform.position.y, 
                     wallCol.transform.position.y - wallCol.transform.localScale.y/2 + transform.localScale.y/2,
                     wallCol.transform.position.y + wallCol.transform.localScale.y/2 - transform.localScale.y/2
@@ -123,6 +125,10 @@ public class PlayerMovement : MonoBehaviour
         ledge = null;
         rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);        
         rb.AddForce(Vector2.up * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
+        if(moveState == PlayerMoveState.CLIMBING){
+
+            rb.AddForce(Vector2.right * playerSide * jumpStrength* 30, ForceMode2D.Impulse);
+        }
         grounded = false;
         moveState = PlayerMoveState.OFFGROUND;
     }
@@ -135,10 +141,14 @@ public class PlayerMovement : MonoBehaviour
 
     public void Magnetize(Collider2D col){
         moveState = PlayerMoveState.MAGNETIZING;
-
         wallCol = col;
         magTimer = magTime;
-        magnetizeEndPoint = (Vector2)wallCol.ClosestPoint(transform.position) + Vector2.right * ((Vector2)wallCol.transform.localScale / 2) * flipDir;
+
+        Vector2 pointClose = (Vector2)wallCol.ClosestPoint(transform.position);
+        float playerSide = ((Vector2)transform.position - pointClose).x / Mathf.Abs(((Vector2)transform.position - pointClose).x);
+        Debug.Log(playerSide);
+        magnetizeEndPoint = pointClose + Vector2.right * ((Vector2)wallCol.transform.localScale / 2) * playerSide;
+        magnetizeStartPoint = transform.position;
         // magnetizeEndPoint = (Vector2)wallCol.ClosestPoint(transform.position);
     }
 }
