@@ -22,6 +22,16 @@ public class PlayerMovement : MonoBehaviour
     public bool IsRocketJumping {get { return rocketJumpTimer > 0f; }}
     public bool IsCharging {get { return rocketJumpTimer > 0f; }}
     public bool IsLedged {get { return ledge != null; }}
+    
+    [SerializeField] 
+    public bool collidingWithSticky {
+        get { 
+            foreach (Collider2D col in feet.triggerList){
+                if(col.tag == "Sticky") return true;
+            }    
+            return false; 
+        }
+    }
 
     public bool isOnWall;
     public LedgeScript ledge;
@@ -70,7 +80,9 @@ public class PlayerMovement : MonoBehaviour
 
         if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -InputManager.X * flipDir); }
         else{ velocity = new(InputManager.X, 0); }    
-        Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale;
+        
+        if(!collidingWithSticky){ Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale; }
+        else{ Player.main.Rb.gravityScale = 15; }
 
         if(!IsLedged)
             { transform.position += (Vector3)velocity * Time.fixedDeltaTime * speed; }
