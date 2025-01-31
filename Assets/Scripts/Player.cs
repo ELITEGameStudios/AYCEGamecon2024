@@ -26,6 +26,7 @@ public class Player : MonoBehaviour
         if(main == null) main = this;
         else if(main != this) Destroy(this);
     }
+    
 
     public void SetUnlock(int newUnlock){
         main.powerLevel = newUnlock;

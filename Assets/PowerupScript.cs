@@ -21,10 +21,9 @@ public class PowerupScript : MonoBehaviour
     {
         if(inRange){
             if(InputManager.interact.pressed){
-                
+                Debug.Log("I see");
                 pressedTimer -= Time.deltaTime;
                 if(pressedTimer <= 0){ ClaimPower(); }
-            
             }
             else{ pressedTimer = pressedTargetTime; }
         }
@@ -32,17 +31,17 @@ public class PowerupScript : MonoBehaviour
 
     void ClaimPower(){
         Player.main.SetUnlock(targetPowerLevel);
-        Destroy(this);
+        Destroy(gameObject);
     }
 
     void OnTriggerEnter2D(Collider2D other) {
-        if(other.gameObject == Player.main.gameObject){
+        if(other == Player.main.MainCol){
             inRange = true;
             signifier.SetActive(true);
         }
     }
     void OnTriggerExit2D(Collider2D other) {
-        if(other.gameObject == Player.main.gameObject){
+        if(other == Player.main.MainCol){
             inRange = false;
             signifier.SetActive(false);
         }

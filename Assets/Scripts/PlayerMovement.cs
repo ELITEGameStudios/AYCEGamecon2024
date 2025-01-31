@@ -51,7 +51,7 @@ public class PlayerMovement : MonoBehaviour
                 chargeJumpTimer += Time.deltaTime;
             }
             else if(InputManager.jump.releasedThisFrame){
-                rocketJumpTimer = Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold;
+                rocketJumpTimer = Player.main.powerLevel >= 2 ? Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold : 0;
                 chargeJumpTimer = 0;
                 Jump();
             }
