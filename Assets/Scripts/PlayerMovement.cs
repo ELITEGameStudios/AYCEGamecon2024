@@ -43,7 +43,8 @@ public class PlayerMovement : MonoBehaviour
         ONGROUND,
         OFFGROUND,
         MAGNETIZING,
-        CLIMBING
+        CLIMBING,
+        OFFWALL
     }
 
     public PlayerMoveState moveState;
@@ -78,7 +79,7 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
 
-        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -InputManager.X * flipDir); }
+        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -InputManager.X * playerSide); }
         else{ velocity = new(InputManager.X, 0); }    
         
         if(!collidingWithSticky){ Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale; }
@@ -95,7 +96,9 @@ public class PlayerMovement : MonoBehaviour
         
         if(IsRocketJumping){
             rocketJumpTimer -= Time.fixedDeltaTime;
-            rb.AddForce(Vector2.up * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            rb.AddForce(
+                ( moveState == PlayerMoveState.OFFWALL ? Vector2.right * playerSide :  Vector2.up) 
+                * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }   
 
         if(moveState != PlayerMoveState.CLIMBING && moveState != PlayerMoveState.MAGNETIZING){
@@ -109,7 +112,7 @@ public class PlayerMovement : MonoBehaviour
         
 
         if(moveState == PlayerMoveState.MAGNETIZING){
-            transform.position = Vector2.Lerp(magnetizeEndPoint, magnetizeStartPoint, magTimer / magTime );
+            transform.position = Vector2.Lerp( magnetizeStartPoint, magnetizeEndPoint, MathF.Pow(10f,  1.5f*(1 - (magTimer / magTime)) - 1.4786f) - 0.035f);
             Player.main.Rb.velocity = Vector2.zero;
 
             if(magTimer <= 0){
@@ -127,22 +130,32 @@ public class PlayerMovement : MonoBehaviour
                 magnetizeEndPoint.x,
                 Mathf.Clamp(transform.position.y, 
                     wallCol.transform.position.y - wallCol.transform.localScale.y/2 + transform.localScale.y/2,
-                    wallCol.transform.position.y + wallCol.transform.localScale.y/2 - transform.localScale.y/2
+                    Mathf.Infinity
                 )
             );
+
+            if(transform.position.y >=wallCol.transform.position.y + wallCol.transform.localScale.y/2 - transform.localScale.y/2){
+                moveState = PlayerMoveState.OFFWALL;
+                Jump();
+            }
         }
     }
 
     void Jump(){
         ledge = null;
-        rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);        
-        rb.AddForce(Vector2.up * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
         if(moveState == PlayerMoveState.CLIMBING){
-
-            rb.AddForce(Vector2.right * playerSide * jumpStrength* 30, ForceMode2D.Impulse);
+            rb.AddForce(
+                Vector2.right * playerSide * jumpStrength * 1.5f
+                + Vector2.up * jumpStrength / 2, ForceMode2D.Impulse);
+            moveState = PlayerMoveState.OFFWALL;
+            // Debug.Log(Vector2.right * playerSide * jumpStrength * 3 + "\n PlayerSide: " + playerSide);
+        }
+        else{
+            rb.AddForce(Vector2.up * jumpStrength, ForceMode2D.Impulse);        
+            rb.AddForce(Vector2.up * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
+            moveState = PlayerMoveState.OFFGROUND;
         }
         grounded = false;
-        moveState = PlayerMoveState.OFFGROUND;
     }
 
     public void SetLedge(LedgeScript ledge){
@@ -157,7 +170,8 @@ public class PlayerMovement : MonoBehaviour
         magTimer = magTime;
 
         Vector2 pointClose = (Vector2)wallCol.ClosestPoint(transform.position);
-        float playerSide = ((Vector2)transform.position - pointClose).x / Mathf.Abs(((Vector2)transform.position - pointClose).x);
+        
+        playerSide = ((Vector2)transform.position - pointClose).x / Mathf.Abs(((Vector2)transform.position - pointClose).x);
         Debug.Log(playerSide);
         magnetizeEndPoint = pointClose + Vector2.right * ((Vector2)wallCol.transform.localScale / 2) * playerSide;
         magnetizeStartPoint = transform.position;

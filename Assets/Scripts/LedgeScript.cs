@@ -24,7 +24,6 @@ public class LedgeScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other == Player.main.MainCol && !Player.main.Movement.IsLedged && ready){
             Player.main.Movement.SetLedge(this);
-            Debug.Log("Ineemobullets");
             // timer = cooldown;
         }
     }

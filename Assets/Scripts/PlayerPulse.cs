@@ -31,6 +31,7 @@ public class PlayerPulse : MonoBehaviour
                 Vector2 closestPos = col.ClosestPoint((Vector2)transform.position);
                 Vector2 directionVector = (closestPos - (Vector2)transform.position).normalized;
                 float distance = Vector2.Distance(closestPos, col.transform.position);
+                
                 Player.main.Movement.Magnetize(col);
                 break;
             }   

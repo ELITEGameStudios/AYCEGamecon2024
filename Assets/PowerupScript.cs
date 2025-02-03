@@ -21,7 +21,6 @@ public class PowerupScript : MonoBehaviour
     {
         if(inRange){
             if(InputManager.interact.pressed){
-                Debug.Log("I see");
                 pressedTimer -= Time.deltaTime;
                 if(pressedTimer <= 0){ ClaimPower(); }
             }

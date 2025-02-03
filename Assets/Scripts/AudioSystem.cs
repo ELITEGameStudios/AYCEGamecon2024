@@ -73,16 +73,16 @@ public class AudioSystem : MonoBehaviour
     }
 
     void BeatUpdate(){
-        Debug.Log("beat");
+        // Debug.Log("beat");
     }
     void BarUpdate(){
-        Debug.Log("bar");
+        // Debug.Log("bar");
         // if(){// A sample is in queue
 
         // }
     }
     void MeasureUpdate(){
-        Debug.Log("measure");
+        // Debug.Log("measure");
     }
 
     void SetVariablesViaBPM(int bpm, int beatsPerBar = 4, int barsPerMeasure = 4){
