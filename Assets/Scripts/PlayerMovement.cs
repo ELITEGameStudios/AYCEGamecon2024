@@ -75,6 +75,10 @@ public class PlayerMovement : MonoBehaviour
             moveState = grounded ? PlayerMoveState.ONGROUND : PlayerMoveState.OFFGROUND;
         }
 
+        if(InputManager.Y <= -0.1f && IsLedged){
+            ledge = null;
+        }
+
     }
 
     void FixedUpdate(){
