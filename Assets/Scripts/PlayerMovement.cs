@@ -138,6 +138,10 @@ public class PlayerMovement : MonoBehaviour
                 moveState = PlayerMoveState.OFFWALL;
                 Jump();
             }
+
+            else if(transform.position.y <= wallCol.transform.position.y - wallCol.transform.localScale.y/2 + transform.localScale.y/2){
+                moveState = PlayerMoveState.OFFWALL;
+            }
         }
     }
 
