@@ -1,6 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class SpikeHasard : MonoBehaviour
@@ -8,9 +6,16 @@ public class SpikeHasard : MonoBehaviour
     [SerializeField] private float timer, warningTime, shakeIntensity;
     [SerializeField] private int shakeFrequency;
     [SerializeField] private SpikeHasardObject obj;
+    [SerializeField] private bool activated, colliderActivated;
+
+    void OnCollisionEnter2D(Collision2D col){
+        if(col.gameObject == Player.main.gameObject && colliderActivated && !activated){
+            StartCoroutine(HasardCoroutine());
+        }
+    }
 
     void OnTriggerEnter2D(Collider2D col){
-        if(col == Player.main.MainCol){
+        if(col == Player.main.MainCol && !activated){
             StartCoroutine(HasardCoroutine());
         }
     }
@@ -29,5 +34,6 @@ public class SpikeHasard : MonoBehaviour
         }
         obj.transform.position = hasardObjectPos;
         obj.Activate();
+        activated = true;
     }
 }

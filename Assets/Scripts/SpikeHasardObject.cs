@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class SpikeHasardObject : MonoBehaviour
 {
-    public bool active;
-    GameObject effect;
+    public bool active, destroys, kills;
+    [SerializeField] private GameObject effect;
     void OnCollisionEnter2D(Collision2D col){
         if(active && col.gameObject.layer == LayerMask.NameToLayer("Environment")){
             if(effect != null){
                 GameObject clone = Instantiate(effect, transform);
                 clone.transform.SetParent(null);
             }
-            Destroy(gameObject);    
+            if(destroys) {Destroy(gameObject);};    
         }
     }
 
