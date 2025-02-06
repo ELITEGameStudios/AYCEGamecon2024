@@ -15,7 +15,7 @@ public class Player : MonoBehaviour
     public  Collider2D MainCol {get {return mainCol;}}
     public static Player main {get; private set;}
     
-    public int powerLevel {get; private set;} = 0; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
+    public int powerLevel {get; private set;} = 2; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
     public bool unlockedCharge {get {return powerLevel >= 1;}}
     public bool unlockedWallRun {get {return powerLevel >= 1;}}
     public bool unlockedPowerJump {get {return powerLevel >= 2;}}
