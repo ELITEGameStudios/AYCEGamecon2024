@@ -56,5 +56,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "AYCEGameconProject.sln"
+    "dotnet.defaultSolution": "AYCEGamecon2024.sln"
 }
