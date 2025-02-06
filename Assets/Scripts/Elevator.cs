@@ -27,10 +27,14 @@ public class Elevator : MonoBehaviour
     }
 
     public void Activate(){
-        if(!powered){ return; }
-        if(travelDirection){ targetPos = secondPos; }
-        else{ targetPos = firstPos; }
+        if(!powered || active){ return; }
 
+        if((Vector2)transform.position == firstPos){travelDirection = true;}
+        else if((Vector2)transform.position == secondPos){travelDirection = false;}
+
+
+        Debug.Log(gameObject.name + " Elevator Activated, " + travelDirection);
+        targetPos = travelDirection ? secondPos : firstPos; 
         initPos = transform.position;
         travelDistance = Vector2.Distance(initPos, targetPos);
 
@@ -43,7 +47,7 @@ public class Elevator : MonoBehaviour
         if((Vector2)transform.position == targetPos){switchDir = true;}
         if(switchDir) travelDirection = !travelDirection;
         active = false;
-
+        Debug.Log(gameObject.name + " Elevator deactivated");
         StopCoroutine(MainCycleCoroutine());
         state = ElevatorState.RESTING;
     }

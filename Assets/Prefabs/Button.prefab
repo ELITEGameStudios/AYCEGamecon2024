@@ -355,7 +355,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6483278728928833880}
   - component: {fileID: 4917818284175749891}
-  - component: {fileID: 7639050415588215560}
   - component: {fileID: 1343626371159245612}
   m_Layer: 0
   m_Name: ButtonCore
@@ -431,29 +430,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &7639050415588215560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4899593456383763564}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 513bca30875432b42ad03e5a0498292c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  isSwitch: 0
-  unaffectedByPulse: 0
-  onPoweredOnEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  onPoweredOffEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  _timer: 0
-  _bufferTime: 0.5
-  plateSteepness: 0.1
 --- !u!114 &1343626371159245612
 MonoBehaviour:
   m_ObjectHideFlags: 0
