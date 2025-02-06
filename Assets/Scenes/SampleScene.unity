@@ -3803,12 +3803,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2fc76e0811cc4444b869484c269700ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultTargetOffset: {x: 4, y: 2}
+  defaultTargetOffset: {x: 0, y: 0}
   currentTargetOffset: {x: 0, y: 0}
   offsetInTargetMode: {x: 0, y: 0}
   playerObj: {fileID: 1525897754}
   Kp: 0.03
   currentKp: 0
+  <target>k__BackingField: {fileID: 0}
 --- !u!1 &575135266
 GameObject:
   m_ObjectHideFlags: 0
@@ -4567,12 +4568,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a880bf8517afa2042a0166a4fe8ae4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxModifier: 0.4
+  parallaxModifier: 0
   layer: 0
   startPos: {x: 0, y: 0}
   camOffset: {x: 0, y: 0}
   cam: {fileID: 519420032}
-  x: 1
+  x: 0
   y: 0
 --- !u!1 &712245072
 GameObject:
@@ -5992,12 +5993,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a880bf8517afa2042a0166a4fe8ae4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxModifier: 0.1
+  parallaxModifier: 0
   layer: 0
   startPos: {x: 0, y: 0}
   camOffset: {x: 0, y: 0}
   cam: {fileID: 519420032}
-  x: 1
+  x: 0
   y: 0
 --- !u!1 &1055536916
 GameObject:
@@ -7885,8 +7886,8 @@ MonoBehaviour:
   rb: {fileID: 1525897757}
   speed: 5
   jumpStrength: 5
-  rocketJumpStrength: 12.5
-  rocketJumpTime: 0.5
+  rocketJumpStrength: 5
+  rocketJumpTime: 0
   rocketJumpTimer: 0
   chargeJumpMaxTime: 1
   chargeJumpTimer: 0
@@ -15792,12 +15793,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a880bf8517afa2042a0166a4fe8ae4ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parallaxModifier: -0.7
+  parallaxModifier: 0
   layer: 0
   startPos: {x: 0, y: 0}
   camOffset: {x: 0, y: 0}
   cam: {fileID: 519420032}
-  x: 1
+  x: 0
   y: 0
 --- !u!1 &1847643176
 GameObject:
