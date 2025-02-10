@@ -14,6 +14,8 @@ public class BossFightManager : MonoBehaviour
     public float ExplosionTime {get {return explosionTime;}}
     bool Elapsed {get {return timer <= 0;}}
 
+    private bool isDead = false;
+
     // Start is called before the first frame update
     void Awake()
     {
@@ -24,7 +26,9 @@ public class BossFightManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+        if(isDead && exitDoor.State == Door.DoorState.CLOSED){
+            exitDoor.Open();
+        }
     }
 
     void FixedUpdate(){
@@ -43,6 +47,7 @@ public class BossFightManager : MonoBehaviour
 
     public void OnDeath(){
         exitDoor.Open();
+        isDead = true;
     }
 
     IEnumerator ExplosionCoroutine(){
@@ -58,7 +63,7 @@ public class BossFightManager : MonoBehaviour
     }
 
     void OnTriggerEnter2D(Collider2D col){
-        if(col == Player.main.MainCol){
+        if(col == Player.main.MainCol && !isDead){
             entryDoor.Close();
         }
     }

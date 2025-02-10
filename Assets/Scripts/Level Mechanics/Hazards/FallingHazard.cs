@@ -5,7 +5,8 @@ using UnityEngine;
 public class FallingHazard : MonoBehaviour
 {
     [SerializeField] private Rigidbody2D physics;
-    [SerializeField] private float playerAwakenDistance, signifyTime, timer;
+    [SerializeField] private float playerAwakenDistance, signifyTime, timer, resetTimer;
+    [SerializeField] private bool kills, resets, collides;
 
     public enum FallState{
         DEFAULT,
@@ -41,7 +42,7 @@ public class FallingHazard : MonoBehaviour
         } 
     }
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject == Player.main.gameObject){
+        if(col.gameObject == Player.main.gameObject && kills){
             Player.main.Die();
         }
         Destroy(gameObject);

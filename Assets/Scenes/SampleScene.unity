@@ -244,6 +244,7 @@ MonoBehaviour:
   active: 0
   destroys: 0
   kills: 0
+  collides: 0
   effect: {fileID: 0}
 --- !u!114 &24630898
 MonoBehaviour:
@@ -260,6 +261,7 @@ MonoBehaviour:
   timer: 1
   warningTime: 1
   shakeIntensity: 0.2
+  resetTime: 4
   shakeFrequency: 5
   obj: {fileID: 24630897}
   activated: 0
@@ -3041,6 +3043,7 @@ MonoBehaviour:
   active: 0
   destroys: 1
   kills: 1
+  collides: 0
   effect: {fileID: 0}
 --- !u!1 &388375305
 GameObject:
@@ -3552,6 +3555,7 @@ MonoBehaviour:
   active: 0
   destroys: 0
   kills: 0
+  collides: 0
   effect: {fileID: 0}
 --- !u!114 &497331022
 MonoBehaviour:
@@ -3568,6 +3572,7 @@ MonoBehaviour:
   timer: 1
   warningTime: 1
   shakeIntensity: 0.2
+  resetTime: 4
   shakeFrequency: 5
   obj: {fileID: 497331021}
   activated: 0
@@ -17602,6 +17607,7 @@ MonoBehaviour:
   active: 0
   destroys: 0
   kills: 0
+  collides: 0
   effect: {fileID: 0}
 --- !u!114 &2078196151
 MonoBehaviour:
@@ -17618,6 +17624,7 @@ MonoBehaviour:
   timer: 1
   warningTime: 1
   shakeIntensity: 0.2
+  resetTime: 4
   shakeFrequency: 5
   obj: {fileID: 2078196150}
   activated: 0
@@ -18387,6 +18394,7 @@ MonoBehaviour:
   timer: 1
   warningTime: 1
   shakeIntensity: 0.1
+  resetTime: 0
   shakeFrequency: 10
   obj: {fileID: 384588302}
   activated: 0

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class RespawnSystem : MonoBehaviour
 {
@@ -27,10 +28,15 @@ public class RespawnSystem : MonoBehaviour
     }
 
     public void RespawnPlayer(){
-        Player.main.transform.position = nextPoint.transform.position;
-        CameraFollowScript.Instance.transform.position = 
-            Player.main.transform.position + 
-            (Vector3)CameraFollowScript.Instance.TargetOffset +
-            Vector3.forward * CameraFollowScript.Instance.transform.position.z;
+        if(!nextPoint.restartsScene){
+            Player.main.transform.position = nextPoint.transform.position;
+            CameraFollowScript.Instance.transform.position = 
+                Player.main.transform.position + 
+                (Vector3)CameraFollowScript.Instance.TargetOffset +
+                Vector3.forward * CameraFollowScript.Instance.transform.position.z;
+        }
+        else{
+            SceneManager.LoadScene(nextPoint.sceneTarget);
+        }
     }
 }

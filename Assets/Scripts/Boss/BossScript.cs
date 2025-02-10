@@ -137,6 +137,8 @@ public class BossScript : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D collision){
+        if(collision.gameObject == Player.main.gameObject){ Player.main.Die(); }
+
         if(collision.gameObject.tag == "MetalBox"){
             OnHitMetalBox(collision.gameObject);
         }

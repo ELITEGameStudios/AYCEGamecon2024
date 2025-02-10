@@ -12,11 +12,12 @@ public class Door : MonoBehaviour
     [SerializeField] private bool TimerCondition {get{return timer <= 0;}}
     [SerializeField] private bool IsMoving {get{return state == DoorState.OPENING || state == DoorState.CLOSING;}}
     [SerializeField] private DoorState state;
+    [SerializeField] public DoorState State {get {return state;}}
     
     
     // If the door should open or close based on the state of powerables
     [SerializeField] private PowerableObject[] powerables;
-    private bool PowerableDependent {get {return powerables != null;}}
+    private bool PowerableDependent {get {return powerables != null && powerables.Length > 0;}}
     [SerializeField] private int powerableReqAmount;
     private int PowerablesActiveCount {
         get {
@@ -33,7 +34,7 @@ public class Door : MonoBehaviour
 
     // [SerializeField] private bool Active {get{return active;}}
 
-    enum DoorState{
+    public enum DoorState{
         OPEN,
         CLOSED,
         OPENING,

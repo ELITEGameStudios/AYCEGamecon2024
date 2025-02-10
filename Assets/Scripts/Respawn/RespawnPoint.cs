@@ -6,6 +6,7 @@ public class RespawnPoint : MonoBehaviour
 {
 
     public bool restartsScene; 
+    public int sceneTarget; 
 
     void Start(){
         RespawnSystem.Instance.AddRespawnPoint(this);

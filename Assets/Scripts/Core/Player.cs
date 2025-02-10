@@ -41,11 +41,11 @@ public class Player : MonoBehaviour
 
     public void Respawn(){
         if(!dead){return;}
+        RespawnSystem.Instance.RespawnPlayer();
         
         pulse.enabled = true;
         movement.enabled = true;
         GetComponent<Light2D>().enabled = true;
-        RespawnSystem.Instance.RespawnPlayer();
         dead = false;
     }
 
