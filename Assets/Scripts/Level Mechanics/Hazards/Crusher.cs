@@ -9,7 +9,7 @@ public class Crusher : MonoBehaviour
     [SerializeField] private float offsetInit, cycleTime, holdTime;
     [SerializeField] private float slamTime, retractTime, timer, cycleTimer;
     [SerializeField] private bool TimerCondition {get{return timer <= 0;}}
-    [SerializeField] private bool active = true;
+    [SerializeField] private bool active = true, crushed = false;
     [SerializeField] private bool Active {get{return active;}}
     [SerializeField] private CrusherCollider crushStatus;
 
@@ -26,8 +26,8 @@ public class Crusher : MonoBehaviour
     void Update(){
         if(!TimerCondition) {timer -= Time.deltaTime;}
         cycleTimer += Time.deltaTime;
-        if(crushStatus.IsCrushingPlayer){
-            Debug.LogAssertion("ur dead dude.");
+        if(crushStatus.IsCrushingPlayer && crushed){
+            Player.main.Die();
         }
     }
 
@@ -52,7 +52,9 @@ public class Crusher : MonoBehaviour
             transform.position = crushedPos;
 
             // Crush hold
+            crushed = true;
             yield return new WaitForSeconds(holdTime);
+            crushed = false;
 
             // Retracting
             timer = retractTime;

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Player : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class Player : MonoBehaviour
     public  Collider2D MainCol {get {return mainCol;}}
     public static Player main {get; private set;}
     
+    public bool dead {get; private set;} = false; 
     public int powerLevel {get; private set;} = 2; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
     public bool unlockedCharge {get {return powerLevel >= 1;}}
     public bool unlockedWallRun {get {return powerLevel >= 1;}}
@@ -27,8 +29,24 @@ public class Player : MonoBehaviour
         else if(main != this) Destroy(this);
     }
     
-    public void Die(Vector3 position){ // position is given to this function so that respawning at closest waypoint logic can be easier 
-        // code for death sequence
+    public void Die(){
+        if(dead){return;}
+
+        pulse.enabled = false;
+        movement.enabled = false;
+        GetComponent<Light2D>().enabled = false;
+        dead = true;
+        Invoke(nameof(Respawn), 2);
+    }
+
+    public void Respawn(){
+        if(!dead){return;}
+        
+        pulse.enabled = true;
+        movement.enabled = true;
+        GetComponent<Light2D>().enabled = true;
+        RespawnSystem.Instance.RespawnPlayer();
+        dead = false;
     }
 
     public void SetUnlock(int newUnlock){

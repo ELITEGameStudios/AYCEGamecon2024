@@ -10,6 +10,7 @@ public class CameraFollowScript : MonoBehaviour
     public Transform target {get; private set;}
     public bool targetObjMode {get {return target != null;}}
     public static CameraFollowScript Instance {get; private set;}
+    public Vector2 TargetOffset {get {return currentTargetOffset;}}
 
     void Awake(){
         if(Instance == null) Instance = this;

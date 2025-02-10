@@ -7,7 +7,8 @@ public class CrusherCollider : MonoBehaviour
     public List<Collider2D> triggerList;
     public List<Collider2D> collisionList;
     [SerializeField] private bool hasPlayer, hasEnvironment;
-    [SerializeField] public bool IsCrushingPlayer {get{return hasPlayer && hasEnvironment;}}
+    [SerializeField] public bool IsCrushingPlayer {get{return hasPlayer;}}
+    // [SerializeField] public bool IsCrushingPlayer {get{return hasPlayer && hasEnvironment;}}
     
     void Awake(){
         triggerList ??= new();
@@ -19,7 +20,7 @@ public class CrusherCollider : MonoBehaviour
             triggerList.Add(other);
             hasPlayer = true;
         }
-        else if(other.gameObject.layer == LayerMask.NameToLayer("Environment")){
+        if(other.gameObject.layer == LayerMask.NameToLayer("Environment")){
             triggerList.Add(other);
             hasEnvironment = true;
         }
@@ -30,7 +31,7 @@ public class CrusherCollider : MonoBehaviour
             triggerList.Remove(other);
             hasPlayer = false;
         }
-        else if(other.gameObject.layer == LayerMask.NameToLayer("Environment")){
+        if(other.gameObject.layer == LayerMask.NameToLayer("Environment")){
             triggerList.Remove(other);
             hasEnvironment = false;
         }

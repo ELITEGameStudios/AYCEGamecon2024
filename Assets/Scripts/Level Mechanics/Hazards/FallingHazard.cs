@@ -42,7 +42,7 @@ public class FallingHazard : MonoBehaviour
     }
     void OnCollisionEnter2D(Collision2D col){
         if(col.gameObject == Player.main.gameObject){
-            Player.main.Die(transform.position);
+            Player.main.Die();
         }
         Destroy(gameObject);
     }

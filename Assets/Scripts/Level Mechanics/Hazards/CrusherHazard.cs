@@ -67,8 +67,8 @@ public class CrusherHazard : MonoBehaviour
         if(!TimerElapsed){timer -= Time.deltaTime;}
     }
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject == Player.main.gameObject && state == CrusherState.CRUSHING){
-            Player.main.Die(transform.position);
-        }
+        // if(col.gameObject == Player.main.gameObject && state == CrusherState.CRUSHING){
+        //     Player.main.Die();
+        // }
     }
 }

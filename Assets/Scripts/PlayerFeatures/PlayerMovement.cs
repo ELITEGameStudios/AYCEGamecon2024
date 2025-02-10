@@ -53,6 +53,13 @@ public class PlayerMovement : MonoBehaviour
         initGravScale = Player.main.Rb.gravityScale;
     }
 
+    void OnDisable(){
+        Player.main.Rb.gravityScale = initGravScale;
+        moveState = PlayerMoveState.OFFGROUND;
+        ledge = null;
+        rocketJumpTimer = 0;
+    }
+
 
     // Update is called once per frame
     void Update()
