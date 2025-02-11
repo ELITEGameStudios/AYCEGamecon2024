@@ -26,7 +26,8 @@ public class Player : MonoBehaviour
     void Awake()
     {
         if(main == null) main = this;
-        else if(main != this) Destroy(this);
+        else if(main != this) Destroy(gameObject);
+        DontDestroyOnLoad(gameObject);
     }
     
     public void Die(){

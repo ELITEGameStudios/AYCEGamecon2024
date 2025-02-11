@@ -6,9 +6,9 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int targetFPS;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

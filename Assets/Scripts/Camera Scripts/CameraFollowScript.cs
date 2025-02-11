@@ -17,6 +17,7 @@ public class CameraFollowScript : MonoBehaviour
         else if(Instance != this) Destroy(this);
         target = null;
         currentKp = Kp;
+        DontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

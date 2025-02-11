@@ -57,7 +57,9 @@ public class UIManager : MonoBehaviour
     }
 
     void Update(){
-        if(InputManager)
+        if(InputManager.pause.pressedThisFrame){
+            OpenMenuViaState( InMenu ? MenuState.NONE : MenuState.PAUSED);
+        }
     }
 
     public void OpenSettings(){
@@ -68,7 +70,6 @@ public class UIManager : MonoBehaviour
     }
     
     public void OpenMenuViaState(MenuState newState){
-        
         
         lastState = state;
         state = newState;
