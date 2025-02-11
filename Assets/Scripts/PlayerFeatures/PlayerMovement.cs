@@ -22,6 +22,7 @@ public class PlayerMovement : MonoBehaviour
     public bool IsRocketJumping {get { return rocketJumpTimer > 0f; }}
     public bool IsCharging {get { return rocketJumpTimer > 0f; }}
     public bool IsLedged {get { return ledge != null; }}
+    public bool IsCrouched {get { return InputManager.crouch.pressed && grounded; }}
     
     [SerializeField] 
     public bool collidingWithSticky {
@@ -66,10 +67,9 @@ public class PlayerMovement : MonoBehaviour
     {
 
         if(grounded || moveState == PlayerMoveState.CLIMBING){
-            if(InputManager.jump.pressed){
-                chargeJumpTimer += Time.deltaTime;
-            }
-            else if(InputManager.jump.releasedThisFrame){
+            if(InputManager.crouch.pressed){ chargeJumpTimer += Time.deltaTime; }
+            else if(InputManager.crouch.releasedThisFrame){ chargeJumpTimer = 0; }
+            if(InputManager.jump.pressedThisFrame){
                 rocketJumpTimer = Player.main.powerLevel >= 2 ? Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold : 0;
                 chargeJumpTimer = 0;
                 Jump();
@@ -90,13 +90,13 @@ public class PlayerMovement : MonoBehaviour
 
     void FixedUpdate(){
 
-        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -InputManager.X * playerSide); }
+        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -Mathf.Clamp(InputManager.X - (InputManager.Y > 0 ? InputManager.Y : 0), -1, 1) * playerSide); }
         else{ velocity = new(InputManager.X, 0); }    
         
         if(!collidingWithSticky){ Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale; }
         else{ Player.main.Rb.gravityScale = 15; }
 
-        if(!IsLedged)
+        if(!IsLedged && !IsCrouched)
             { transform.position += (Vector3)velocity * Time.fixedDeltaTime * speed; }
         else
         { 
