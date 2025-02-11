@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: CaveBottomRight
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: 7482667652216324306, guid: 9a1a1a145dffb67409d81c2a23b21a74, type: 3}
-  m_Color: {r: 1, g: 0.6032362, b: 0.1641509, a: 1}
+  m_Sprite: {fileID: -858999885, guid: 40012e1b190168246a087f01daf6db93, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
     e01: 0

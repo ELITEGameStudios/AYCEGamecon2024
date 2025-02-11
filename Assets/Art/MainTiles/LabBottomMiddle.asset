@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LabBottomMiddle
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: 9a1a1a145dffb67409d81c2a23b21a74, type: 3}
-  m_Color: {r: 1, g: 0.7060138, b: 0.38113207, a: 1}
+  m_Color: {r: 0, g: 0.10588236, b: 0.12941177, a: 1}
   m_Transform:
     e00: 1
     e01: 0

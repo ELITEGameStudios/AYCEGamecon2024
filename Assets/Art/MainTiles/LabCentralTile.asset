@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: LabCentralTile
   m_EditorClassIdentifier: 
   m_Sprite: {fileID: 7482667652216324306, guid: 9a1a1a145dffb67409d81c2a23b21a74, type: 3}
-  m_Color: {r: 0.9056604, g: 0.81509435, b: 0.8938474, a: 1}
+  m_Color: {r: 0, g: 0.10588236, b: 0.12941177, a: 1}
   m_Transform:
     e00: 1
     e01: 0
