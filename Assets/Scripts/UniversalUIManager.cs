@@ -57,7 +57,7 @@ public class UIManager : MonoBehaviour
     }
 
     void Update(){
-        if(InputManager)
+        // if(InputManager){}
     }
 
     public void OpenSettings(){
