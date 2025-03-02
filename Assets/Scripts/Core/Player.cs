@@ -9,13 +9,15 @@ public class Player : MonoBehaviour
     [SerializeField] private PlayerPulse pulse;
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Collider2D mainCol;
+    [SerializeField] private AudioSource audio;
 
     public PlayerMovement Movement { get { return movement; } }
     public PlayerPulse Pulse { get { return pulse; } }
     public Rigidbody2D Rb {get {return rb;}}
     public  Collider2D MainCol {get {return mainCol;}}
+    public AudioSource Audio {get; private set;}
+        
     public static Player main {get; private set;}
-    
     public bool dead {get; private set;} = false; 
     public int powerLevel {get; private set;} = 2; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
     public bool unlockedCharge {get {return powerLevel >= 1;}}
