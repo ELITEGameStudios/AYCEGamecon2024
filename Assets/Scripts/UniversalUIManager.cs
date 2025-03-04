@@ -9,10 +9,10 @@ public class UIManager : MonoBehaviour
 
     public static UIManager Instance { get; private set; }
 
-    [SerializeField] private GameObject settingsMenu, mainMenu, splashScreen, pauseMenu;
-    [SerializeField] private List<GameObject> menuList;
-    [SerializeField] private Image splashImage;
-    [SerializeField] private bool inSplash, paused;
+    [SerializeField] private UIMenu settingsMenu, mainMenu, splashScreen, pauseMenu;
+    [SerializeField] private List<UIMenu> menuList;
+    [SerializeField] private Graphic[] splashImages;
+    [SerializeField] private bool inSplash, paused, switchingMenus;
     [SerializeField] private bool InMenu {
         get {
             return 
@@ -42,9 +42,11 @@ public class UIManager : MonoBehaviour
     {
         if(Instance == null) {Instance = this;}
         else if(Instance != this) {Destroy(this);}
+        state = MenuState.NONE;
         
         DontDestroyOnLoad(gameObject);
         menuList = new(){mainMenu, settingsMenu, pauseMenu, splashScreen};
+        foreach (UIMenu menu in menuList) {menu.Initialize();}
     }
 
     void Start(){
@@ -53,12 +55,19 @@ public class UIManager : MonoBehaviour
         activeScene = SceneManager.GetActiveScene();
         activeScene.isSubScene = true;
         StartCoroutine(SplashScreenCoroutine());
-        state = MenuState.SPLASH;
     }
 
     void Update(){
         if(InputManager.pause.pressedThisFrame){
             OpenMenuViaState( InMenu ? MenuState.NONE : MenuState.PAUSED);
+        }
+
+        if(Time.timeScale != 1.0f || Time.timeScale != 0.0f){
+            Time.timeScale = Mathf.Clamp(
+                Time.timeScale + Time.unscaledDeltaTime * (InMenu ? -3 : 3),
+                0.0f,
+                1.0f
+            );
         }
     }
 
@@ -68,21 +77,80 @@ public class UIManager : MonoBehaviour
     public void CloseSettings(){
         OpenMenuViaState(lastState);
     }
+    public void Resume(){
+        OpenMenuViaState(MenuState.NONE);
+    }
     
-    public void OpenMenuViaState(MenuState newState){
-        
+    public void OpenMenuViaState(MenuState newState, bool doCoroutine = true, bool crossFade = false, float customFadeOut = -1){
+        if(switchingMenus) {return;}
         lastState = state;
         state = newState;
+        if(doCoroutine){
+            StartCoroutine(SwitchMenuCoroutine(crossFade, customFadeOut));
+        }
 
-        try{
-            for (int i = 0; i < menuList.Count; i++) { menuList[i].SetActive((int)newState == i); }
-        }
-        catch{
-            // must be a none state
-            Debug.Log("No longer in a menu");
-        }
-        Time.timeScale = InMenu ? 0 : 1;
+        // try{
+        //     for (int i = 0; i < menuList.Count; i++) { menuList[i].SetActive((int)newState == i); }
+        // }
+        // catch{
+        //     // must be a none state
+        //     Debug.Log("No longer in a menu");
+        // }
         
+    }
+
+    IEnumerator SwitchMenuCoroutine(bool crossFade, float customFadeOut = -1){
+        bool hasCustomFadeOut = customFadeOut >= 0;
+
+        float fadeOut = 0;
+        float fadeIn = 0;
+
+        switchingMenus = true;
+
+        UIMenu newMenu = null;
+        UIMenu oldMenu = null;
+
+        for (int i = 0; i < menuList.Count; i++){
+            if(i == (int)state){ 
+                newMenu = menuList[i];
+                fadeIn = newMenu.fadeTime;
+            }
+            else if(i == (int)lastState){ 
+                oldMenu = menuList[i]; 
+                fadeOut = hasCustomFadeOut ? customFadeOut : oldMenu.fadeTime;
+            }
+        }  
+
+
+        if(oldMenu != null){
+            if(crossFade && newMenu != null){
+                
+                newMenu.gameObject.SetActive(true);
+                
+                newMenu.SwitchActive(true);
+                oldMenu.SwitchActive(false, fadeOut);
+                
+                yield return new WaitForSecondsRealtime(fadeOut > fadeIn ? 
+                    fadeOut : 
+                    fadeIn
+                );
+                
+                oldMenu.gameObject.SetActive(false);
+                switchingMenus = false;
+                yield break;
+            }
+
+            oldMenu.SwitchActive(false, fadeOut);
+            yield return new WaitForSecondsRealtime(fadeOut);
+            oldMenu.gameObject.SetActive(false);
+
+        }
+        if(newMenu != null){
+            newMenu.SwitchActive(true);
+            newMenu.gameObject.SetActive(true);
+            yield return new WaitForSecondsRealtime(fadeIn);
+        }
+        switchingMenus = false;
     }
 
     IEnumerator SwitchToMainScene(){
@@ -94,37 +162,22 @@ public class UIManager : MonoBehaviour
 
     IEnumerator SplashScreenCoroutine(){
         Debug.Log("Started");
-        yield return new WaitForSeconds(1);
-
-        float timer = splashScreenFadeTime;
-        while (timer > 0){ // Fade in
-            splashImage.color = Color.Lerp(Color.white,  Color.clear, timer/splashScreenFadeTime);
-
-            timer -= Time.deltaTime;
-            yield return null;
-        }
+        yield return new WaitForSecondsRealtime(1);
+        
+        OpenMenuViaState(MenuState.SPLASH, false);
+        yield return StartCoroutine(SwitchMenuCoroutine(false));
 
         Debug.Log("Finished first phase");
+
         yield return StartCoroutine(SwitchToMainScene()); // Load main sccene in background
         yield return new WaitForSecondsRealtime(splashScreenHoldTimeMin);
-        // Time.timeScale = 0;
-        mainMenu.SetActive(true);
-        Debug.Log("Loaded scene");
         
-        timer = splashScreenFadeTime;
-        while (timer > 0){ // Fade out
-            splashImage.color = Color.Lerp(Color.clear, Color.white, timer/splashScreenFadeTime);
-
-            timer -= Time.deltaTime;
-            yield return null;
-        }
-
-        splashImage.color = Color.clear;
-        Debug.Log("Finalizing");
-        splashScreen.SetActive(false);
-        inSplash = false;
-        lastState = state;
-        state = MenuState.MAIN;
+        Debug.Log("Loaded scene");
+        OpenMenuViaState(MenuState.NONE);
+        yield return StartCoroutine(SwitchMenuCoroutine(false, 2));
+        yield return new WaitForSecondsRealtime(3);
+        OpenMenuViaState(MenuState.MAIN);
+        
         Debug.Log("Done");
     }
 }

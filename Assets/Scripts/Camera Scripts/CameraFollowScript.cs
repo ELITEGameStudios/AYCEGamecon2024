@@ -6,7 +6,8 @@ public class CameraFollowScript : MonoBehaviour
 {
     [SerializeField] private Vector2 defaultTargetOffset, currentTargetOffset, offsetInTargetMode;
     [SerializeField] private GameObject playerObj;
-    [SerializeField] private float Kp, currentKp;
+    [SerializeField] private Camera cam;
+    [SerializeField] private float Kp, currentKp, zoomKp, currentZoomKp, default_zoom, target_zoom;
     public Transform target {get; private set;}
     public bool targetObjMode {get {return target != null;}}
     public static CameraFollowScript Instance {get; private set;}
@@ -17,6 +18,9 @@ public class CameraFollowScript : MonoBehaviour
         else if(Instance != this) Destroy(this);
         target = null;
         currentKp = Kp;
+        currentZoomKp = zoomKp;
+        default_zoom = cam.orthographicSize;
+        target_zoom = default_zoom;
         DontDestroyOnLoad(gameObject);
     }
 
@@ -38,6 +42,7 @@ public class CameraFollowScript : MonoBehaviour
         currentTargetOffset.x *= Player.main.Movement.flipDirRaw;
 
         transform.position += (Vector3)direction * distance * currentKp;
+        cam.orthographicSize += (target_zoom - cam.orthographicSize) * currentZoomKp;
     }
 
     public void SetTarget(CameraTargetZone zone){
@@ -45,11 +50,13 @@ public class CameraFollowScript : MonoBehaviour
             target = null;
             offsetInTargetMode = Vector2.zero;
             currentKp = Kp;
+            target_zoom = default_zoom;
             return;
         }
 
         target = zone.transform;
         offsetInTargetMode = zone.Offset;
         currentKp = zone.ModifiesEasing ? zone.customEasing : Kp;
+        target_zoom = zone.ModifiesZoom ? zone.zoom : default_zoom;
     }
 }
