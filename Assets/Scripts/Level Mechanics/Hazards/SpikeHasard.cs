@@ -6,7 +6,7 @@ public class SpikeHasard : MonoBehaviour
     [SerializeField] private float timer, warningTime, shakeIntensity, resetTime;
     [SerializeField] private int shakeFrequency;
     [SerializeField] private SpikeHasardObject obj;
-    [SerializeField] private bool activated, colliderActivated;
+    [SerializeField] private bool activated, colliderActivated, triggered;
     [SerializeField] private bool Resets {get {return resetTime > 0.0f;}}
 
     [SerializeField] private Quaternion initRot;
@@ -16,18 +16,19 @@ public class SpikeHasard : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D col){
-        if(col.gameObject == Player.main.gameObject && colliderActivated && !activated){
+        if(col.gameObject == Player.main.gameObject && colliderActivated && !activated && !triggered){
             StartCoroutine(HasardCoroutine());
         }
     }
 
     void OnTriggerEnter2D(Collider2D col){
-        if(col == Player.main.MainCol && !activated){
+        if(col == Player.main.MainCol && !activated && !triggered){
             StartCoroutine(HasardCoroutine());
         }
     }
 
     IEnumerator HasardCoroutine(){
+        triggered = true;
         Vector2 hasardObjectPos = obj.transform.position;
         initRot = obj.transform.rotation;
 
@@ -44,6 +45,7 @@ public class SpikeHasard : MonoBehaviour
         obj.transform.position = hasardObjectPos;
         obj.Activate();
         activated = true;
+        triggered = false;
 
         if(Resets){
             yield return new WaitForSeconds(resetTime);

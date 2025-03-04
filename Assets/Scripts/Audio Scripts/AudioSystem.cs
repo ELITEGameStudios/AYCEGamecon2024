@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class AudioSystem : MonoBehaviour
 {
@@ -18,6 +19,9 @@ public class AudioSystem : MonoBehaviour
     List<AudioSource> sources;
     [SerializeField] private Sample currentSample;
 
+    public static float volume = 0.5f;
+    [SerializeField] private Slider volumeSlider;
+
     
     public static AudioSystem Instance {get; private set;}
     // Start is called before the first frame update
@@ -25,6 +29,7 @@ public class AudioSystem : MonoBehaviour
     {
         if(Instance == null){ Instance = this;}
         else if(Instance != this){ Destroy(this);}
+        DontDestroyOnLoad(gameObject);
         
         sources ??= new List<AudioSource>();
         sources.Add(gameObject.AddComponent<AudioSource>());
@@ -38,8 +43,10 @@ public class AudioSystem : MonoBehaviour
             sources[0].Play();
         }
     }
+    void Update(){
+        volume = volumeSlider.value;
+    }
 
-    // Update is called once per frame
     void FixedUpdate()
     {
         activeTracks = sources.Count;

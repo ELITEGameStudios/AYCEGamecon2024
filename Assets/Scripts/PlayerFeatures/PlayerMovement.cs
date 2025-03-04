@@ -19,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
 
     public float Speed {get { return speed; }}
     public bool Grounded {get { return grounded; }}
+    public bool IsWalking {get { return Mathf.Abs(velocity.x) > 0.7f && moveState == PlayerMoveState.ONGROUND && !IsCrouched; }}
     public bool IsRocketJumping {get { return rocketJumpTimer > 0f; }}
     public bool IsCharging {get { return rocketJumpTimer > 0f; }}
     public bool IsLedged {get { return ledge != null; }}
@@ -96,8 +97,10 @@ public class PlayerMovement : MonoBehaviour
         if(!collidingWithSticky){ Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale; }
         else{ Player.main.Rb.gravityScale = 15; }
 
-        if(!IsLedged && !IsCrouched)
-            { transform.position += (Vector3)velocity * Time.fixedDeltaTime * speed; }
+        if(!IsLedged && !IsCrouched) {
+            transform.position += (Vector3)velocity * Time.fixedDeltaTime * speed; 
+            
+        }
         else
         { 
             transform.position = (Vector2)ledge.transform.position + ledge.offset; 
@@ -171,6 +174,7 @@ public class PlayerMovement : MonoBehaviour
             moveState = PlayerMoveState.OFFGROUND;
         }
         grounded = false;
+        PlayerAudioManager.instance.TriggerJumpSFX();
     }
 
     public void SetLedge(LedgeScript ledge){

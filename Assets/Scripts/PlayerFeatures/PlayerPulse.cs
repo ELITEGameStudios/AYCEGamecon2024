@@ -36,6 +36,8 @@ public class PlayerPulse : MonoBehaviour
                 break;
             }   
         }
+
+        PlayerAudioManager.instance.Pulse();
     }
     void Push(){
         pushTimer = pushTime;
@@ -65,6 +67,7 @@ public class PlayerPulse : MonoBehaviour
             }
             catch (System.NullReferenceException) { continue; } // Skips any errors based on if the collider has a rigidbody or not. 
         }
+        PlayerAudioManager.instance.Push();
     }
 
     void Update(){
