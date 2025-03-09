@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5939772567154981510}
   - component: {fileID: 160681336413562329}
   - component: {fileID: 2500421880360937246}
+  - component: {fileID: 1118583262002899296}
   m_Layer: 0
   m_Name: PassableFloor
   m_TagString: Untagged
@@ -138,9 +139,28 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7282948914888904179}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6321bfe77534aa94c8f01a526f260809, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   error: 0
+--- !u!251 &1118583262002899296
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7282948914888904179}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 169
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1

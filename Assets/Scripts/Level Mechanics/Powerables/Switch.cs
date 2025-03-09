@@ -10,6 +10,11 @@ public class Switch : PowerableObject
     [SerializeField] private Quaternion inactiveRot;
     [SerializeField] private Quaternion startRot, targetRot;
     [SerializeField] private bool left;
+    [SerializeField] private bool state = false;
+
+    [SerializeField] private Animator leverAnimator;
+    [SerializeField] private Animator lightAnimator;
+
     bool Buffering {get{return _timer > 0;}}
     bool InRange {get{return Vector2.Distance(Player.main.transform.position, transform.position) <= interactableRange;}}
 
@@ -37,10 +42,13 @@ public class Switch : PowerableObject
         {interactableSignifier.SetActive(InRange);}
 
         if(Buffering){ 
-            _timer -= Time.deltaTime; 
+            _timer -= Time.deltaTime;
             DoAnimation();
         }
-        else{CheckStatusChange();}
+        else {CheckStatusChange();}
+
+        leverAnimator.SetBool("Interact1", activeRot == targetRot);
+        lightAnimator.SetBool("Interact1", activeRot == targetRot);
     }
 
     void CheckStatusChange(){

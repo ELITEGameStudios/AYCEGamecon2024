@@ -94,10 +94,12 @@ MonoBehaviour:
   timer: 1
   warningTime: 1
   shakeIntensity: 0.1
+  resetTime: 0
   shakeFrequency: 10
   obj: {fileID: 8138986972261631562}
   activated: 0
   colliderActivated: 0
+  initRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6906296000760112855
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +176,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -856111521, guid: a40daaccb83c62f419ed5ba27f6ff642, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 76a8f3d9ab7f3124a88a040d266b757b, type: 3}
   m_Color: {r: 0.7830189, g: 0.7830189, b: 0.7830189, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -244,18 +246,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.04965973, y: -0.15800941}
+  m_Offset: {x: -0.028472304, y: 0.041661322}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
+    oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.1534882, y: 1.2979605}
+  m_Size: {x: 0.68469596, y: 0.89861906}
   m_EdgeRadius: 0
 --- !u!114 &8138986972261631562
 MonoBehaviour:
@@ -272,4 +274,6 @@ MonoBehaviour:
   active: 0
   destroys: 0
   kills: 0
+  collides: 0
+  colliderInitEnabled: 0
   effect: {fileID: 0}

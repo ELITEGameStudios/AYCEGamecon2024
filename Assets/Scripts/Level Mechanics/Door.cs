@@ -4,8 +4,12 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [SerializeField] private Vector2 closedPos, initOffset;
-    [SerializeField] private Vector2 openPos, targetPos, startPos;
+    [SerializeField] private Vector2 closedPosTop, initOffset;
+    [SerializeField] private Vector2 openPosTop, targetPosTop, startPosTop;
+    [SerializeField] private Vector2 openPosBot, targetPosBot, startPosBot, closedPosBot;
+
+    [SerializeField] private Transform topPiece;
+    [SerializeField] private Transform botPiece;
 
     [SerializeField] private float offsetInit;
     [SerializeField] private float moveTime, timer;
@@ -45,12 +49,18 @@ public class Door : MonoBehaviour
 
     void Awake(){
         if(state == DoorState.OPEN){
-            openPos = transform.position;
-            closedPos = openPos + initOffset;
+            openPosTop = topPiece.position;
+            closedPosTop = openPosTop + initOffset;
+
+            openPosBot = botPiece.position;
+            closedPosBot = openPosBot - initOffset;
         }
         else{
-            closedPos = transform.position;
-            openPos = closedPos + initOffset;
+            closedPosTop = topPiece.position;
+            openPosTop = closedPosTop + initOffset;
+
+            closedPosBot = botPiece.position;
+            openPosBot = closedPosBot - initOffset;
         }
     }
     void Update(){
@@ -58,11 +68,13 @@ public class Door : MonoBehaviour
         if(IsMoving){
 
             if(!TimerCondition){
-                transform.position = Vector2.Lerp(targetPos, startPos, timer / moveTime);
+                topPiece.position = Vector2.Lerp(targetPosTop, startPosTop, timer / moveTime);
+                botPiece.position = Vector2.Lerp(targetPosBot, startPosBot, timer / moveTime);
                 timer -= Time.deltaTime;
             }
             else{
-                transform.position = targetPos;
+                topPiece.position = targetPosTop;
+                botPiece.position = targetPosBot;
                 state = state == DoorState.OPENING ? DoorState.OPEN : DoorState.CLOSED;
             }
         }
@@ -83,16 +95,22 @@ public class Door : MonoBehaviour
     public void Open(){
         if(IsMoving || state == DoorState.OPEN) {return;}
         timer = moveTime;
-        targetPos = openPos;
-        startPos = closedPos;
+        targetPosTop = openPosTop;
+        targetPosBot = openPosBot;
+
+        startPosTop = closedPosTop;
+        startPosBot = closedPosBot;
         state = DoorState.OPENING;
     }
 
     public void Close(){
         if(IsMoving || state == DoorState.CLOSED) {return;}
         timer = moveTime;
-        targetPos = closedPos;
-        startPos = openPos;
+        targetPosTop = closedPosTop;
+        targetPosBot = closedPosBot;
+
+        startPosTop = openPosTop;
+        startPosBot = openPosBot;
         state = DoorState.CLOSING;
     }
 
