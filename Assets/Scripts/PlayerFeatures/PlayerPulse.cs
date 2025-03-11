@@ -14,6 +14,8 @@ public class PlayerPulse : MonoBehaviour
     public bool PushReady {get{return pushTimer < 0 && Player.main.powerLevel >= 0;}}
     public bool u{get{return pushTimer < 0;}}
 
+    private PlayerAnimations animation;
+
     void Pulse(){
         chargeTimer = chargeTime;
         PowerableObject[] powerables = FindObjectsByType<PowerableObject>(FindObjectsSortMode.None);
@@ -36,6 +38,8 @@ public class PlayerPulse : MonoBehaviour
                 break;
             }   
         }
+
+        animation.ChangeAnimation("Charging");
     }
     void Push(){
         pushTimer = pushTime;
@@ -64,7 +68,14 @@ public class PlayerPulse : MonoBehaviour
                 }
             }
             catch (System.NullReferenceException) { continue; } // Skips any errors based on if the collider has a rigidbody or not. 
+
+            animation.ChangeAnimation("Pulsing");
         }
+    }
+
+    void Start()
+    {
+        animation = GetComponent<PlayerAnimations>();
     }
 
     void Update(){
