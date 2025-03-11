@@ -18,6 +18,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Area3.unity
     guid: a3582df82a7ec4b48bc79a27fe7c5ce6
   - enabled: 1
+    path: Assets/Scenes/Area4 (Boss).unity
+    guid: 0bc20a0c88c7c1a47b8fa4d84137e803
+  - enabled: 1
     path: Assets/Scenes/Start Menu.unity
     guid: 092074ae6b9c81e41922a3672e16d7a4
   - enabled: 1
