@@ -265,6 +265,7 @@ GameObject:
   - component: {fileID: 7290919551333630020}
   - component: {fileID: 9056160359660423999}
   - component: {fileID: 275501098052011479}
+  - component: {fileID: 5310869524483830515}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -318,6 +319,12 @@ MonoBehaviour:
   magTimer: 0
   initGravScale: 0
   feet: {fileID: 1270136695526777189}
+  spriteList:
+  - {fileID: 3916220545505653779}
+  - {fileID: 7065696167139857998}
+  - {fileID: 9112053984218224309}
+  - {fileID: 8447481887547822585}
+  - {fileID: 6166145121607335956}
   isOnWall: 0
   ledge: {fileID: 0}
   wallCol: {fileID: 0}
@@ -366,7 +373,7 @@ MonoBehaviour:
   chargeRadius: 5
   pushRadius: 5
   pushForce: 5
-  chargeTime: 4
+  chargeTime: 1
   chargeTimer: 0
   pushTime: 0.5
   pushTimer: 0
@@ -437,6 +444,23 @@ MonoBehaviour:
   - {x: 0.5, y: -0.5, z: 0}
   - {x: 0.5, y: 0.5, z: 0}
   - {x: -0.5, y: 0.5, z: 0}
+--- !u!114 &5310869524483830515
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4998629965385820691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2db0a17f98d444d4b8e50a2b39f3abd6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animatorVV: {fileID: 8262577071437620601}
+  animatorChest: {fileID: 2733578180661205978}
+  animatorBoots: {fileID: 2635150339572894990}
+  animatorHands: {fileID: 6877911494214467366}
+  animatorEyes: {fileID: 2727075896797329288}
 --- !u!1 &5628575666249511734
 GameObject:
   m_ObjectHideFlags: 0

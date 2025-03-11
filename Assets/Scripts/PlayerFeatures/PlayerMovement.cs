@@ -17,6 +17,9 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private FeetScript feet; 
     private float playerSide;
 
+    private PlayerAnimations animations;
+    [SerializeField] private SpriteRenderer[] spriteList;
+
     public float Speed {get { return speed; }}
     public bool Grounded {get { return grounded; }}
     public bool IsWalking {get { return Mathf.Abs(velocity.x) > 0.7f && moveState == PlayerMoveState.ONGROUND && !IsCrouched; }}
@@ -24,7 +27,9 @@ public class PlayerMovement : MonoBehaviour
     public bool IsCharging {get { return rocketJumpTimer > 0f; }}
     public bool IsLedged {get { return ledge != null; }}
     public bool IsCrouched {get { return InputManager.crouch.pressed && grounded; }}
-    
+
+    public bool IsFlipped { get { return flipDir > 0; } }
+
     [SerializeField] 
     public bool collidingWithSticky {
         get { 
@@ -53,6 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
     void Start(){
         initGravScale = Player.main.Rb.gravityScale;
+        animations = GetComponent<PlayerAnimations>();
     }
 
     void OnDisable(){
@@ -62,13 +68,18 @@ public class PlayerMovement : MonoBehaviour
         rocketJumpTimer = 0;
     }
 
-
     // Update is called once per frame
     void Update()
     {
-
         if(grounded || moveState == PlayerMoveState.CLIMBING){
-            if(InputManager.crouch.pressed){ chargeJumpTimer += Time.deltaTime; }
+            if(InputManager.crouch.pressed)
+            { 
+                chargeJumpTimer += Time.deltaTime;
+                if (moveState == PlayerMoveState.CLIMBING)
+                    animations.ChangeAnimation("WallJumpPowering");
+                else
+                    animations.ChangeAnimation("JumpPowering");
+            }
             else if(InputManager.crouch.releasedThisFrame){ chargeJumpTimer = 0; }
             if(InputManager.jump.pressedThisFrame){
                 rocketJumpTimer = Player.main.powerLevel >= 2 ? Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold : 0;
@@ -83,16 +94,39 @@ public class PlayerMovement : MonoBehaviour
             moveState = grounded ? PlayerMoveState.ONGROUND : PlayerMoveState.OFFGROUND;
         }
 
-        if(InputManager.Y <= -0.1f && IsLedged){
+        if (moveState == PlayerMoveState.OFFGROUND && moveState != PlayerMoveState.CLIMBING)
+        {
+            if (moveState == PlayerMoveState.MAGNETIZING)
+                animations.ChangeAnimation("ClimbIdle");
+            else
+                animations.ChangeAnimation("Falling");
+        }
+
+        if (InputManager.Y <= -0.1f && IsLedged){
             ledge = null;
         }
 
+        foreach (SpriteRenderer sprite in spriteList)
+        {
+            if (velocity.x > 0)
+                sprite.flipX = true;
+            else if (velocity.x < 0)
+                sprite.flipX = false;
+        }
+
+        CheckAnimations();
     }
 
     void FixedUpdate(){
 
-        if(moveState == PlayerMoveState.CLIMBING){ velocity = new(0, -Mathf.Clamp(InputManager.X - (InputManager.Y > 0 ? InputManager.Y : 0), -1, 1) * playerSide); }
-        else{ velocity = new(InputManager.X, 0); }    
+        if(moveState == PlayerMoveState.CLIMBING)
+        { 
+            velocity = new(0, -Mathf.Clamp(InputManager.X - (InputManager.Y > 0 ? InputManager.Y : 0), -1, 1) * playerSide); 
+        }
+        else
+        { 
+            velocity = new(InputManager.X, 0);
+        }    
         
         if(!collidingWithSticky){ Player.main.Rb.gravityScale = moveState == PlayerMoveState.CLIMBING ? 0 : initGravScale; }
         else{ Player.main.Rb.gravityScale = 15; }
@@ -105,6 +139,7 @@ public class PlayerMovement : MonoBehaviour
         { 
             transform.position = (Vector2)ledge.transform.position + ledge.offset; 
             rb.velocity = Vector2.zero;
+            animations.ChangeAnimation("Ledging");
         }
         Debug.Log(IsLedged);
         
@@ -159,6 +194,55 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+    public void CheckAnimations()
+    {
+        if (PlayerAnimations.currentAnimation == "Jumping" || PlayerAnimations.currentAnimation == "Landing" 
+            || PlayerAnimations.currentAnimation == "Pulsing" || PlayerAnimations.currentAnimation == "Charging"
+            || PlayerAnimations.currentAnimation == "Ledging")
+            return;
+
+        if (PlayerAnimations.currentAnimation == "Falling")
+        {
+            if (Grounded)
+                animations.ChangeAnimation("Landing");
+            else if (moveState == PlayerMoveState.MAGNETIZING)
+                animations.ChangeAnimation("ClimbIdle");
+
+            return;
+        }
+
+        if (moveState == PlayerMoveState.CLIMBING)
+        {
+            if (velocity != Vector2.zero)
+            {
+                animations.ChangeAnimation("Climbing");
+            }
+            else if (PlayerAnimations.currentAnimation == "WallJumpPowering")
+            {
+                if (IsRocketJumping)
+                    animations.ChangeAnimation("Jumping");
+            }
+            else
+            {
+                animations.ChangeAnimation("ClimbIdle");
+            }
+
+            return;
+        }
+
+        if (PlayerAnimations.currentAnimation == "JumpPowering" && InputManager.crouch.pressed)
+        {
+            if (IsRocketJumping)
+                animations.ChangeAnimation("Jumping");
+            return;
+        }   
+
+        if (velocity != Vector2.zero)
+            animations.ChangeAnimation("Running");
+        else
+            animations.ChangeAnimation("Idle");
+    }
+
     void Jump(){
         ledge = null;
         if(moveState == PlayerMoveState.CLIMBING){
@@ -175,6 +259,8 @@ public class PlayerMovement : MonoBehaviour
         }
         grounded = false;
         PlayerAudioManager.instance.TriggerJumpSFX();
+
+        animations.ChangeAnimation("Jumping");
     }
 
     public void SetLedge(LedgeScript ledge){
