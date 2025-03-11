@@ -16,6 +16,8 @@ public class CameraFollowScript : MonoBehaviour
     void Awake(){
         if(Instance == null) Instance = this;
         else if(Instance != this) Destroy(this);
+        
+        if(cam == null){cam = GetComponent<Camera>();}
         target = null;
         currentKp = Kp;
         currentZoomKp = zoomKp;
