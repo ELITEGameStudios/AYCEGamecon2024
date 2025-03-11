@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
   m_Name: CaveBottomMiddle
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -136935374, guid: 40012e1b190168246a087f01daf6db93, type: 3}
+  m_Sprite: {fileID: 1038767312, guid: 21a46f27d533461449711f5b65979b4b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1

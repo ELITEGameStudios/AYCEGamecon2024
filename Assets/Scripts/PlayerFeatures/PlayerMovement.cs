@@ -96,10 +96,7 @@ public class PlayerMovement : MonoBehaviour
 
         if (moveState == PlayerMoveState.OFFGROUND && moveState != PlayerMoveState.CLIMBING)
         {
-            if (moveState == PlayerMoveState.MAGNETIZING)
-                animations.ChangeAnimation("ClimbIdle");
-            else
-                animations.ChangeAnimation("Falling");
+            animations.ChangeAnimation("Falling");
         }
 
         if (InputManager.Y <= -0.1f && IsLedged){
@@ -205,8 +202,6 @@ public class PlayerMovement : MonoBehaviour
         {
             if (Grounded)
                 animations.ChangeAnimation("Landing");
-            else if (moveState == PlayerMoveState.MAGNETIZING)
-                animations.ChangeAnimation("ClimbIdle");
 
             return;
         }

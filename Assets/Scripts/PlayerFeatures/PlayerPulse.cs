@@ -39,8 +39,8 @@ public class PlayerPulse : MonoBehaviour
             }   
         }
 
-        PlayerAudioManager.instance.Pulse();
         animation.ChangeAnimation("Charging");
+        PlayerAudioManager.instance.Pulse();
     }
     void Push(){
         pushTimer = pushTime;
