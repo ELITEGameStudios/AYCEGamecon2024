@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class Elevator : MonoBehaviour
 {
-    [SerializeField] private Vector2 secondPos, firstPos;
+    [SerializeField] private Transform secondPosObject, firstPosObject; 
+    private Vector2 secondPos, firstPos;
     [SerializeField] private Vector2 targetPos, initPos;
     [SerializeField] private float travelSpeed, travelDistance;
     [SerializeField] private float offsetTime, timer, idleTime, initTime;
@@ -21,8 +22,12 @@ public class Elevator : MonoBehaviour
         CLOSED
     }
 
-    void Awake(){
-        firstPos = transform.position;
+    void Start(){
+        firstPosObject.SetParent(null);
+        secondPosObject.SetParent(null);
+        
+        firstPos = firstPosObject.position;
+        secondPos = secondPosObject.position;
         state = ElevatorState.RESTING;
     }
 
@@ -34,7 +39,7 @@ public class Elevator : MonoBehaviour
 
 
         Debug.Log(gameObject.name + " Elevator Activated, " + travelDirection);
-        targetPos = travelDirection ? secondPos : firstPos; 
+        targetPos = travelDirection ? secondPosObject.position : firstPosObject.position; 
         initPos = transform.position;
         travelDistance = Vector2.Distance(initPos, targetPos);
 
@@ -50,10 +55,6 @@ public class Elevator : MonoBehaviour
         Debug.Log(gameObject.name + " Elevator deactivated");
         StopCoroutine(MainCycleCoroutine());
         state = ElevatorState.RESTING;
-    }
-
-    void Start(){
-
     }
 
     void FixedUpdate(){

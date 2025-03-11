@@ -15,11 +15,11 @@ public class Crusher : MonoBehaviour
 
 
     void Awake(){
-        initPos = transform.position;
-        crushedPos = initPos + crushedOffset;
     }
 
     void Start(){
+        initPos = transform.position;
+        crushedPos = initPos + crushedOffset;
         StartCoroutine(MainCycleCoroutine());
     }
 
