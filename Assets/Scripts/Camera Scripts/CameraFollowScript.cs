@@ -16,7 +16,7 @@ public class CameraFollowScript : MonoBehaviour
     void Awake(){
         if(Instance == null) Instance = this;
         else if(Instance != this) Destroy(this);
-        
+
         if(cam == null){cam = GetComponent<Camera>();}
         target = null;
         currentKp = Kp;
@@ -29,6 +29,8 @@ public class CameraFollowScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        Debug.Log(target_zoom + " zoom");
 
         Vector2 targetPos = 
             targetObjMode ? 
@@ -44,7 +46,7 @@ public class CameraFollowScript : MonoBehaviour
         currentTargetOffset.x *= Player.main.Movement.flipDirRaw;
 
         transform.position += (Vector3)direction * distance * currentKp;
-        cam.orthographicSize += (target_zoom - cam.orthographicSize) * currentZoomKp;
+        cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, target_zoom, currentZoomKp);
     }
 
     public void SetTarget(CameraTargetZone zone){

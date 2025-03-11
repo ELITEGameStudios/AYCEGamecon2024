@@ -14,7 +14,7 @@ public class PressurePlate : PowerableObject
 
     protected static string[] tags = new string[]{
         "Player",
-        "PhysObject"
+        "MetalBox"
     };
 
     // Start is called before the first frame update

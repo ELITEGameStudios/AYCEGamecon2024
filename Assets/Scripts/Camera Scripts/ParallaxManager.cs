@@ -7,6 +7,9 @@ public class ParallaxManager : MonoBehaviour
     public static float layerDepth {get; private set;} = 1;
     [SerializeField] private float parallaxModifier;
 
+    [SerializeField] private Transform referenceTf; 
+    [SerializeField] private bool offsetFromReference { get {return referenceTf != null;}} 
+
     //layer Depth * layer Mod = the rate at which 
     
     [SerializeField] private int layer;
@@ -18,6 +21,7 @@ public class ParallaxManager : MonoBehaviour
     // Start is called before the first frame update
     void Awake(){
         startPos = transform.position;
+        cam = Camera.main.transform;
     }
 
     // Update is called once per frame
