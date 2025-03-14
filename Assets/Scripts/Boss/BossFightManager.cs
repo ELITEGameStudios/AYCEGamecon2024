@@ -10,6 +10,7 @@ public class BossFightManager : MonoBehaviour
     [SerializeField] private GameObject explosionObject, metalBoxObj;
     [SerializeField] private Collider2D explosionCol;
     [SerializeField] private Door entryDoor, exitDoor;
+    [SerializeField] private BossScript boss;
     [SerializeField] private float explosionTime, timer;
     public float ExplosionTime {get {return explosionTime;}}
     bool Elapsed {get {return timer <= 0;}}
@@ -65,6 +66,7 @@ public class BossFightManager : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col){
         if(col == Player.main.MainCol && !isDead){
             entryDoor.Close();
+            boss.ActivateRobot();
         }
     }
 }

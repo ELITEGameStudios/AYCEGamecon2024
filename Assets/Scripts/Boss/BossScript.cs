@@ -21,21 +21,28 @@ public class BossScript : MonoBehaviour
         EXPLOSIONWINDUP,
         EXPLOSION,
         STUNNED,
-        HURT
+        HURT,
+        INACTIVE
     }
 
     // Start is called before the first frame update
     void Awake()
     {
         // state = BossState.NORMAL;
-        ReturnToNormal();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if(state == BossState.INACTIVE){return;}
+
         if(Elapsed){ChangeState();}
         else{timer -= Time.deltaTime;}
+    }
+
+    public void ActivateRobot(){
+        state = BossState.NORMAL;
+        ReturnToNormal();
     }
 
     void FixedUpdate(){
