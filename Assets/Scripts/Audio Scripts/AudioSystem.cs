@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditorInternal;
 using UnityEngine;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class AudioSystem : MonoBehaviour
@@ -46,6 +48,7 @@ public class AudioSystem : MonoBehaviour
     [SerializeField] private TransitionType transitionType;
     
     public bool inTransition; // will become serialized private eventually
+    public bool active;
     public static AudioSystem Instance {get; private set;}
     // Start is called before the first frame update
     void Awake()
@@ -57,6 +60,8 @@ public class AudioSystem : MonoBehaviour
         sources ??= new List<AudioSource>();
         sources.Add(gameObject.AddComponent<AudioSource>());
         sources.Add(gameObject.AddComponent<AudioSource>());
+
+        foreach (AudioSource item in sources) { item.playOnAwake = false; }
         activeTracks = 1;
     }
 
@@ -64,12 +69,7 @@ public class AudioSystem : MonoBehaviour
         
         QueueNewSample(startupSample, TransitionOnMarker.IMMEDIATE, TransitionType.SEAMLESS);
         // SetVariablesViaBPM(startupSample.bpm);
-        
-        SetVariablesViaBPM(bpm);
-        if(startupClip != null){
-            sources[0].clip = startupClip;
-            sources[0].Play();
-        }
+        // SetVariablesViaBPM(bpm);
     }
     void Update(){
         volume = volumeSlider.value;
@@ -77,24 +77,26 @@ public class AudioSystem : MonoBehaviour
 
     void FixedUpdate()
     {
-        activeTracks = sources.Count;
+        if(active){
+            activeTracks = sources.Count;
+            // if(!Application.isFocused) {return;}
+            // timer += Time.fixedDeltaTime * sources[0].pitch;
+            timer += Time.fixedUnscaledDeltaTime;
+            timeInBar = timer % timePerBar;
+            timeInMeasure = timer % timePerMeasure;
 
-        // timer += Time.fixedDeltaTime * sources[0].pitch;
-        timer += Time.fixedUnscaledDeltaTime;
-        timeInBar = timer % timePerBar;
-        timeInMeasure = timer % timePerMeasure;
+            if(beatsElapsed != (int)(timer/timePerBeat)){
+                beatsElapsed = (int)(timer/timePerBeat);
+                BeatUpdate();
 
-        if(beatsElapsed != (int)(timer/timePerBeat)){
-            beatsElapsed = (int)(timer/timePerBeat);
-            BeatUpdate();
+                if(barsElapsed != (int)(beatsElapsed/beatsPerBar)){
+                    barsElapsed = (int)(beatsElapsed/beatsPerBar);
+                    BarUpdate();
 
-            if(barsElapsed != (int)(beatsElapsed/beatsPerBar)){
-                barsElapsed = (int)(beatsElapsed/beatsPerBar);
-                BarUpdate();
-
-                if(measuresElapsed != (int)(barsElapsed/barsPerMeasure)){
-                    measuresElapsed = (int)(barsElapsed/barsPerMeasure);
-                    MeasureUpdate();
+                    if(measuresElapsed != (int)(barsElapsed/barsPerMeasure)){
+                        measuresElapsed = (int)(barsElapsed/barsPerMeasure);
+                        MeasureUpdate();
+                    }
                 }
             }
         }
@@ -103,7 +105,7 @@ public class AudioSystem : MonoBehaviour
     void QueueNewSample(Sample sample, TransitionOnMarker transitionOn, TransitionType type, float fadeIn = -1, float fadeOut = -1){
         if(transitionOn == TransitionOnMarker.NONE){return;} // NONE is not meant for creating transitions, it is meant to notate that nothing is queued. This is invalid.
 
-        queuedSample = startupSample;
+        queuedSample = sample;
 
         if(fadeIn != -1){sample.fadeInSeconds = fadeIn;}
         if(fadeOut != -1){sample.fadeOutSeconds = fadeOut;}
@@ -120,17 +122,27 @@ public class AudioSystem : MonoBehaviour
         if(transitionMarker == TransitionOnMarker.BEAT && !inTransition){
             StartCoroutine(TransitionAudio());
         }
+
+        Debug.Log("Beat");
     }
 
     void BarUpdate(){
         if(transitionMarker == TransitionOnMarker.BAR && !inTransition){
             StartCoroutine(TransitionAudio());
         }
+        Debug.Log("Bar");
     }
 
     void MeasureUpdate(){
         if(transitionMarker == TransitionOnMarker.MEASURE && !inTransition){
             StartCoroutine(TransitionAudio());
+        }
+        Debug.Log("Measure");
+
+        if(measuresElapsed == currentSample.totalMeasures){
+            if(!inTransition && transitionMarker == TransitionOnMarker.END){
+                StartCoroutine(TransitionAudio());
+            }
         }
     }
 
@@ -143,8 +155,20 @@ public class AudioSystem : MonoBehaviour
         timePerMeasure = timePerBar * barsPerMeasure;
     }
 
+    void ResetTimers(){
+        beatsElapsed = 0;
+        barsElapsed = 0;
+        measuresElapsed = 0;
+    }
+
     IEnumerator TransitionAudio(){
         inTransition = true;
+        if(!active){
+            yield return new WaitForSeconds(1);
+            ResetTimers();
+            active = true;
+        }
+        Debug.Log("Started transition");
 
         if(transitionType != TransitionType.SEGMENTED){
             bpm = queuedSample.bpm;
@@ -170,18 +194,21 @@ public class AudioSystem : MonoBehaviour
         }
         else{
             newSource = oldSource;
-            newSource.clip = queuedSample.mainClip;
         }
 
-
+        if(newSource.isPlaying){newSource.Stop();}
+        newSource.clip = queuedSample.mainClip;
         float timer;
 
+        ResetTimers();
         switch(transitionType){
             case TransitionType.SEAMLESS:
                 // Just immediately starts the new sample
                 newSource.volume = newVolume;
-                newSource.Play();
-                oldSource.Stop();
+                if(newSource.clip != null){newSource.Play(); Debug.Log("Playing on new source");}
+                if(newSource != oldSource){oldSource.Stop();}
+                
+                Debug.Log("Executed Seamless transition");
                 break;
 
             case TransitionType.CROSSFADE:
@@ -191,7 +218,7 @@ public class AudioSystem : MonoBehaviour
                     currentSample.fadeOutSeconds;
                 timer = 0;
                 
-                newSource.Play();
+                if(newSource.clip != null){newSource.Play();}
                 while (timer < resultantFadeTime){
                     // Fades the volumes at the same time
                     oldSource.volume = oldVolume - (oldVolume * timer/currentSample.fadeOutSeconds );
@@ -203,6 +230,7 @@ public class AudioSystem : MonoBehaviour
 
                 newSource.volume = newVolume;
                 
+                Debug.Log("Executed Crossfade transition");
                 break;
             case TransitionType.SEGMENTED:
                 // Stops one and starts another with fades
@@ -227,7 +255,7 @@ public class AudioSystem : MonoBehaviour
                 bpm = queuedSample.bpm;
                 SetVariablesViaBPM(bpm, queuedSample.beatsPerBar, queuedSample.barsPerMeasure);
                 
-                newSource.Play();
+                if(newSource.clip != null){newSource.Play();}
                 
                 while (timer > 0){
                     // Fades in new sample
@@ -236,12 +264,14 @@ public class AudioSystem : MonoBehaviour
                     yield return null;
                 }
                 newSource.volume = newVolume;
+                Debug.Log("Executed Segmented transition");
                 break;
         }
 
         currentSample = queuedSample;
         transitionMarker = TransitionOnMarker.NONE;
         inTransition = false;
+        QueueNewSample(Sample.NothingSample, TransitionOnMarker.END, TransitionType.SEGMENTED);
     }
 }
 
@@ -264,5 +294,21 @@ public struct Sample {
     // For fading, set upon queue
     public float fadeInSeconds;
     public float fadeOutSeconds;
+
+    public Sample(AudioClip clip, int bpm, int beatsPerBar, int barsPerMeasure, int totalMeasures, float volumeConstant, AudioClip transitionClip = null, int transitionClipBars = -1, bool naturalTransition = true, float fadeIn = 2, float fadeOut = 2){
+        this.mainClip = clip;
+        this.bpm = bpm;
+        this.beatsPerBar = beatsPerBar;
+        this.barsPerMeasure = barsPerMeasure;
+        this.totalMeasures = totalMeasures;
+        this.transitionClip = transitionClip;
+        this.transitionClipBars = transitionClipBars;
+        this.naturalTransition = naturalTransition;
+        this.volumeConstant = volumeConstant;
+        fadeInSeconds = fadeIn;
+        fadeOutSeconds = fadeOut;
+    }
+
+    public static readonly Sample NothingSample = new(null, 120, 1, 1, 1, 1);
 }
 
