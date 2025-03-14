@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: CaveBottomLeft
+  m_Name: CaveConvexBotRight
   m_EditorClassIdentifier: 
-  m_Sprite: {fileID: -414741339, guid: 8af17120f8a081342aeccdf1c17ab346, type: 3}
+  m_Sprite: {fileID: 1426750774, guid: 7e4f706ddd2548a4996c7b704348aab5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_Transform:
     e00: 1
