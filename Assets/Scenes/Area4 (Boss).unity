@@ -1213,7 +1213,6 @@ GameObject:
   m_Component:
   - component: {fileID: 238175627}
   - component: {fileID: 238175629}
-  - component: {fileID: 238175628}
   m_Layer: 0
   m_Name: BossRoom_Chute
   m_TagString: Untagged
@@ -1237,26 +1236,6 @@ Transform:
   - {fileID: 1845652165}
   m_Father: {fileID: 228088869}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &238175628
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 238175626}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7514b5048a1034ab1eefac5c622792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallaxModifier: 0.4
-  referenceTf: {fileID: 0}
-  layer: 0
-  startPos: {x: 0, y: 0}
-  camOffset: {x: 0, y: 0}
-  cam: {fileID: 0}
-  x: 1
-  y: 0
 --- !u!212 &238175629
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -1297,7 +1276,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -2
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 4cbd12418cb57544f849aea926585b04, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1577,6 +1556,10 @@ PrefabInstance:
     - target: {fileID: 5351746596765389828, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: state
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5441195919497612489, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: m_Color.b
@@ -2214,6 +2197,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3668195240567537364, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: m_TagString
+      value: BossWall
+      objectReference: {fileID: 0}
     - target: {fileID: 5351746596765389828, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: m_LocalPosition.x
       value: -13.67
@@ -2253,6 +2240,18 @@ PrefabInstance:
     - target: {fileID: 5351746596765389828, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: initDoorState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524952547268022653, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: m_TagString
+      value: BossWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2566,100 +2565,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8775240569043174226, guid: c51a0430f831bbe49ab393046d7d39b7, type: 3}
   m_PrefabInstance: {fileID: 701137903}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &711087728
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 711087731}
-  - component: {fileID: 711087730}
-  - component: {fileID: 711087729}
-  m_Layer: 0
-  m_Name: CameraZone0_1
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!61 &711087729
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711087728}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 1
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 1.9827995}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 25.944715, y: 16.423271}
-  m_EdgeRadius: 0
---- !u!114 &711087730
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711087728}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3c8658e34a84e14ea364c90147d25c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  offset: {x: 0, y: 1}
-  modifiesEasing: 0
-  customEasing: 0.01
-  zoom: 0
---- !u!4 &711087731
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 711087728}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -424.98, y: 120.85, z: -5.0154057}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &716531292
 GameObject:
   m_ObjectHideFlags: 0
@@ -3090,6 +2995,7 @@ GameObject:
   - component: {fileID: 838061444}
   - component: {fileID: 838061446}
   - component: {fileID: 838061445}
+  - component: {fileID: 838061447}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -3118,11 +3024,11 @@ Transform:
   m_GameObject: {fileID: 838061441}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 80.39353, y: -102.23268, z: 4.9826617}
+  m_LocalPosition: {x: -424.83, y: 126, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1400391715}
+  m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &838061444
 MonoBehaviour:
@@ -3169,7 +3075,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.90108585, y: -5.4882603}
+  m_Offset: {x: -0.21064758, y: -5.4882603}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -3180,7 +3086,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 24.036182, y: 14.398235}
+  m_Size: {x: 24.17691, y: 14.398235}
   m_EdgeRadius: 0
 --- !u!114 &838061446
 MonoBehaviour:
@@ -3199,8 +3105,25 @@ MonoBehaviour:
   explosionCol: {fileID: 1253432592}
   entryDoor: {fileID: 528100525}
   exitDoor: {fileID: 1670816760}
+  boss: {fileID: 932463002}
   explosionTime: 1
   timer: 0
+--- !u!114 &838061447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 838061441}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3c8658e34a84e14ea364c90147d25c7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  offset: {x: 1, y: -4.5}
+  modifiesEasing: 0
+  customEasing: 0
+  zoom: 8.5
 --- !u!1001 &839270053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3610,7 +3533,7 @@ MonoBehaviour:
   flipDirOnDash: 0
   shakeFrequency: 5
   minDist: 5
-  state: 0
+  state: 7
   timer: 0
   stunTime: 5
   normalTime: 4
@@ -3788,9 +3711,9 @@ MonoBehaviour:
   cam: {fileID: 939741116}
   Kp: 0.03
   currentKp: 0
-  zoomKp: 0
+  zoomKp: 0.03
   currentZoomKp: 0
-  default_zoom: 0
+  default_zoom: 7
   target_zoom: 0
 --- !u!114 &939741114
 MonoBehaviour:
@@ -3904,7 +3827,7 @@ Transform:
   m_GameObject: {fileID: 939741112}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 81.733536, y: -106.83268, z: -45.017338}
+  m_LocalPosition: {x: -288.2865, y: 10.16732, z: -45.017338}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53902,7 +53825,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5441410444411934251, guid: 8b5e31b3fbd97f341af2e0d2067075be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -306.28647
+      value: -290.28647
       objectReference: {fileID: 0}
     - target: {fileID: 5441410444411934251, guid: 8b5e31b3fbd97f341af2e0d2067075be, type: 3}
       propertyPath: m_LocalPosition.y
@@ -54081,7 +54004,6 @@ Transform:
   m_Children:
   - {fileID: 939741117}
   - {fileID: 512827429}
-  - {fileID: 838061443}
   - {fileID: 1657949567}
   - {fileID: 1506926821}
   - {fileID: 1002177521}
@@ -54181,7 +54103,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 7
+  m_SortingOrder: -2
   m_Sprite: {fileID: 21300000, guid: 35715c256dd24714888cf8539e2b3226, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -54995,6 +54917,10 @@ PrefabInstance:
       propertyPath: m_Offset.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3668195240567537364, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: m_TagString
+      value: BossWall
+      objectReference: {fileID: 0}
     - target: {fileID: 5351746596765389828, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: m_LocalPosition.x
       value: -40.33
@@ -55036,8 +54962,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: powerableOpen
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5524952547268022653, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: m_TagString
+      value: BossWall
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -55747,7 +55681,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1845652165}
   - component: {fileID: 1845652167}
-  - component: {fileID: 1845652166}
   m_Layer: 0
   m_Name: BossRoom_Glass
   m_TagString: Untagged
@@ -55770,26 +55703,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 238175627}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1845652166
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1845652164}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ef7514b5048a1034ab1eefac5c622792, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  parallaxModifier: 0.4
-  referenceTf: {fileID: 0}
-  layer: 0
-  startPos: {x: 0, y: 0}
-  camOffset: {x: 0, y: 0}
-  cam: {fileID: 0}
-  x: 1
-  y: 0
 --- !u!212 &1845652167
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -55830,7 +55743,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -3
+  m_SortingOrder: -1
   m_Sprite: {fileID: 21300000, guid: 914a90eac6eec1a4080654ab8259d432, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -56488,12 +56401,12 @@ SceneRoots:
   m_Roots:
   - {fileID: 1559272103}
   - {fileID: 2104127331}
-  - {fileID: 711087731}
   - {fileID: 932463004}
   - {fileID: 1462425153}
   - {fileID: 1232226646}
   - {fileID: 1741397891}
   - {fileID: 1253432594}
   - {fileID: 122172477}
+  - {fileID: 838061443}
   - {fileID: 1400391715}
   - {fileID: 228088869}
