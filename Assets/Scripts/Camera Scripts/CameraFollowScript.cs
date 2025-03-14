@@ -26,6 +26,13 @@ public class CameraFollowScript : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
 
+    void Start()
+    {
+        if(playerObj == null){
+            playerObj = Player.main.gameObject;
+        }
+    }
+
     // Update is called once per frame
     void Update()
     {

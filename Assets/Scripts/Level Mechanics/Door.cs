@@ -16,6 +16,7 @@ public class Door : MonoBehaviour
     [SerializeField] private bool TimerCondition {get{return timer <= 0;}}
     [SerializeField] private bool IsMoving {get{return state == DoorState.OPENING || state == DoorState.CLOSING;}}
     [SerializeField] private DoorState state;
+    [SerializeField] private DoorState initDoorState = DoorState.NONE;
     [SerializeField] public DoorState State {get {return state;}}
     
     
@@ -39,6 +40,7 @@ public class Door : MonoBehaviour
     // [SerializeField] private bool Active {get{return active;}}
 
     public enum DoorState{
+        NONE,
         OPEN,
         CLOSED,
         OPENING,
@@ -62,6 +64,9 @@ public class Door : MonoBehaviour
             closedPosBot = botPiece.position;
             openPosBot = closedPosBot - initOffset;
         }
+        if(initDoorState == DoorState.OPEN){ Open(true); }
+        else if(initDoorState == DoorState.CLOSED){ Close(true); }
+        
     }
     void Update(){
 
@@ -92,8 +97,8 @@ public class Door : MonoBehaviour
         }
     }
 
-    public void Open(){
-        if(IsMoving || state == DoorState.OPEN) {return;}
+    public void Open(bool startup = false){
+        if((IsMoving || state == DoorState.OPEN) && !startup) {return;}
         timer = moveTime;
         targetPosTop = openPosTop;
         targetPosBot = openPosBot;
@@ -103,8 +108,8 @@ public class Door : MonoBehaviour
         state = DoorState.OPENING;
     }
 
-    public void Close(){
-        if(IsMoving || state == DoorState.CLOSED) {return;}
+    public void Close(bool startup = false){
+        if((IsMoving || state == DoorState.CLOSED) && !startup) {return;}
         timer = moveTime;
         targetPosTop = closedPosTop;
         targetPosBot = closedPosBot;
