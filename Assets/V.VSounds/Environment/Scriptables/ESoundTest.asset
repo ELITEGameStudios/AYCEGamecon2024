@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 0}
-  m_Name: CasetteStart
+  m_Name: ESoundTest
   m_EditorClassIdentifier: Assembly-CSharp:SoundSystems:EnvironmentalSound
-  clip: {fileID: 8300000, guid: 143412cbb24ec9d4b8f41cbd22292f6d, type: 3}
-  playOnce: 1
-  volumeMod: 1
-  pitchVar: 0.1
+  clip: {fileID: 0}
+  playOnce: 0
+  volumeMod: 0
+  pitchVar: 0
   fade: 0
-  randomPitchVariation: 1
+  randomPitchVariation: 0
