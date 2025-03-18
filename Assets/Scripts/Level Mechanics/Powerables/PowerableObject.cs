@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoundSystems;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class PowerableObject : MonoBehaviour
 {
     public static List<PowerableObject> objects;
+    public EnvironmentalSound soundToPlay;
+    public string nameOfSound = "PowerableSound";
+    public bool playsSound {get {return soundToPlay != null && nameOfSound != "";}}
     public bool active {get; protected set;}
     [SerializeField] protected bool isSwitch, unaffectedByPulse; // IsSwitch only dictates if it be toggled on and off repeatedly
     [SerializeField] private UnityEvent onPoweredOnEvent, onPoweredOffEvent;

@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: CasetteStart
+  m_EditorClassIdentifier: Assembly-CSharp:SoundSystems:EnvironmentalSound
+  clip: {fileID: 8300000, guid: 143412cbb24ec9d4b8f41cbd22292f6d, type: 3}
+  playOnce: 1
+  volumeMod: 1
+  pitchVar: 0.1
+  fade: 0
+  randomPitchVariation: 1
