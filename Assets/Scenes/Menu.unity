@@ -4116,9 +4116,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b584ed303abe95844a5965395889a826, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  bpm: 120
-  beatsPerBar: 0
-  barsPerMeasure: 0
+  bpm: 90
+  beatsPerBar: 4
+  barsPerMeasure: 4
   activeTracks: 0
   beatsElapsed: 0
   barsElapsed: 0
@@ -4129,7 +4129,20 @@ MonoBehaviour:
   timer: 0
   timeInBar: 0
   timeInMeasure: 0
-  startupClip: {fileID: 0}
+  mainSourceIndex: 0
+  startupClip: {fileID: 8300000, guid: 7ef50608b323e8a40900f60eece977fd, type: 3}
+  startupSample:
+    bpm: 90
+    beatsPerBar: 4
+    barsPerMeasure: 4
+    totalMeasures: 2
+    mainClip: {fileID: 8300000, guid: 7ef50608b323e8a40900f60eece977fd, type: 3}
+    transitionClip: {fileID: 0}
+    transitionClipBars: 0
+    naturalTransition: 0
+    volumeConstant: 1
+    fadeInSeconds: 0
+    fadeOutSeconds: 2
   currentSample:
     bpm: 0
     beatsPerBar: 0
@@ -4139,7 +4152,26 @@ MonoBehaviour:
     transitionClip: {fileID: 0}
     transitionClipBars: 0
     naturalTransition: 0
+    volumeConstant: 0
+    fadeInSeconds: 0
+    fadeOutSeconds: 0
+  queuedSample:
+    bpm: 0
+    beatsPerBar: 0
+    barsPerMeasure: 0
+    totalMeasures: 0
+    mainClip: {fileID: 0}
+    transitionClip: {fileID: 0}
+    transitionClipBars: 0
+    naturalTransition: 0
+    volumeConstant: 0
+    fadeInSeconds: 0
+    fadeOutSeconds: 0
   volumeSlider: {fileID: 557387675}
+  transitionMarker: 0
+  transitionType: 0
+  inTransition: 0
+  active: 0
 --- !u!1 &1728366725
 GameObject:
   m_ObjectHideFlags: 0

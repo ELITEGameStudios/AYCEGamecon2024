@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoundSystems;
 using UnityEngine;
 
 public class Button : PowerableObject
@@ -49,8 +50,15 @@ public class Button : PowerableObject
     }
 
     void Toggle(){
+
         Power(!active);
-        if(active){ _bufferTimer = _bufferTime; };
+        if(active){ 
+            _bufferTimer = _bufferTime; 
+            if(playsSound){
+                Debug.Log("Beeping button");
+                EnvironmentalSoundSystem.instance.CreateEnvSound(nameOfSound, soundToPlay, gameObject);
+            }
+        };
         SetAnimation();
     }
 
