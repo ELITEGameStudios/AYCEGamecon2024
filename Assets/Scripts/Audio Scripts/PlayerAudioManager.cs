@@ -13,7 +13,7 @@ public class PlayerAudioManager : MonoBehaviour
     public static PlayerAudioManager instance {get; private set;}
 
     [SerializeField] private AudioClip pulseClip;
-    [SerializeField] private AudioClip footstepsClip;
+    [SerializeField] private AudioClip footstepsClip, labFootstepsClip;
     [SerializeField] private AudioClip jumpClip;
     [SerializeField] private AudioClip pushClip;
     [SerializeField] private float walkingFadeConstant, walkAudiolevel = 1, pushAudioLevel = 1, pulseAudioLevel = 1, jumpAudioLevel = 1;
@@ -30,6 +30,18 @@ public class PlayerAudioManager : MonoBehaviour
         mainSource = Player.main.Audio;
         walkSource.clip = footstepsClip;
         footsteps = false;
+    }
+
+    public void SetLabFootsteps(){
+        footsteps = false;
+        walkSource.clip = labFootstepsClip;
+        walkSource.Stop();
+    }
+
+    public void SetCaveFootsteps(){
+        footsteps = false;
+        walkSource.clip = footstepsClip;
+        walkSource.Stop();
     }
 
     void Update() {

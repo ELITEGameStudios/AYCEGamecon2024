@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: Crickets
-  m_EditorClassIdentifier: Assembly-CSharp:SoundSystems:EnvironmentalSound
-  clip: {fileID: 8300000, guid: 57bfcf20cccbb4940a44d4320a4c5662, type: 3}
+  m_Script: {fileID: 11500000, guid: 9b663155836fb074191b90d7ff7fc193, type: 3}
+  m_Name: ElevatorStop
+  m_EditorClassIdentifier: 
+  clip: {fileID: 0}
   playOnce: 1
-  volumeMod: 0.1
-  pitchVar: 0.1
-  fade: 2
-  randomPitchVariation: 1
+  volumeMod: 1
+  pitchVar: 0
+  fade: 0
+  randomPitchVariation: 0

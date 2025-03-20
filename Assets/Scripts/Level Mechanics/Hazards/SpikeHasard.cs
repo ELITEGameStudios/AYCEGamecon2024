@@ -1,4 +1,5 @@
 using System.Collections;
+using SoundSystems;
 using UnityEngine;
 
 public class SpikeHasard : MonoBehaviour
@@ -8,7 +9,6 @@ public class SpikeHasard : MonoBehaviour
     [SerializeField] private SpikeHasardObject obj;
     [SerializeField] private bool activated, colliderActivated, triggered;
     [SerializeField] private bool Resets {get {return resetTime > 0.0f;}}
-
     [SerializeField] private Quaternion initRot;
 
     void Awake(){

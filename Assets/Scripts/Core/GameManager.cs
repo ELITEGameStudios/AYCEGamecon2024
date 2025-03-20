@@ -15,6 +15,14 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         Application.targetFrameRate = targetFPS;
-        
+    }
+
+    public void SetMainPlayerFootsteps(bool toLab){
+        if (toLab){
+            PlayerAudioManager.instance.SetLabFootsteps();
+        }
+        else{
+            PlayerAudioManager.instance.SetCaveFootsteps();
+        }
     }
 }

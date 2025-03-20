@@ -99,6 +99,7 @@ MonoBehaviour:
   obj: {fileID: 8138986972261631562}
   activated: 0
   colliderActivated: 0
+  triggered: 0
   initRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6906296000760112855
 GameObject:
@@ -277,3 +278,4 @@ MonoBehaviour:
   collides: 0
   colliderInitEnabled: 0
   effect: {fileID: 0}
+  fallSound: {fileID: 11400000, guid: 9eecf2e75264a5949991a9b7a4dc6b34, type: 2}

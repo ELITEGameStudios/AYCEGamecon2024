@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoundSystems;
 using UnityEngine;
 
 public class Elevator : MonoBehaviour
@@ -14,6 +15,7 @@ public class Elevator : MonoBehaviour
     [SerializeField] private bool powered;
     [SerializeField] private bool Active {get{return active;}}
     [SerializeField] private ElevatorState state; 
+    [SerializeField] private EnvironmentalSound elevatorSound, elevatorStopSound; 
     public ElevatorState State {get{return state;}} 
 
     public enum ElevatorState{
@@ -73,6 +75,7 @@ public class Elevator : MonoBehaviour
         timer = travelDistance / travelSpeed;
         initTime = timer;
 
+        EnvironmentalSoundSystem.instance.CreateEnvSound("_elevator", elevatorSound, soundOrgin: gameObject);
         // Elevating
         while (!TimerCondition){
             yield return null;
@@ -81,11 +84,8 @@ public class Elevator : MonoBehaviour
 
         // Pause if we need
         state = ElevatorState.CLOSED;
+        EnvironmentalSoundSystem.instance.FindEnvSound("_elevator").Stop();
         yield return new WaitForSeconds(idleTime);
         Deactivate(true);
-    }
-
-    public IEnumerator DoorNumerator(bool open = true){
-        yield return null;
     }
 }
