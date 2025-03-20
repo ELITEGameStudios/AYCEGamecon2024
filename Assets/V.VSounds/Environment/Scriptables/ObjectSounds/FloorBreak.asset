@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: ESoundTest
-  m_EditorClassIdentifier: Assembly-CSharp:SoundSystems:EnvironmentalSound
-  clip: {fileID: 0}
-  playOnce: 0
-  volumeMod: 0
-  pitchVar: 0
+  m_Script: {fileID: 11500000, guid: 9b663155836fb074191b90d7ff7fc193, type: 3}
+  m_Name: FloorBreak
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 00d089893fff3f24394aaf4ea36b5551, type: 3}
+  playOnce: 1
+  volumeMod: 1
+  pitchVar: 0.1
   fade: 0
-  randomPitchVariation: 0
+  randomPitchVariation: 1

@@ -1961,7 +1961,7 @@ Transform:
   m_GameObject: {fileID: 842458277}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.26, y: -1.19, z: -1.3408108}
+  m_LocalPosition: {x: -46.32, y: -2.07, z: -1.3408108}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42041,7 +42041,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playSoundsOnStartup: 1
   sounds:
-  - soundData: {fileID: 11400000, guid: 28e7514eac80ff8459c88ccfb9908642, type: 2}
+  - soundData: {fileID: 11400000, guid: dd217c85d4d0d2c45883303e95e042f8, type: 2}
     name: starting
     source: {fileID: 0}
     obj: {fileID: 0}
