@@ -49,18 +49,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   mainSource: {fileID: 1204325916347592510}
   walkSource: {fileID: 2611745304175931100}
-  abilitiesSource: {fileID: 7793165296484688750}
+  chargeSource: {fileID: 7793165296484688750}
   sourcesList: []
   pulseClip: {fileID: 8300000, guid: e191ac05e579eed4aa633f1dbc6ba736, type: 3}
   footstepsClip: {fileID: 8300000, guid: bf5970ba1cb87f548a439cfc9d6ea7cc, type: 3}
   labFootstepsClip: {fileID: 8300000, guid: 31a44bde2b48fe24f82efb896f07166e, type: 3}
   jumpClip: {fileID: 8300000, guid: b663f91d2205c8343a3baa1637e52ea5, type: 3}
+  chargeClip: {fileID: 8300000, guid: 386a3c8c501c3c1458899ba7cab07cc0, type: 3}
+  chargeReleaseClip: {fileID: 8300000, guid: 4fa740e453525e74e8f89eabeb435146, type: 3}
   pushClip: {fileID: 8300000, guid: e191ac05e579eed4aa633f1dbc6ba736, type: 3}
-  walkingFadeConstant: 0.2
-  walkAudiolevel: 1
+  walkingFadeConstant: 5
+  walkAudiolevel: 0.4
+  labWalkAudioLevel: 0.15
   pushAudioLevel: 1
   pulseAudioLevel: 1
   jumpAudioLevel: 1
+  chargeAudioLevel: 1
+  chargeReleaseAudioLevel: 0.2
+  charging: 0
 --- !u!82 &1204325916347592510
 AudioSource:
   m_ObjectHideFlags: 0
@@ -264,7 +270,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -614,7 +620,7 @@ MonoBehaviour:
   rocketJumpTimer: 0
   chargeJumpMaxTime: 1
   chargeJumpTimer: 0
-  magTime: 1
+  magTime: 0.33
   magTimer: 0
   initGravScale: 0
   feet: {fileID: 1270136695526777189}
@@ -672,6 +678,7 @@ MonoBehaviour:
   chargeRadius: 5
   pushRadius: 5
   pushForce: 5
+  magnetizeRadius: 3
   chargeTime: 1
   chargeTimer: 0
   pushTime: 0.5

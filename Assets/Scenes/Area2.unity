@@ -1382,8 +1382,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: initOffset.y
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: initDoorState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: powerableOpen
@@ -3260,10 +3268,10 @@ MonoBehaviour:
   currentTargetOffset: {x: 0, y: 0}
   offsetInTargetMode: {x: 0, y: 0}
   playerObj: {fileID: 250789988}
-  cam: {fileID: 0}
+  cam: {fileID: 939741116}
   Kp: 0.03
   currentKp: 0
-  zoomKp: 0
+  zoomKp: 0.03
   currentZoomKp: 0
   default_zoom: 0
   target_zoom: 0
@@ -68134,6 +68142,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: state
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: powerableOpen
       value: 1
       objectReference: {fileID: 0}
@@ -68342,7 +68354,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1739929788
 Transform:
   m_ObjectHideFlags: 0
@@ -68361,6 +68373,7 @@ Transform:
   - {fileID: 1657949567}
   - {fileID: 1002177521}
   - {fileID: 1506926821}
+  - {fileID: 1904767790}
   - {fileID: 3412561997575783648}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -68944,6 +68957,52 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7895592180499385672, guid: 653e478511113ef41b01ba435bfec257, type: 3}
   m_PrefabInstance: {fileID: 1866281845}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1904767788
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1904767790}
+  - component: {fileID: 1904767789}
+  m_Layer: 0
+  m_Name: EnvironmentSoundMaster
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1904767789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904767788}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 54b36a4f518373e4baeda1d857b16954, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playSoundsOnStartup: 0
+  sounds: []
+--- !u!4 &1904767790
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1904767788}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 121.205605, y: -41.777267, z: 12.657933}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1739929788}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1919023161
 GameObject:
   m_ObjectHideFlags: 0
@@ -69103,7 +69162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: state
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: openPos.y
@@ -69112,6 +69171,10 @@ PrefabInstance:
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: initOffset.y
       value: 2.85
+      objectReference: {fileID: 0}
+    - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
+      propertyPath: initDoorState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5428412235416690139, guid: 0a8ac443c0f46554c9774dcc969c2ead, type: 3}
       propertyPath: powerableOpen
@@ -70527,11 +70590,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5441410444411934251, guid: 8b5e31b3fbd97f341af2e0d2067075be, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 16.4
+      value: -23.71
       objectReference: {fileID: 0}
     - target: {fileID: 5441410444411934251, guid: 8b5e31b3fbd97f341af2e0d2067075be, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -36.6
+      value: -67.78
       objectReference: {fileID: 0}
     - target: {fileID: 5441410444411934251, guid: 8b5e31b3fbd97f341af2e0d2067075be, type: 3}
       propertyPath: m_LocalPosition.z

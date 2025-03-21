@@ -16,5 +16,5 @@ MonoBehaviour:
   playOnce: 0
   volumeMod: 0.5
   pitchVar: 0
-  fade: 0
+  fade: 4
   randomPitchVariation: 0

@@ -6,7 +6,7 @@ public class PlayerAudioManager : MonoBehaviour
 {
     [SerializeField] private AudioSource mainSource;
     [SerializeField] private AudioSource walkSource;
-    [SerializeField] private AudioSource abilitiesSource;
+    [SerializeField] private AudioSource chargeSource;
     // [SerializeField] private AudioSource jumpSource;
     [SerializeField] private AudioSource[] sourcesList;
 
@@ -14,16 +14,29 @@ public class PlayerAudioManager : MonoBehaviour
 
     [SerializeField] private AudioClip pulseClip;
     [SerializeField] private AudioClip footstepsClip, labFootstepsClip;
-    [SerializeField] private AudioClip jumpClip;
+    [SerializeField] private AudioClip jumpClip, chargeClip, chargeReleaseClip;
     [SerializeField] private AudioClip pushClip;
-    [SerializeField] private float walkingFadeConstant, walkAudiolevel = 1, pushAudioLevel = 1, pulseAudioLevel = 1, jumpAudioLevel = 1;
+    
+    [SerializeField] private float 
+        walkingFadeConstant, 
+        walkAudiolevel = 1, 
+        labWalkAudioLevel = 1, 
+        pushAudioLevel = 1, 
+        pulseAudioLevel = 1, 
+        jumpAudioLevel = 1, 
+        chargeAudioLevel = 1, 
+        chargeReleaseAudioLevel = 1;
+
+
+    public bool isLabFootsteps {get{return walkSource.clip == labFootstepsClip;}}
 
     bool footsteps;
+    [SerializeField] private bool charging;
 
     void Awake() {
         if(instance == null)instance = this;
         else if(instance != this) Destroy(gameObject);
-        sourcesList = new[]{mainSource, abilitiesSource};
+        sourcesList = new[]{mainSource};
     }
 
     void Start() {
@@ -46,11 +59,11 @@ public class PlayerAudioManager : MonoBehaviour
 
     void Update() {
         foreach (AudioSource source in sourcesList) { source.volume = AudioSystem.volume; }
-
+        float currentWalkLevel = isLabFootsteps ? labWalkAudioLevel : walkAudiolevel;
         walkSource.volume = Mathf.Clamp(
-            walkSource.volume + (Player.main.Movement.IsWalking ? walkingFadeConstant : -walkingFadeConstant) * Time.deltaTime * AudioSystem.volume * walkAudiolevel,
+            walkSource.volume + (Player.main.Movement.IsWalking ? walkingFadeConstant : -walkingFadeConstant) * Time.deltaTime * AudioSystem.volume * currentWalkLevel,
             0,
-            AudioSystem.volume * walkAudiolevel
+            AudioSystem.volume * currentWalkLevel
         );
 
         if(footsteps && walkSource.volume / AudioSystem.volume <= 0.1f){
@@ -65,6 +78,31 @@ public class PlayerAudioManager : MonoBehaviour
 
     public void TriggerJumpSFX(){
         AudioSource.PlayClipAtPoint(jumpClip, transform.position, AudioSystem.volume * jumpAudioLevel);
+    }
+
+    public void WindupChargeStart(){
+        chargeSource.clip = chargeClip; 
+        chargeSource.volume = AudioSystem.volume * chargeAudioLevel;
+        chargeSource.Play();
+        charging = true;
+    }
+    public void ReleaseCharge(){
+        StopCharge();
+        chargeSource.clip = chargeReleaseClip; 
+        chargeSource.volume = AudioSystem.volume * chargeReleaseAudioLevel;
+        chargeSource.Play();
+        Invoke(nameof(StopCharge), 2);
+    }
+
+    public void StopCharge(){
+        if(chargeSource.isPlaying){
+            chargeSource.Stop();
+        }
+        charging = false;
+    }
+
+    public bool Charging(){
+        return charging;
     }
 
     public void Pulse(){

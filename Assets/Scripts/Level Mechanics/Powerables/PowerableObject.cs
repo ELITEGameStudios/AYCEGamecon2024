@@ -26,7 +26,7 @@ public class PowerableObject : MonoBehaviour
 
 
     // Used by the player pulse mechanic
-    public void Power(){
+    public virtual void Power(){
         if(unaffectedByPulse) {return;}
         
         if(isSwitch && active){ 
@@ -41,7 +41,7 @@ public class PowerableObject : MonoBehaviour
 
     // Can only be used if this object is a switch
     // Used by child classes
-    public void Power(bool state){ 
+    public virtual void Power(bool state){ 
         if(!isSwitch || active == state){ return; }
         active = state; 
         

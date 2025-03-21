@@ -34,12 +34,12 @@ public class Switch : PowerableObject
         }
 
         transform.rotation = inactiveRot;
+        interactableSignifier.SetActive(false); //discontinuing this until further notice
     }
     // Start is called before the first frame update
     void Update()
     {
-        if(interactableSignifier.activeInHierarchy != InRange)
-        {interactableSignifier.SetActive(InRange);}
+        // if(interactableSignifier.activeInHierarchy != InRange)
 
         if(Buffering){ 
             _timer -= Time.deltaTime;
@@ -52,11 +52,16 @@ public class Switch : PowerableObject
     }
 
     void CheckStatusChange(){
-        if(InRange && InputManager.interact.pressedThisFrame){
-            Power(!active);
-            _timer = _bufferTime;
-            SetAnimation();
-        }
+        // if(InRange && InputManager.interact.pressedThisFrame){
+        //     Power(!active);
+        // }
+    }
+
+    public override void Power(bool active)
+    {
+        base.Power(active);
+        _timer = _bufferTime;
+        SetAnimation();
     }
 
     void SetAnimation(){

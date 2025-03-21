@@ -111,7 +111,7 @@ MonoBehaviour:
   topPiece: {fileID: 199033619019855454}
   botPiece: {fileID: 1663019591133357504}
   offsetInit: 0
-  moveTime: 0.5
+  moveTime: 1.5
   timer: 0
   state: 1
   initDoorState: 0

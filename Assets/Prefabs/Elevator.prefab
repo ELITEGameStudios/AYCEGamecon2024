@@ -355,6 +355,8 @@ MonoBehaviour:
   travelDirection: 1
   powered: 1
   state: 0
+  elevatorSound: {fileID: 11400000, guid: 41e671baba7b12248b7717189c201e1c, type: 2}
+  elevatorStopSound: {fileID: 11400000, guid: d89906bf48bffac4496be7196248e83c, type: 2}
 --- !u!1 &2795952370097133796
 GameObject:
   m_ObjectHideFlags: 0

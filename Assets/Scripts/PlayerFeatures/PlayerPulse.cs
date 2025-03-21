@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerPulse : MonoBehaviour
 {
-    [SerializeField] private float chargeRadius, pushRadius, pushForce;
+    [SerializeField] private float chargeRadius, pushRadius, pushForce, magnetizeRadius;
     [SerializeField] private float chargeTime, chargeTimer, pushTime, pushTimer;
     public float ChargeTime {get {return chargeTime;} }
     public float ChargeTimer {get {return chargeTimer;} }
@@ -25,23 +25,41 @@ public class PlayerPulse : MonoBehaviour
                 powerable.Power(this);
             }
         }
+        TryMagnetize();
+        animation.ChangeAnimation("Charging");
+        PlayerAudioManager.instance.Pulse();
+    }
 
-        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, chargeRadius);
+    void TryMagnetize(){
+
+        Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, magnetizeRadius);
         foreach (Collider2D col in colliders)
         {
             if(col.tag == "Climbable"){
                 Vector2 closestPos = col.ClosestPoint((Vector2)transform.position);
                 Vector2 directionVector = (closestPos - (Vector2)transform.position).normalized;
+                Debug.Log("Direction: " + directionVector.x + " , " + directionVector.y);
+                if(
+                    (directionVector.x > 0 && Player.main.Movement.flipDirRaw <= 0) 
+                    || (directionVector.x <= 0 && Player.main.Movement.flipDirRaw > 0) )
+                {continue;} // the wall is not in the direction the player is facing
+                Debug.Log("Passed Check 1");
+
                 float distance = Vector2.Distance(closestPos, col.transform.position);
-                
+                RaycastHit2D canMag = Physics2D.Raycast(Player.main.transform.position, directionVector, distance, LayerMask.NameToLayer("Environment"));
+                if(canMag != false){    
+                    if(canMag.collider.gameObject.name.Contains("PlayableLayer")){
+                        continue; // The climbable wall goes phases through the level and is invalid
+                    }
+                }
+
                 Player.main.Movement.Magnetize(col);
                 break;
             }   
         }
 
-        animation.ChangeAnimation("Charging");
-        PlayerAudioManager.instance.Pulse();
     }
+
     void Push(){
         pushTimer = pushTime;
 
