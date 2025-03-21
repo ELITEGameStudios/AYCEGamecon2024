@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 48733325551778126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.75, z: 0}
+  m_LocalPosition: {x: 0, y: -1.85, z: 0}
   m_LocalScale: {x: 0.98, y: 0.11, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -65,7 +65,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.06210673, y: 0.6640261}
+  m_Offset: {x: 0, y: 1}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -106,6 +106,7 @@ GameObject:
   - component: {fileID: 649238622945068428}
   - component: {fileID: 3287352263428596844}
   - component: {fileID: 8384484671774011840}
+  - component: {fileID: 1090072309106259459}
   m_Layer: 0
   m_Name: Crusher
   m_TagString: Untagged
@@ -170,12 +171,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -941798386, guid: 8c743ab6bc63c9d4f993d21ca83d85e5, type: 3}
+  m_Sprite: {fileID: -941798386, guid: 27d0fd32db02b444ab3f4d80fa5c1590, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 3, y: 9.5}
+  m_DrawMode: 2
+  m_Size: {x: 3, y: 1.85}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -213,18 +214,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.03615272, y: 0}
+  m_Offset: {x: 0, y: -0.925}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
+    border: {x: 0, y: 1.875, z: 0, w: 0}
+    pivot: {x: 0.5, y: 1}
     oldSize: {x: 3, y: 9.5}
-    newSize: {x: 3, y: 9.5}
+    newSize: {x: 3, y: 1.85}
     adaptiveTilingThreshold: 0.5
-    drawMode: 0
+    drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 2.9808033, y: 9.52693}
+  m_Size: {x: 3, y: 1.85}
   m_EdgeRadius: 0
 --- !u!114 &8384484671774011840
 MonoBehaviour:
@@ -238,9 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7887f08ef6ee9a4e8c8832f067d976e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  crushedPos: {x: 0, y: 0}
-  initPos: {x: 0, y: 0}
-  crushedOffset: {x: 0, y: -4.75}
+  initOffset: 1.85
+  crushedOffset: 3.95
   offsetInit: 1
   cycleTime: 5
   holdTime: 1
@@ -249,4 +249,23 @@ MonoBehaviour:
   timer: 0
   cycleTimer: 0
   active: 1
+  crushed: 0
   crushStatus: {fileID: 6887730091797674852}
+  mover: {fileID: 1090072309106259459}
+--- !u!114 &1090072309106259459
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7093091464464995735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a4552dba5f527da4aa42ad40e2e1b41a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  col: {fileID: 3287352263428596844}
+  crusherCol: {fileID: 8829952695672990695}
+  spriteRenderer: {fileID: 649238622945068428}
+  crusherStatus: {fileID: 6887730091797674852}
+  Offset: 1.85
