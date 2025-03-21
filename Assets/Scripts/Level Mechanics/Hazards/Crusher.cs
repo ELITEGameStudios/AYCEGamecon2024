@@ -1,10 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Crusher : MonoBehaviour
 {
-    [SerializeField] private Vector2 crushedPos, initPos, crushedOffset;
+    [SerializeField, NonSerialized] float lastInitOffset; // in order for the editor tooling to work, we must keep track of the last init offset
+    [SerializeField] private float initOffset, crushedOffset;
 
     [SerializeField] private float offsetInit, cycleTime, holdTime;
     [SerializeField] private float slamTime, retractTime, timer, cycleTimer;
@@ -12,14 +14,20 @@ public class Crusher : MonoBehaviour
     [SerializeField] private bool active = true, crushed = false;
     [SerializeField] private bool Active {get{return active;}}
     [SerializeField] private CrusherCollider crushStatus;
+    [SerializeField] private CrusherMover mover;
 
-
-    void Awake(){
+    private void OnValidate()
+    {
+        if (initOffset != lastInitOffset) {
+            mover.Offset = initOffset;
+            lastInitOffset = initOffset;
+        } else {
+            mover.Offset = crushedOffset;
+        }
+        mover.RefreshBounds();
     }
 
     void Start(){
-        initPos = transform.position;
-        crushedPos = initPos + crushedOffset;
         StartCoroutine(MainCycleCoroutine());
     }
 
@@ -40,16 +48,14 @@ public class Crusher : MonoBehaviour
 
             // New cycle setup
             cycleTimer = 0;
-            transform.position = initPos;
 
 
             // Crushing
             timer = slamTime;
             while (!TimerCondition){
-                transform.position = Vector2.Lerp(crushedPos, initPos, timer / slamTime);
+                mover.Offset = Mathf.Lerp(crushedOffset, initOffset, timer / slamTime);
                 yield return null;
             }
-            transform.position = crushedPos;
 
             // Crush hold
             crushed = true;
@@ -59,10 +65,9 @@ public class Crusher : MonoBehaviour
             // Retracting
             timer = retractTime;
             while (!TimerCondition){
-                transform.position = Vector2.Lerp(initPos, crushedPos, timer / retractTime);
+                mover.Offset = Mathf.Lerp(initOffset, crushedOffset, timer / retractTime);
                 yield return null;
             }
-            transform.position = initPos;
 
             // Wait for next cycle
             while (cycleTimer < cycleTime){yield return null;}

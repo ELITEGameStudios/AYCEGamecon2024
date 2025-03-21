@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8c743ab6bc63c9d4f993d21ca83d85e5
+guid: 27d0fd32db02b444ab3f4d80fa5c1590
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,7 +45,7 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 16
@@ -117,9 +117,9 @@ TextureImporter:
         y: 0
         width: 48
         height: 152
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      alignment: 2
+      pivot: {x: 0.5, y: 1}
+      border: {x: 0, y: 30, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
@@ -138,9 +138,9 @@ TextureImporter:
         y: 0
         width: 48
         height: 152
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
+      alignment: 7
+      pivot: {x: 0.5, y: 0}
+      border: {x: 0, y: 30, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
