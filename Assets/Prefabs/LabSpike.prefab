@@ -92,13 +92,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timer: 1
-  warningTime: 1
+  warningTime: 0.8
   shakeIntensity: 0.1
   resetTime: 0
   shakeFrequency: 10
   obj: {fileID: 8138986972261631562}
   activated: 0
   colliderActivated: 0
+  triggered: 0
   initRot: {x: 0, y: 0, z: 0, w: 0}
 --- !u!1 &6906296000760112855
 GameObject:

@@ -27,7 +27,7 @@ Transform:
   m_GameObject: {fileID: 48733325551778126}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -1.85, z: 0}
+  m_LocalPosition: {x: 0, y: -2, z: 0}
   m_LocalScale: {x: 0.98, y: 0.11, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -176,7 +176,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 2
-  m_Size: {x: 3, y: 1.85}
+  m_Size: {x: 3, y: 2}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -214,18 +214,18 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.925}
+  m_Offset: {x: 0, y: -1}
   m_SpriteTilingProperty:
-    border: {x: 0, y: 1.875, z: 0, w: 0}
+    border: {x: 0, y: 2, z: 0.0625, w: 0}
     pivot: {x: 0.5, y: 1}
     oldSize: {x: 3, y: 9.5}
-    newSize: {x: 3, y: 1.85}
+    newSize: {x: 3, y: 2}
     adaptiveTilingThreshold: 0.5
     drawMode: 2
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 3, y: 1.85}
+  m_Size: {x: 3, y: 2}
   m_EdgeRadius: 0
 --- !u!114 &8384484671774011840
 MonoBehaviour:
@@ -239,13 +239,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e7887f08ef6ee9a4e8c8832f067d976e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initOffset: 1.85
-  crushedOffset: 3.95
-  offsetInit: 1
+  OpenOffset: 2
+  crushedOffset: 5
+  startsClosed: 0
+  startsClosedInitTimer: 1.25
+  startOffset: 0
   cycleTime: 5
   holdTime: 1
-  slamTime: 0.5
-  retractTime: 3
+  slamTime: 0.25
+  retractTime: 2
   timer: 0
   cycleTimer: 0
   active: 1
@@ -268,4 +270,4 @@ MonoBehaviour:
   crusherCol: {fileID: 8829952695672990695}
   spriteRenderer: {fileID: 649238622945068428}
   crusherStatus: {fileID: 6887730091797674852}
-  Offset: 1.85
+  Offset: 2
