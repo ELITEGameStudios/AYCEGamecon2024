@@ -259,7 +259,7 @@ MonoBehaviour:
   rb: {fileID: 8709479023261118328}
   speed: 5
   jumpStrength: 6
-  rocketJumpStrength: 12.5
+  rocketJumpStrength: 14
   rocketJumpTime: 0.5
   rocketJumpTimer: 0
   chargeJumpMaxTime: 1
