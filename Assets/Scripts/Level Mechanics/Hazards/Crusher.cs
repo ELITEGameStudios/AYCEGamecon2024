@@ -6,9 +6,12 @@ using UnityEngine;
 public class Crusher : MonoBehaviour
 {
     [SerializeField, NonSerialized] float lastInitOffset; // in order for the editor tooling to work, we must keep track of the last init offset
-    [SerializeField] private float initOffset, crushedOffset;
+    [SerializeField] private float OpenOffset, crushedOffset;
 
-    [SerializeField] private float offsetInit, cycleTime, holdTime;
+    [SerializeField] private bool startsClosed = false;
+    [SerializeField] private float startsClosedInitTimer = 1.25f; //dont worry about this if it doesnt start closed
+
+    [SerializeField] private float startOffset, cycleTime, holdTime;
     [SerializeField] private float slamTime, retractTime, timer, cycleTimer;
     [SerializeField] private bool TimerCondition {get{return timer <= 0;}}
     [SerializeField] private bool active = true, crushed = false;
@@ -18,9 +21,9 @@ public class Crusher : MonoBehaviour
 
     private void OnValidate()
     {
-        if (initOffset != lastInitOffset) {
-            mover.Offset = initOffset;
-            lastInitOffset = initOffset;
+        if (OpenOffset != lastInitOffset) {
+            mover.Offset = OpenOffset;
+            lastInitOffset = OpenOffset;
         } else {
             mover.Offset = crushedOffset;
         }
@@ -28,19 +31,27 @@ public class Crusher : MonoBehaviour
     }
 
     void Start(){
-        StartCoroutine(MainCycleCoroutine());
+        if (startsClosed)
+            mover.Offset = crushedOffset;
+        
+        if (active)
+            StartCoroutine(MainCycleCoroutine());
     }
 
     void Update(){
-        if(!TimerCondition) {timer -= Time.deltaTime;}
-        cycleTimer += Time.deltaTime;
-        if(crushStatus.IsCrushingPlayer && crushed){
-            Player.main.Die();
+        if (active)
+        {
+            if (!TimerCondition) { timer -= Time.deltaTime; }
+            cycleTimer += Time.deltaTime;
+            if (crushStatus.IsCrushingPlayer && crushed)
+            {
+                Player.main.Die();
+            }
         }
     }
 
     public IEnumerator MainCycleCoroutine(){
-        yield return new WaitForSeconds(offsetInit);
+        yield return new WaitForSeconds(startOffset);
 
         while (true){
             // If you ever want to deactivate a crusher, this will hold execution until the programmer decides to re-activate the crusher
@@ -49,11 +60,31 @@ public class Crusher : MonoBehaviour
             // New cycle setup
             cycleTimer = 0;
 
+            //it should retract first if it starts at the bottom
+            if (startsClosed)
+            {
+                crushed = true;
+                yield return new WaitForSeconds(0.6f);
+                crushed = false;
+
+                //retract
+                timer = retractTime;
+                while (!TimerCondition)
+                {
+                    mover.Offset = Mathf.Lerp(OpenOffset, crushedOffset, timer / retractTime);
+                    yield return null;
+                }
+
+                while (cycleTimer < cycleTime - startsClosedInitTimer) { yield return null; }
+                cycleTimer = 0;
+
+                startsClosed = false;
+            }
 
             // Crushing
             timer = slamTime;
             while (!TimerCondition){
-                mover.Offset = Mathf.Lerp(crushedOffset, initOffset, timer / slamTime);
+                mover.Offset = Mathf.Lerp(crushedOffset, OpenOffset, timer / slamTime);
                 yield return null;
             }
 
@@ -65,7 +96,7 @@ public class Crusher : MonoBehaviour
             // Retracting
             timer = retractTime;
             while (!TimerCondition){
-                mover.Offset = Mathf.Lerp(initOffset, crushedOffset, timer / retractTime);
+                mover.Offset = Mathf.Lerp(OpenOffset, crushedOffset, timer / retractTime);
                 yield return null;
             }
 
@@ -73,5 +104,15 @@ public class Crusher : MonoBehaviour
             while (cycleTimer < cycleTime){yield return null;}
             cycleTimer = 0;
         } 
+    }
+
+    public void ToggleCrusher()
+    {
+        active = !active;
+
+        if (startsClosed)
+        {
+            StartCoroutine(MainCycleCoroutine());
+        }
     }
 }

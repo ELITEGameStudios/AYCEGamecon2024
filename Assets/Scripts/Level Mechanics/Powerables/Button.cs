@@ -12,6 +12,11 @@ public class Button : PowerableObject
     [SerializeField] private GameObject interactableSignifier;
     [SerializeField] private float _bufferTimer, _bufferTime, _animTimer, _animTime, buttonSteepness, interactableRange;
     [SerializeField] private bool left;
+
+    [SerializeField] private bool isInteractable = true;
+    private bool powerable1 = false;
+    private bool powerable2 = false;
+
     bool Buffering {get{return _bufferTimer > 0;}}
     bool Animating {get{return _animTimer > 0;}}
     bool InRange {get{return Vector2.Distance(Player.main.transform.position, transform.position) <= interactableRange;}}
@@ -32,16 +37,27 @@ public class Button : PowerableObject
     // Update is called once per frame
     void Update()
     {
-        if(interactableSignifier.activeInHierarchy != InRange)
-        {interactableSignifier.SetActive(InRange);}
+        if (isInteractable)
+        {
+            if (interactableSignifier.activeInHierarchy != InRange)
+            { interactableSignifier.SetActive(InRange); }
 
-        if(Animating){ 
-            _animTimer -= Time.deltaTime; 
-            DoAnimation();
+            if (Animating)
+            {
+                _animTimer -= Time.deltaTime;
+                DoAnimation();
+            }
+
+            if (Buffering) { _bufferTimer -= Time.deltaTime; }
+            else { CheckStatusChange(); }
         }
-
-        if(Buffering){ _bufferTimer -= Time.deltaTime;  }
-        else{CheckStatusChange();}
+        else
+        {
+            if (powerable1 && powerable2) //needed for puzzles where you need to activate multiple other things before a button is useable
+            {
+                isInteractable = true;
+            }
+        }
     }
 
     void CheckStatusChange(){
@@ -70,5 +86,13 @@ public class Button : PowerableObject
 
     void DoAnimation(){
         transform.position = Vector2.Lerp(targetPos, startPos, _animTimer / _animTime);
+    }
+
+    public void TogglePow1(int num)
+    {
+        if (num == 1)
+            powerable1 = !powerable1;
+        else if (num == 2)
+            powerable2 = !powerable2;
     }
 }
