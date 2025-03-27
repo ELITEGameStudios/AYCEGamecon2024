@@ -122,7 +122,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate(){
-        Debug.Log(flipDirRaw);
+        // Debug.Log(flipDirRaw);
 
         if(moveState == PlayerMoveState.CLIMBING)
         { 
@@ -146,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             animations.ChangeAnimation("Ledging");
         }
-        Debug.Log(IsLedged);
+        // Debug.Log(IsLedged);
         
         if(IsRocketJumping){
             rocketJumpTimer -= Time.fixedDeltaTime;

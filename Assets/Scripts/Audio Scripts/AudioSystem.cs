@@ -168,7 +168,7 @@ public class AudioSystem : MonoBehaviour
             ResetTimers();
             active = true;
         }
-        Debug.Log("Started transition");
+        // Debug.Log("Started transition");
 
         if(transitionType != TransitionType.SEGMENTED){
             bpm = queuedSample.bpm;
@@ -208,7 +208,7 @@ public class AudioSystem : MonoBehaviour
                 if(newSource.clip != null){newSource.Play(); Debug.Log("Playing on new source");}
                 if(newSource != oldSource){oldSource.Stop();}
                 
-                Debug.Log("Executed Seamless transition");
+                // Debug.Log("Executed Seamless transition");
                 break;
 
             case TransitionType.CROSSFADE:
@@ -230,7 +230,7 @@ public class AudioSystem : MonoBehaviour
 
                 newSource.volume = newVolume;
                 
-                Debug.Log("Executed Crossfade transition");
+                // Debug.Log("Executed Crossfade transition");
                 break;
             case TransitionType.SEGMENTED:
                 // Stops one and starts another with fades
@@ -264,7 +264,7 @@ public class AudioSystem : MonoBehaviour
                     yield return null;
                 }
                 newSource.volume = newVolume;
-                Debug.Log("Executed Segmented transition");
+                // Debug.Log("Executed Segmented transition");
                 break;
         }
 

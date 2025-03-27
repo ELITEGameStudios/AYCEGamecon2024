@@ -37,7 +37,7 @@ public class CameraFollowScript : MonoBehaviour
     void Update()
     {
 
-        Debug.Log(target_zoom + " zoom");
+        // Debug.Log(target_zoom + " zoom");
 
         Vector2 targetPos = 
             targetObjMode ? 

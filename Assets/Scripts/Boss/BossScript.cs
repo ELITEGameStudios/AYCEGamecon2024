@@ -4,15 +4,36 @@ using UnityEngine;
 
 public class BossScript : MonoBehaviour
 {
-    [SerializeField]private int lives = 3, flipDir, flipDirOnDash, shakeFrequency, minDist;
+    [SerializeField]private int lives = 3, flipDirOnDash, shakeFrequency, minDist;
+    public int flipDir;
     float playerDist;
     [SerializeField] BossState state;
     [SerializeField] private float timer, stunTime, normalTime, windupTime, hurtTime, explodeWindupTime;
     [SerializeField] private float windupForce, dashSpeed, normalSpeed, shakeIntensity;
     [SerializeField] private Rigidbody2D rb;
     Vector2 stunnedObjectPos;
+
+    [Header("For walking animation sync")]
+    [SerializeField] private AnimationCurve walkRate;
+    [SerializeField] private int walkFrameCurrent;
+    [SerializeField] private float walkFrameTimer;
+    [SerializeField] private float[] walkFrames;
+    [SerializeField] private float walkVelocity;
+    
+    [Header("Animator Sprites")]
+    [SerializeField] private SpriteRenderer animatedLights;
+    [SerializeField] private SpriteRenderer animatedMain;
+    [SerializeField] private BossAnimationScript animScript;
+
+    [Header("Animation Required properties")]
+    public float dashTiltAngle;
+    public float windupTilt, shutdownTilt, explosionTilt;
+    public float dashTiltTime, shutdownTiltTime;
+    public AnimationCurve dashCurve, explosionCurve, shutdownCurve, restartCurve;
+    public Color dashColor, normalColor, shutdownColor, awakenColor;
     
     bool Elapsed {get {return timer <= 0;}}
+    bool Flipped {get {return flipDir < 0;}}
 
     enum BossState{
         NORMAL,
@@ -35,14 +56,34 @@ public class BossScript : MonoBehaviour
     void Update()
     {
         if(state == BossState.INACTIVE){return;}
+        else if(state == BossState.NORMAL){
+            animatedLights.flipX = Flipped;
+            animatedMain.flipX = Flipped;
+        }
 
         if(Elapsed){ChangeState();}
-        else{timer -= Time.deltaTime;}
+        else{
+            timer -= Time.deltaTime;
+            // walkFrameTimer = walkFrameTimer < 1 ? walkFrameTimer + Time.deltaTime : walkFrameTimer - 1 + Time.deltaTime;
+            walkFrameTimer += Time.deltaTime;
+            walkFrameCurrent = (int)(walkFrameTimer*walkFrames.Length);
+            try { walkVelocity = walkFrames[walkFrameCurrent]; }
+            catch { 
+                walkFrameTimer = walkFrameTimer - 1 + Time.deltaTime;
+                walkFrameCurrent = (int)(walkFrameTimer*walkFrames.Length);
+                walkVelocity = walkFrames[walkFrameCurrent];
+            }
+        }
+
+
     }
 
     public void ActivateRobot(){
-        state = BossState.NORMAL;
-        ReturnToNormal();
+        // state = BossState.NORMAL;
+        Invoke(nameof(ReturnToNormal), hurtTime);
+        animScript.SetColor(normalColor, 0);
+        animScript.SetOscilation(6, 0);
+        animScript.TiltHead(0, restartCurve, hurtTime);
     }
 
     void FixedUpdate(){
@@ -57,7 +98,7 @@ public class BossScript : MonoBehaviour
 
         switch(state){
             case BossState.NORMAL:
-                rb.velocity = Vector2.right * flipDir * normalSpeed * Time.fixedDeltaTime + (rb.velocity * Vector2.up);
+                rb.velocity = (Vector2.right * flipDir * normalSpeed * Time.fixedDeltaTime + (rb.velocity * Vector2.up)) * walkVelocity;
                 break;
             case BossState.DASH:
                 rb.velocity = Vector2.right * flipDirOnDash * dashSpeed * Time.fixedDeltaTime + (rb.velocity * Vector2.up);
@@ -79,7 +120,7 @@ public class BossScript : MonoBehaviour
                 Windup();
                 break;
             case BossState.STUNNED:
-                ReturnToNormal();
+                ActivateRobot();
                 break;
         }
     }
@@ -88,22 +129,35 @@ public class BossScript : MonoBehaviour
         state = BossState.WINDUP;
         Invoke(nameof(Dash), windupTime);
         rb.AddForce(Vector2.left * flipDir * windupForce, ForceMode2D.Impulse);
+
+        animScript.SetModel(true);
+        animScript.TiltHead(dashTiltAngle, dashCurve, windupTime);
+        animScript.SetColor(Color.clear, windupTime);
     }
 
     void ExplosionWindup(){
         Invoke(nameof(Dash), windupTime);
         rb.AddForce(Vector2.left * flipDir * windupForce, ForceMode2D.Impulse);
+        
     }
 
     void ReturnToNormal(){
         state = BossState.NORMAL;
         timer = normalTime;
+        walkFrameTimer = 0;
+        animScript.SetColor(normalColor, 1);
+        animScript.SetModel(false);
+        animScript.SetOscilation(0, 0);
     }
 
     void Explode(){
         state = BossState.EXPLOSION;
         BossFightManager.Instance.TriggerExplosion();
         Invoke(nameof(Stun), BossFightManager.Instance.ExplosionTime);
+
+        animScript.SetOscilation(5, 0);
+        animScript.TiltHead(explosionTilt, explosionCurve, BossFightManager.Instance.ExplosionTime + 0.2f);
+    
     }
 
     void OnHitMetalBox(GameObject box){
@@ -118,7 +172,8 @@ public class BossScript : MonoBehaviour
 
             state = BossState.HURT;
             rb.AddForce(Vector2.up * windupForce/2, ForceMode2D.Impulse);
-            Invoke(nameof(ReturnToNormal), hurtTime);
+            
+            ActivateRobot();
         }
         else{
             // break metal box
@@ -130,17 +185,30 @@ public class BossScript : MonoBehaviour
         state = BossState.EXPLOSIONWINDUP;
         Invoke(nameof(Explode), explodeWindupTime);
         timer = stunTime;
+
+        animScript.SetColor(Color.red, 0);
+        animScript.SetOscilation(5, explodeWindupTime);
+        animScript.TiltHead(windupTilt, AnimationCurve.EaseInOut(0, 0, 1, 1), explodeWindupTime);
+        animScript.SetPose(false);
     }
 
     void Stun(){
         state = BossState.STUNNED;
         timer = stunTime;
         stunnedObjectPos = transform.position;
+        
+        animScript.SetColor(Color.clear, shutdownTiltTime);
+        animScript.SetOscilation(0, 0);
+        animScript.TiltHead(shutdownTilt, shutdownCurve, shutdownTiltTime);
     }
 
     void Dash(){
         state = BossState.DASH;
         flipDirOnDash = flipDir;
+
+        animScript.SetColor(Color.white, 0);
+        animScript.SetOscilation(0, 0);
+        animScript.SetPose(true);
     }
 
     void OnCollisionEnter2D(Collision2D collision){
