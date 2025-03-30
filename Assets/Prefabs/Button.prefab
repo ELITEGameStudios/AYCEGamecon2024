@@ -175,7 +175,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -5
+  m_SortingOrder: -22
   m_Sprite: {fileID: 21300000, guid: f747968ef64fd2c4581da7c03fec6adf, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -418,7 +418,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: -4
+  m_SortingOrder: -20
   m_Sprite: {fileID: 21300000, guid: f9ac3415d98e4a34fb4a45b0dfd74bf3, type: 3}
   m_Color: {r: 0.8901961, g: 0.19607843, b: 0.31764707, a: 1}
   m_FlipX: 0
@@ -442,6 +442,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8145ff958b39e4b9ee2c96c415787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 0}
+  nameOfSound: PowerableSound
   isSwitch: 0
   unaffectedByPulse: 0
   onPoweredOnEvent:
@@ -458,3 +460,4 @@ MonoBehaviour:
   buttonSteepness: 0.05
   interactableRange: 2
   left: 0
+  isInteractable: 1

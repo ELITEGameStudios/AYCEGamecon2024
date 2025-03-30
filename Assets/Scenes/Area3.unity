@@ -468,7 +468,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1208,7 +1208,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1376,7 +1376,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -1458,9 +1458,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1662713258}
     m_Modifications:
+    - target: {fileID: 1428092681210825445, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468299362840664069, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008518261296909766, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6171446937049917295, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWallDecal_6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201910163286263194, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623249709402621946, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654063312981106302, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813867158664335092, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6876129555321303516, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1502,6 +1534,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7211057836716583802, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 8051273643289438689, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWall_1
@@ -1513,6 +1549,10 @@ PrefabInstance:
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.9998
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754034043339331568, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -1827,7 +1867,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -2034,7 +2074,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3026,7 +3066,20 @@ MonoBehaviour:
   timer: 0
   timeInBar: 0
   timeInMeasure: 0
+  mainSourceIndex: 0
   startupClip: {fileID: 0}
+  startupSample:
+    bpm: 0
+    beatsPerBar: 0
+    barsPerMeasure: 0
+    totalMeasures: 0
+    mainClip: {fileID: 0}
+    transitionClip: {fileID: 0}
+    transitionClipBars: 0
+    naturalTransition: 0
+    volumeConstant: 0
+    fadeInSeconds: 0
+    fadeOutSeconds: 0
   currentSample:
     bpm: 0
     beatsPerBar: 0
@@ -3036,7 +3089,26 @@ MonoBehaviour:
     transitionClip: {fileID: 0}
     transitionClipBars: 0
     naturalTransition: 0
+    volumeConstant: 0
+    fadeInSeconds: 0
+    fadeOutSeconds: 0
+  queuedSample:
+    bpm: 0
+    beatsPerBar: 0
+    barsPerMeasure: 0
+    totalMeasures: 0
+    mainClip: {fileID: 0}
+    transitionClip: {fileID: 0}
+    transitionClipBars: 0
+    naturalTransition: 0
+    volumeConstant: 0
+    fadeInSeconds: 0
+    fadeOutSeconds: 0
   volumeSlider: {fileID: 0}
+  transitionMarker: 0
+  transitionType: 0
+  inTransition: 0
+  active: 0
 --- !u!4 &512827429
 Transform:
   m_ObjectHideFlags: 0
@@ -3253,7 +3325,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3283,14 +3355,46 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1662713258}
     m_Modifications:
+    - target: {fileID: 1428092681210825445, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468299362840664069, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008518261296909766, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6171446937049917295, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWallDecal_4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201910163286263194, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623249709402621946, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654063312981106302, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0328c887391fd8f4cb37fe0f234b951d, type: 3}
+    - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813867158664335092, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6876129555321303516, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.x
       value: -30.625
@@ -3331,6 +3435,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7211057836716583802, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 8051273643289438689, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWall_
@@ -3342,6 +3450,10 @@ PrefabInstance:
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.y
       value: 8.0277
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754034043339331568, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 9014928928255019332, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3529,7 +3641,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -3670,7 +3782,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4024,7 +4136,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -4335,6 +4447,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: MetalWallDecal_9
       objectReference: {fileID: 0}
+    - target: {fileID: 6654063312981106302, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813867158664335092, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6876129555321303516, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.x
       value: -72.625
@@ -4387,6 +4511,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 0328c887391fd8f4cb37fe0f234b951d, type: 3}
+    - target: {fileID: 8754034043339331568, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 8051273643289438689, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
@@ -4604,7 +4732,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -5297,9 +5425,45 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1662713258}
     m_Modifications:
+    - target: {fileID: 1428092681210825445, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468299362840664069, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1829134714294035192, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008518261296909766, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6171446937049917295, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWallDecal_2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201910163286263194, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623249709402621946, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654063312981106302, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813867158664335092, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6876129555321303516, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5341,6 +5505,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7211057836716583802, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 7731561021816254945, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.y
       value: 14
@@ -5356,6 +5524,10 @@ PrefabInstance:
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.97071
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754034043339331568, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -5940,9 +6112,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1662713258}
     m_Modifications:
+    - target: {fileID: 1428092681210825445, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468299362840664069, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008518261296909766, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6171446937049917295, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWallDecal_3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201910163286263194, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623249709402621946, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654063312981106302, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813867158664335092, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6876129555321303516, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.x
@@ -5984,6 +6188,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7211057836716583802, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalScale.y
       value: 14.111197
@@ -5991,6 +6199,10 @@ PrefabInstance:
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.4989
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754034043339331568, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -6355,7 +6567,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6502,9 +6714,41 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1662713258}
     m_Modifications:
+    - target: {fileID: 1428092681210825445, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 1468299362840664069, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6008518261296909766, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 6171446937049917295, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_Name
       value: MetalWallDecal_8
+      objectReference: {fileID: 0}
+    - target: {fileID: 6201910163286263194, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6623249709402621946, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6654063312981106302, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6804119559786370678, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
+    - target: {fileID: 6813867158664335092, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     - target: {fileID: 6876129555321303516, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6546,6 +6790,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7211057836716583802, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
+      objectReference: {fileID: 0}
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalScale.y
       value: 13.115194
@@ -6553,6 +6801,10 @@ PrefabInstance:
     - target: {fileID: 8142128772612759580, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
       propertyPath: m_LocalPosition.y
       value: 6.0006
+      objectReference: {fileID: 0}
+    - target: {fileID: 8754034043339331568, guid: 0822e3608f57d9742862bb1d8639e091, type: 3}
+      propertyPath: m_SortingOrder
+      value: -28
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:
@@ -7069,7 +7321,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7435,7 +7687,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -7529,7 +7781,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -8157,7 +8409,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128091,7 +128343,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128180,7 +128432,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128412,7 +128664,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -128789,7 +129041,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -129197,7 +129449,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -129530,7 +129782,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: 21300000, guid: 0328c887391fd8f4cb37fe0f234b951d, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130007,7 +130259,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130091,7 +130343,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -130206,7 +130458,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -131453,7 +131705,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -28
   m_Sprite: {fileID: -1833167073, guid: ac38f9fa2ac82814792f66fe6abcb041, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
