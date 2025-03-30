@@ -157,6 +157,7 @@ public class BossScript : MonoBehaviour
 
         animScript.SetOscilation(5, 0);
         animScript.TiltHead(explosionTilt, explosionCurve, BossFightManager.Instance.ExplosionTime + 0.2f);
+        animScript.ExplosionBoom();
     
     }
 
@@ -224,6 +225,7 @@ public class BossScript : MonoBehaviour
 
     void Die(){
         BossFightManager.Instance.OnDeath();
+        animScript.DeathAnimation();
         Destroy(gameObject);
         // just fucking die already
     }

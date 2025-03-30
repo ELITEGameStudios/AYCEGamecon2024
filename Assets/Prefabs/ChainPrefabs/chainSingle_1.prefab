@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6176545106094104043}
   m_Layer: 9
   m_Name: chainSingle_3
-  m_TagString: Untagged
+  m_TagString: chain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -101,7 +101,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 9102145583210530144}
   m_Layer: 9
   m_Name: chainSingle_4
-  m_TagString: Untagged
+  m_TagString: chain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -275,7 +275,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -364,7 +364,7 @@ GameObject:
   - component: {fileID: 4156230959342683943}
   m_Layer: 9
   m_Name: chainSingle_1
-  m_TagString: Untagged
+  m_TagString: chain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -450,7 +450,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}
@@ -539,7 +539,7 @@ GameObject:
   - component: {fileID: 6902795930846417941}
   m_Layer: 9
   m_Name: chainSingle_2
-  m_TagString: Untagged
+  m_TagString: chain
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -625,7 +625,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 4
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 1
   m_Material: {fileID: 0}

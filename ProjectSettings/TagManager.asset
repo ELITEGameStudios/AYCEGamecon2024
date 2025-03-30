@@ -9,6 +9,7 @@ TagManager:
   - Sticky
   - MetalBox
   - BossWall
+  - chain
   layers:
   - Default
   - TransparentFX

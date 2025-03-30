@@ -7,10 +7,12 @@ public class BossAnimationScript : MonoBehaviour
     [Header("Setup")]
     [SerializeField] private GameObject animatedObjParent;
     [SerializeField] private GameObject staticObjParent;
+    [SerializeField] private GameObject[] deathParts; // index 0 will be main body
     [SerializeField] private SpriteRenderer[] lights;
-    [SerializeField] private Transform mainHead;
+    [SerializeField] private Transform mainHead, explosionForceOrgin;
     [SerializeField] private SpriteRenderer backLeg;
     [SerializeField] private BossScript bossReference;
+    [SerializeField] private float deathExplosionForce, explosionDistance, explosionForce;
 
     [Header("Dash and Normal Poses Dada")]
     [SerializeField] private Sprite normalLeg;
@@ -151,5 +153,34 @@ public class BossAnimationScript : MonoBehaviour
 
     public void SetPose(bool dashingPose){
         backLeg.sprite = dashingPose ? dashedLeg : normalLeg;
+    }
+
+    public void ExplosionBoom(){
+        
+        foreach (GameObject chain in GameObject.FindGameObjectsWithTag("chain")){
+            // part.transform.localScale = animatedObjParent.transform.localScale;
+            // part.SetActive(true);
+            // part.transform.SetParent(null);
+            float distance = Vector2.Distance(explosionForceOrgin.position, chain.transform.position);
+            if( distance > explosionDistance){continue;}
+
+            Vector2 closestPoint = chain.GetComponent<Collider2D>().ClosestPoint(explosionForceOrgin.position);
+            Vector2 forceVector = (closestPoint - (Vector2)explosionForceOrgin.position).normalized * explosionForce * Random.Range(0.1f, 1f) *(explosionDistance - distance) / explosionDistance;
+            
+            chain.GetComponent<Rigidbody2D>().AddForceAtPosition(forceVector, explosionForceOrgin.position);
+        }
+    }
+
+    public void DeathAnimation(){
+        deathParts[0].transform.rotation = mainHead.rotation;
+        foreach (GameObject part in deathParts){
+            part.transform.localScale = animatedObjParent.transform.localScale;
+            part.SetActive(true);
+            part.transform.SetParent(null);
+
+            Vector2 closestPoint = part.GetComponent<Collider2D>().ClosestPoint(transform.position);
+            Vector2 forceVector = (closestPoint - (Vector2)BossFightManager.Instance.transform.position).normalized * deathExplosionForce;
+            part.GetComponent<Rigidbody2D>().AddForceAtPosition(forceVector, transform.position);
+        }
     }
 }
