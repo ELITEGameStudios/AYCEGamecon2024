@@ -1,12 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoundSystems;
 using UnityEngine;
 
 public class SpikeHasardObject : MonoBehaviour
 {
     public bool active, destroys, kills, collides, colliderInitEnabled;
     [SerializeField] private GameObject effect;
-
+    [SerializeField] private EnvironmentalSound fallSound;
+    
     void Awake(){
         colliderInitEnabled = GetComponent<Collider2D>().enabled;
     }
@@ -17,7 +19,14 @@ public class SpikeHasardObject : MonoBehaviour
                     GameObject clone = Instantiate(effect, transform);
                     clone.transform.SetParent(null);
                 }
-                if(destroys) {Destroy(gameObject);};    
+                if(destroys) {
+
+                    if(fallSound != null){
+                        // EnvironmentalSoundSystem.instance.FindEnvSound("spike_fall").Stop();
+                    }
+
+                    Destroy(gameObject);
+                };    
             }
 
             else if(col.collider == Player.main.MainCol && kills){
@@ -30,6 +39,9 @@ public class SpikeHasardObject : MonoBehaviour
         GetComponent<Rigidbody2D>().isKinematic = false;
         GetComponent<Collider2D>().enabled = collides;
         active = true;
+        if(fallSound != null){
+            EnvironmentalSoundSystem.instance.CreateEnvSound("spike_fall", fallSound, soundOrgin: gameObject);
+        }
     }
 
     public void Deactivate(){
@@ -37,5 +49,8 @@ public class SpikeHasardObject : MonoBehaviour
         GetComponent<Rigidbody2D>().velocity = Vector2.zero;
         GetComponent<Collider2D>().enabled = colliderInitEnabled;
         active = false;
+        if(fallSound != null){
+            // EnvironmentalSoundSystem.instance.FindEnvSound("spike_fall").Stop();
+        }
     }
 }

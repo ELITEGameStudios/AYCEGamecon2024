@@ -12,11 +12,7 @@ public class Button : PowerableObject
     [SerializeField] private GameObject interactableSignifier;
     [SerializeField] private float _bufferTimer, _bufferTime, _animTimer, _animTime, buttonSteepness, interactableRange;
     [SerializeField] private bool left;
-
-    [SerializeField] private bool isInteractable = true;
-    private bool powerable1 = false;
-    private bool powerable2 = false;
-
+    [SerializeField] private bool isActive;
     bool Buffering {get{return _bufferTimer > 0;}}
     bool Animating {get{return _animTimer > 0;}}
     bool InRange {get{return Vector2.Distance(Player.main.transform.position, transform.position) <= interactableRange;}}
@@ -32,42 +28,32 @@ public class Button : PowerableObject
 
         inactivePos = transform.position;
         activePos = transform.position + ((left ? Vector3.right : Vector3.left) * buttonSteepness);
+        interactableSignifier.SetActive(false);
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (isInteractable)
-        {
-            if (interactableSignifier.activeInHierarchy != InRange)
-            { interactableSignifier.SetActive(InRange); }
+        // if(interactableSignifier.activeInHierarchy != InRange)
 
-            if (Animating)
-            {
-                _animTimer -= Time.deltaTime;
-                DoAnimation();
-            }
+        isActive = active; // for debug
 
-            if (Buffering) { _bufferTimer -= Time.deltaTime; }
-            else { CheckStatusChange(); }
+        if(Animating){ 
+            _animTimer -= Time.deltaTime; 
+            DoAnimation();
         }
-        else
-        {
-            if (powerable1 && powerable2) //needed for puzzles where you need to activate multiple other things before a button is useable
-            {
-                isInteractable = true;
-            }
-        }
+
+        if(Buffering){ _bufferTimer -= Time.deltaTime;  }
+        else{CheckStatusChange();}
     }
 
     void CheckStatusChange(){
-        if( (!active && InRange && InputManager.interact.pressedThisFrame) || active )
-        { Toggle(); }
+        // if( (!active && InRange && InputManager.interact.pressedThisFrame) || active )
+        // { Toggle(); }
     }
 
-    void Toggle(){
-
-        Power(!active);
+    public override void Power(bool active){
+        base.Power(!this.active);
         if(active){ 
             _bufferTimer = _bufferTime; 
             if(playsSound){
@@ -78,6 +64,10 @@ public class Button : PowerableObject
         SetAnimation();
     }
 
+    void Toggle(){
+        Power(!active);
+    }
+
     void SetAnimation(){
         startPos = transform.position; 
         targetPos = active ? activePos : inactivePos;
@@ -86,13 +76,5 @@ public class Button : PowerableObject
 
     void DoAnimation(){
         transform.position = Vector2.Lerp(targetPos, startPos, _animTimer / _animTime);
-    }
-
-    public void TogglePow1(int num)
-    {
-        if (num == 1)
-            powerable1 = !powerable1;
-        else if (num == 2)
-            powerable2 = !powerable2;
     }
 }

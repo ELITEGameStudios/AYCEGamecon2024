@@ -11,6 +11,7 @@ public class BossFightManager : MonoBehaviour
     [SerializeField] private Collider2D explosionCol;
     [SerializeField] private Door entryDoor, exitDoor;
     [SerializeField] private BossScript boss;
+    [SerializeField] private ExplosionScript expScript;
     [SerializeField] private float explosionTime, timer;
     public float ExplosionTime {get {return explosionTime;}}
     bool Elapsed {get {return timer <= 0;}}
@@ -53,11 +54,13 @@ public class BossFightManager : MonoBehaviour
 
     IEnumerator ExplosionCoroutine(){
         
-        explosionObject.SetActive(true);
+        // explosionObject.SetActive(true);
+        expScript.StartExplosion();
 
         yield return new WaitForSeconds(explosionTime);
 
-        explosionObject.SetActive(false);
+        // expScript.StopExplosion();
+        // explosionObject.SetActive(false);
 
         DropMetalBox();
 

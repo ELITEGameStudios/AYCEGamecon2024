@@ -26,13 +26,13 @@ namespace SoundSystems{
                 EnvSoundInstance envSound; 
                 if(entered){
                     if(accessor.playsOnlyInZone || accessor.stopPlaying){
-                        envSound = EnvironmentalSoundSystem.instance.FindEnvSound(accessor);
+                        envSound = EnvironmentalSoundSystem.instance.FindEnvSound(accessor, gameObject);
                         if(envSound != null) envSound.Play();
                     }
                 }
                 else{
                     if(accessor.playsOnlyInZone || accessor.stopPlaying){
-                        envSound = EnvironmentalSoundSystem.instance.FindEnvSound(accessor);
+                        envSound = EnvironmentalSoundSystem.instance.FindEnvSound(accessor, gameObject);
                         if(envSound != null) envSound.Stop();
                     }
                 }

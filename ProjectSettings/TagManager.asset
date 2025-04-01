@@ -9,6 +9,7 @@ TagManager:
   - Sticky
   - MetalBox
   - BossWall
+  - chain
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Foreground
   - Environment
   - CrusherMask
-  - 
-  - 
-  - 
+  - Chain
+  - Player
+  - PlayerPost
   - 
   - 
   - 
@@ -51,4 +52,7 @@ TagManager:
     locked: 0
   - name: Foreground
     uniqueID: 3484065571
+    locked: 0
+  - name: Boss
+    uniqueID: 3730840963
     locked: 0

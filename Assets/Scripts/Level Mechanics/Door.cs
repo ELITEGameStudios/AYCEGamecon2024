@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoundSystems;
 using UnityEngine;
 
 public class Door : MonoBehaviour
@@ -18,6 +19,7 @@ public class Door : MonoBehaviour
     [SerializeField] private DoorState state;
     [SerializeField] private DoorState initDoorState = DoorState.NONE;
     [SerializeField] public DoorState State {get {return state;}}
+    [SerializeField] public EnvironmentalSound soundData;
     
     
     // If the door should open or close based on the state of powerables
@@ -106,6 +108,7 @@ public class Door : MonoBehaviour
         startPosTop = closedPosTop;
         startPosBot = closedPosBot;
         state = DoorState.OPENING;
+        EnvironmentalSoundSystem.instance.CreateEnvSound("DoorOpen", soundData, soundOrgin: gameObject);
     }
 
     public void Close(bool startup = false){

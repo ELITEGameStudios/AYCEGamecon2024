@@ -24,15 +24,18 @@ namespace SoundSystems{
             }
         }
 
-        public EnvSoundInstance FindEnvSound(EnvSoundAccessor accessor){
+        public EnvSoundInstance FindEnvSound(EnvSoundAccessor accessor, GameObject accessorObject){
             // If sound exists
             foreach (EnvSoundInstance sound in sounds){
-                if(accessor.name == sound.name){ return sound; }
+                if(accessor.name == sound.name){ 
+                    // sound.obj = accessorObject;
+                    // sound.source= accessorObject.transform;
+                    return sound; }
             }
             
             // If sound does not exist
             if(accessor.canCreate){
-                EnvSoundInstance newSound = new EnvSoundInstance(accessor.name, accessor.createData);
+                EnvSoundInstance newSound = new EnvSoundInstance(accessor.name, accessor.createData, accessorObject);
                 sounds.Add(newSound);
                 return newSound;
             }

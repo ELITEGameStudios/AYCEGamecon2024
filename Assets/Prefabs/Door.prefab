@@ -111,10 +111,11 @@ MonoBehaviour:
   topPiece: {fileID: 199033619019855454}
   botPiece: {fileID: 1663019591133357504}
   offsetInit: 0
-  moveTime: 0.5
+  moveTime: 1.5
   timer: 0
   state: 1
   initDoorState: 0
+  soundData: {fileID: 11400000, guid: f3b0a1df9e094fc45921ea1a92c4d74e, type: 2}
   powerables: []
   powerableReqAmount: 0
   powerableOpen: 0

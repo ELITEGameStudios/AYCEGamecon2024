@@ -71,6 +71,7 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         if(grounded || moveState == PlayerMoveState.CLIMBING){
             if(InputManager.crouch.pressed)
             { 
@@ -79,8 +80,14 @@ public class PlayerMovement : MonoBehaviour
                     animations.ChangeAnimation("WallJumpPowering");
                 else
                     animations.ChangeAnimation("JumpPowering");
+                if(chargeJumpTimer > InputManager.jumpInputThreshold && Player.main.powerLevel >= 2 && !PlayerAudioManager.instance.Charging()){
+                    PlayerAudioManager.instance.WindupChargeStart();
+                }
             }
-            else if(InputManager.crouch.releasedThisFrame){ chargeJumpTimer = 0; }
+            else if(InputManager.crouch.releasedThisFrame){ 
+                chargeJumpTimer = 0; 
+                PlayerAudioManager.instance.StopCharge();
+            }
             if(InputManager.jump.pressedThisFrame){
                 rocketJumpTimer = Player.main.powerLevel >= 2 ? Mathf.Clamp(chargeJumpTimer, 0, chargeJumpMaxTime) - InputManager.jumpInputThreshold : 0;
                 chargeJumpTimer = 0;
@@ -115,6 +122,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     void FixedUpdate(){
+        // Debug.Log(flipDirRaw);
 
         if(moveState == PlayerMoveState.CLIMBING)
         { 
@@ -138,7 +146,7 @@ public class PlayerMovement : MonoBehaviour
             rb.velocity = Vector2.zero;
             animations.ChangeAnimation("Ledging");
         }
-        Debug.Log(IsLedged);
+        // Debug.Log(IsLedged);
         
         if(IsRocketJumping){
             rocketJumpTimer -= Time.fixedDeltaTime;
@@ -163,6 +171,7 @@ public class PlayerMovement : MonoBehaviour
 
             if(magTimer <= 0){
                 moveState = PlayerMoveState.CLIMBING;
+                // animations.ChangeAnimation("ClimbIdle");
                 transform.position = magnetizeEndPoint;
 
             }
@@ -254,6 +263,9 @@ public class PlayerMovement : MonoBehaviour
         }
         grounded = false;
         PlayerAudioManager.instance.TriggerJumpSFX();
+        if(IsRocketJumping){
+            PlayerAudioManager.instance.ReleaseCharge();
+        }
 
         animations.ChangeAnimation("Jumping");
     }
