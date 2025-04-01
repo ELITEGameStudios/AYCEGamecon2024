@@ -54,7 +54,7 @@ public class BossFightManager : MonoBehaviour
 
     IEnumerator ExplosionCoroutine(){
         
-        explosionObject.SetActive(true);
+        // explosionObject.SetActive(true);
         expScript.StartExplosion();
 
         yield return new WaitForSeconds(explosionTime);

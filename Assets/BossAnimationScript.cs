@@ -10,7 +10,7 @@ public class BossAnimationScript : MonoBehaviour
     [SerializeField] private GameObject[] deathParts; // index 0 will be main body
     [SerializeField] private SpriteRenderer[] lights;
     [SerializeField] private Transform mainHead, explosionForceOrgin;
-    [SerializeField] private SpriteRenderer backLeg;
+    [SerializeField] private SpriteRenderer backLeg, dashWarn;
     [SerializeField] private BossScript bossReference;
     [SerializeField] private float deathExplosionForce, explosionDistance, explosionForce;
 
@@ -24,7 +24,7 @@ public class BossAnimationScript : MonoBehaviour
     [SerializeField] private Quaternion targetTiltAngle, startingTiltAngle;
     [SerializeField] private AnimationCurve activeCurve;
     public bool activated = false;
-    [SerializeField] private float targetTiltTime, tiltTimer;
+    [SerializeField] private float targetTiltTime, tiltTimer, dashWarnTimer, dashWarnTime;
     
     
     [SerializeField] private Color baseColor;
@@ -88,7 +88,7 @@ public class BossAnimationScript : MonoBehaviour
                 // Debug.Log("Color is oscilating with frequeny " + currentFrequency);
                 foreach (SpriteRenderer item in lights){
                     item.color = Color.Lerp(baseColor, oscColor, 0.5f * Mathf.Sin(2*Mathf.PI * (currentFrequency * oscilator - 0.25f)) + 0.5f);
-                    Debug.Log("New color lerp at " + 0.5f * Mathf.Sin(2*Mathf.PI * (currentFrequency * oscilator - 0.25f)) + 0.5f);
+                    // Debug.Log("New color lerp at " + 0.5f * Mathf.Sin(2*Mathf.PI * (currentFrequency * oscilator - 0.25f)) + 0.5f);
                 }
             }
             else if(lights[0].color != targetColor){
@@ -109,7 +109,30 @@ public class BossAnimationScript : MonoBehaviour
                 currentFrequency = targetFrequency;
             }
 
+            // For Frequency change
+            if(dashWarnTimer > 0){
+                Debug.Log("Warning Dash");
+                float proportionalTime = dashWarnTimer / dashWarnTime; 
+                dashWarn.transform.localPosition = Vector3.Lerp(Vector3.right * 100, Vector3.left * 30, proportionalTime);
+                // dashWarn.color =  Color.Lerp(Color.clear, Color.red, Mathf.Sin(0.5f * Mathf.Sin(2*Mathf.PI * (proportionalTime - 0.25f)) + 0.5f));
+                dashWarn.color = Color.red;
+                dashWarnTimer -= Time.deltaTime;
+            }
+            else if(dashWarn.gameObject.activeInHierarchy){
+                dashWarn.color = Color.clear;
+                Debug.Log("Im done saving you.");
+                dashWarn.gameObject.SetActive(false);
+            }
+
         // }
+    }
+
+    public void DashWarn(){
+        Debug.Log("Warning player");
+        dashWarn.gameObject.SetActive(true);
+        dashWarnTimer = dashWarnTime;
+        dashWarn.transform.position = Vector3.left * 2;
+
     }
 
     public void SetModel(bool toReconstructedModel){
