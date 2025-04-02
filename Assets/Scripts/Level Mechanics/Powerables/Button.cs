@@ -21,7 +21,9 @@ public class Button : PowerableObject
     bool Animating {get{return _animTimer > 0;}}
     bool InRange {get{return Vector2.Distance(Player.main.transform.position, transform.position) <= interactableRange;}}
 
-
+    [SerializeField] private Color interactableColor = Color.green; // When interactable
+    [SerializeField] private Color nonInteractableColor = Color.red; // When not interactable
+    private SpriteRenderer buttonLightRenderer;
 
     // Start is called before the first frame update
     void Awake(){
@@ -32,6 +34,8 @@ public class Button : PowerableObject
 
         inactivePos = transform.position;
         activePos = transform.position + ((left ? Vector3.right : Vector3.left) * buttonSteepness);
+
+        buttonLightRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
@@ -50,6 +54,8 @@ public class Button : PowerableObject
 
             if (Buffering) { _bufferTimer -= Time.deltaTime; }
             else { CheckStatusChange(); }
+
+            UpdateLightColor();
         }
         else
         {
@@ -57,6 +63,18 @@ public class Button : PowerableObject
             {
                 isInteractable = true;
             }
+            else
+            {
+                isInteractable = false;
+            }
+        }
+    }
+
+    private void UpdateLightColor()
+    {
+        if (buttonLightRenderer != null)
+        {
+            buttonLightRenderer.color = isInteractable ? interactableColor : nonInteractableColor;
         }
     }
 
@@ -88,11 +106,18 @@ public class Button : PowerableObject
         transform.position = Vector2.Lerp(targetPos, startPos, _animTimer / _animTime);
     }
 
-    public void TogglePow1(int num)
+    public void TogglePow1()
     {
-        if (num == 1)
-            powerable1 = !powerable1;
-        else if (num == 2)
-            powerable2 = !powerable2;
+        powerable1 = !powerable1;
+    }
+
+    public void Pow2On()
+    {
+        powerable2 = true;
+    }
+
+    public void Pow2Off()
+    {
+        powerable2 = false;
     }
 }

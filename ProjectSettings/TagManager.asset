@@ -9,6 +9,7 @@ TagManager:
   - Sticky
   - MetalBox
   - BossWall
+  - Mouse
   layers:
   - Default
   - TransparentFX
@@ -19,9 +20,9 @@ TagManager:
   - Foreground
   - Environment
   - CrusherMask
-  - 
-  - 
-  - 
+  - Player
+  - Mouse
+  - Push Box
   - 
   - 
   - 
