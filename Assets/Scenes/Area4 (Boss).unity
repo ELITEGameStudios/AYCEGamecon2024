@@ -11485,6 +11485,7 @@ MonoBehaviour:
   modifiesEasing: 0
   customEasing: 0
   zoom: 8.5
+  zoomAfterZone: -1
 --- !u!1001 &839270053
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19261,6 +19262,7 @@ MonoBehaviour:
   shakeTime: 0
   shakeTimer: 0
   intensity: 0
+  zoomAfterZone: -1
 --- !u!1001 &1201988081
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -69349,6 +69351,7 @@ MonoBehaviour:
   modifiesEasing: 0
   customEasing: 0.01
   zoom: 0
+  zoomAfterZone: -1
 --- !u!4 &1462425153
 Transform:
   m_ObjectHideFlags: 0
@@ -83210,14 +83213,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4876817420790752606, guid: 40b2a6163ac2ecf46922f13177a68a09, type: 3}
-      propertyPath: expScript
-      value: 
-      objectReference: {fileID: 1253432595}
-    - target: {fileID: 7567249363445262519, guid: 40b2a6163ac2ecf46922f13177a68a09, type: 3}
-      propertyPath: explosionForceOrgin
-      value: 
-      objectReference: {fileID: 1319948473}
     - target: {fileID: 7929770858534667479, guid: 40b2a6163ac2ecf46922f13177a68a09, type: 3}
       propertyPath: m_Name
       value: Boss_1

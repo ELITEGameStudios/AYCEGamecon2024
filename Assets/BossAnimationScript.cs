@@ -62,6 +62,9 @@ public class BossAnimationScript : MonoBehaviour
             if(Tilting){
                 Debug.Log("Tilting");
                 float proportionalTime = tiltTimer / targetTiltTime; 
+
+                // Debug.Log(activeCurve.Evaluate(proportionalTime));
+                
                 mainHead.rotation = Quaternion.SlerpUnclamped(startingTiltAngle, targetTiltAngle, activeCurve.Evaluate(proportionalTime));
                 tiltTimer += Time.deltaTime;
             }

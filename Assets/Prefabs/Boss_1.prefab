@@ -159,7 +159,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 430089347595214207}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.35787913, w: 0.9337679}
+  m_LocalRotation: {x: 0, y: 0, z: -0.40050906, w: 0.91629285}
   m_LocalPosition: {x: 0.36, y: -0.439, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -169,7 +169,7 @@ Transform:
   - {fileID: 6345305147785513412}
   - {fileID: 7864011788535644033}
   m_Father: {fileID: 2248726872232183951}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -41.94}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -47.22}
 --- !u!1 &439268869957151806
 GameObject:
   m_ObjectHideFlags: 0
@@ -2560,7 +2560,6 @@ MonoBehaviour:
   animatedMain: {fileID: 7588501176188940385}
   animScript: {fileID: 7567249363445262519}
   audio: {fileID: 7608689994907934557}
-  expScript: {fileID: 0}
   dashTiltAngle: -32
   windupTilt: -40
   shutdownTilt: -50
@@ -2761,16 +2760,13 @@ MonoBehaviour:
   - {fileID: 1019117518383625769}
   - {fileID: 54548827806606241}
   mainHead: {fileID: 955948289981154630}
-  explosionForceOrgin: {fileID: 0}
   backLeg: {fileID: 4165234909128215993}
   dashWarn: {fileID: 2940786426366616063}
   bossReference: {fileID: 4876817420790752606}
   deathExplosionForce: 50000
-  explosionDistance: 25
-  explosionForce: 3000
   normalLeg: {fileID: 21300000, guid: 1405e68a2f3ac4a4fa4b7bd6bfb05516, type: 3}
   dashedLeg: {fileID: 21300000, guid: 8ec3779dc703b3644a709489a3b1dc31, type: 3}
-  targetTiltAngle: {x: 0, y: 0, z: -0.35787907, w: 0.933768}
+  targetTiltAngle: {x: 0, y: 0, z: 0, w: 1}
   startingTiltAngle: {x: 0, y: 0, z: 0, w: 0}
   activeCurve:
     serializedVersion: 2

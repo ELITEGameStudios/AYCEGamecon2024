@@ -41,6 +41,19 @@ public class TutorialUI : MonoBehaviour
         }
     }
 
+    public void DissapearForGood(){
+
+        if(appeared && active){
+            active = false;
+            StartCoroutine(Dissapear());
+            Destroy(gameObject, fadeTime + interval * (graphics.Length - 1));
+        }
+        else{
+            enabled = false;
+            Destroy(gameObject);
+        }
+    }
+
     IEnumerator Appear(){
         float timer = fadeTime;
         
