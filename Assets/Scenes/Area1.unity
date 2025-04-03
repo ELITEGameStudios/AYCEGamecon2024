@@ -624,6 +624,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &267062666
 GameObject:
   m_ObjectHideFlags: 0
@@ -1379,6 +1382,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &431403063
 GameObject:
   m_ObjectHideFlags: 0
@@ -4011,6 +4017,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &983267741
 GameObject:
   m_ObjectHideFlags: 0
@@ -4360,6 +4369,7 @@ MonoBehaviour:
   modifiesEasing: 0
   customEasing: 0.01
   zoom: 10
+  zoomAfterZone: -1
 --- !u!4 &1074766617
 Transform:
   m_ObjectHideFlags: 0
@@ -5463,7 +5473,7 @@ MonoBehaviour:
   active: 0
   inZone: 0
   appeared: 0
-  disableImmediately: 0
+  disableImmediately: 1
   graphics:
   - {fileID: 1176933807}
   - {fileID: 983267744}
@@ -5507,7 +5517,7 @@ MonoBehaviour:
   active: 0
   inZone: 0
   appeared: 0
-  disableImmediately: 0
+  disableImmediately: 1
   graphics:
   - {fileID: 1876791083}
   - {fileID: 1809688533}
@@ -46429,6 +46439,7 @@ MonoBehaviour:
   modifiesEasing: 0
   customEasing: 0.01
   zoom: 5
+  zoomAfterZone: -1
 --- !u!4 &1633486767
 Transform:
   m_ObjectHideFlags: 0
@@ -46919,6 +46930,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1780558099
 GameObject:
   m_ObjectHideFlags: 0
@@ -47806,6 +47820,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &1945636719 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2407580105662738871, guid: b879b43145587c74395be42eabe9c5fd, type: 3}
@@ -48089,6 +48106,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1985277260
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48305,6 +48325,7 @@ MonoBehaviour:
   modifiesEasing: 1
   customEasing: 0.01
   zoom: 8
+  zoomAfterZone: -1
 --- !u!4 &1998053168
 Transform:
   m_ObjectHideFlags: 0
@@ -48556,6 +48577,7 @@ MonoBehaviour:
   shakeTime: 0
   shakeTimer: 0
   intensity: 0
+  zoomAfterZone: -1
 --- !u!1001 &2108300966
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48653,6 +48675,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!4 &2133841710
 Transform:
   m_ObjectHideFlags: 0
