@@ -589,7 +589,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 0, g: 0, b: 0, a: 0}
   m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -858,8 +858,8 @@ MonoBehaviour:
   rb: {fileID: 8709479023261118328}
   mainCol: {fileID: 2944330152619102935}
   audio: {fileID: 1204325916347592510}
-  deathVel: 0
-  deathPart: {fileID: 0}
+  deathVel: 3
+  deathPart: {fileID: 7149563175402597118, guid: adc73b2b353f5514b90ce351d3068d71, type: 3}
 --- !u!114 &275501098052011479
 MonoBehaviour:
   m_ObjectHideFlags: 0

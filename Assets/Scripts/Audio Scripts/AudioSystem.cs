@@ -56,6 +56,8 @@ public class AudioSystem : MonoBehaviour
         if(Instance == null){ Instance = this;}
         else if(Instance != this){ Destroy(this);}
         DontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(this);
         
         sources ??= new List<AudioSource>();
         sources.Add(gameObject.AddComponent<AudioSource>());
@@ -63,6 +65,7 @@ public class AudioSystem : MonoBehaviour
 
         foreach (AudioSource item in sources) { item.playOnAwake = false; }
         activeTracks = 1;
+        timer = 0;
     }
 
     void Start(){
@@ -159,6 +162,14 @@ public class AudioSystem : MonoBehaviour
         beatsElapsed = 0;
         barsElapsed = 0;
         measuresElapsed = 0;
+    }
+
+    public void StopAllAudio(){
+        currentSample = Sample.NothingSample;
+        foreach (AudioSource source in sources)
+        {
+            source.Stop();
+        }
     }
 
     IEnumerator TransitionAudio(){

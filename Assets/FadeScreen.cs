@@ -40,19 +40,19 @@ public class FadeScreen : MonoBehaviour
         float timer = 0;
         while (timer < fadeIn){
             image.color = Color.Lerp(Color.clear, Color.black, curve.Evaluate(timer/fadeIn));
-            timer += Time.deltaTime;
+            timer += Time.unscaledDeltaTime;
             yield return null;
         }
 
         // Hold
         image.color = Color.black;
-        yield return new WaitForSeconds(hold);
+        yield return new WaitForSecondsRealtime(hold);
         
         // Fade out
         timer = fadeOut;
         while (timer > 0){
             image.color = Color.Lerp(Color.clear, Color.black, curve.Evaluate(timer/fadeOut));
-            timer -= Time.deltaTime;
+            timer -= Time.unscaledDeltaTime;
             yield return null;
         }
         image.color = Color.clear;

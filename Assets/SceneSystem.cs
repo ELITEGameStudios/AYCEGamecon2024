@@ -9,12 +9,26 @@ public class SceneSystem : MonoBehaviour
     [SerializeField] private List<Scene> scenes;
     [SerializeField] private Scene activeScene; 
     public static SceneSystem Instance { get; private set; }
+    public static List<Object> objectsNotDestroyedOnLoad;
 
     void Awake(){
         if(Instance == null) {Instance = this;}
         else if(Instance != this) {Destroy(this);}
         
         DontDestroyOnLoad(gameObject);       
+        // AddDontDestroyOnLoad(gameObject);
+    }
+
+    public static void AddDontDestroyOnLoad(Object _object){
+        if(objectsNotDestroyedOnLoad == null){objectsNotDestroyedOnLoad = new List<Object>();}
+        objectsNotDestroyedOnLoad.Add(_object);
+    }
+
+    public static void DestroyTheUnderstroyable(){
+        for (int i = objectsNotDestroyedOnLoad.Count-1; i > 0; i--){
+            DestroyImmediate(objectsNotDestroyedOnLoad[i]);
+            objectsNotDestroyedOnLoad.RemoveAt(i);
+        }
     }
 
     void UpdateSceneData(){
@@ -38,6 +52,17 @@ public class SceneSystem : MonoBehaviour
 
     public void AddScene(string sceneName, Vector2 offsetPos = new Vector2()){
         StartCoroutine(LoadAdditiveCoroutine(sceneName, offsetPos));
+    }
+
+    public void LoadMainMenuScene(){
+        AudioSystem.Instance.StopAllAudio();
+        DestroyTheUnderstroyable();
+        
+        for (int i = scenes.Count-1; i > 0; i--){
+            scenes.RemoveAt(i);
+        }
+
+        SceneManager.LoadScene(0);
     }
 
     public void UnloadScene(string sceneName, Vector2 offsetPos = new Vector2()){

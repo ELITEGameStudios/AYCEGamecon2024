@@ -31,6 +31,7 @@ public class CameraFollowScript : MonoBehaviour
         default_zoom = cam.orthographicSize;
         target_zoom = default_zoom;
         DontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -38,6 +39,10 @@ public class CameraFollowScript : MonoBehaviour
         if(playerObj == null){
             playerObj = Player.main.gameObject;
         }
+    }
+
+    public void SetToPlayer(){
+        transform.position = Player.main.transform.position;
     }
 
     // Update is called once per frame

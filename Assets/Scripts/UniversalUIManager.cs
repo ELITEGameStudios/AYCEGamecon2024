@@ -26,6 +26,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private List<Scene> scenes;
     [SerializeField] private Scene activeScene; 
     [SerializeField] private MenuState state, lastState; 
+    [SerializeField] private GameObject areYouSure; 
 
     public enum MenuState{
         MAIN,
@@ -45,6 +46,7 @@ public class UIManager : MonoBehaviour
         state = MenuState.NONE;
         
         DontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(gameObject);
         menuList = new(){mainMenu, settingsMenu, pauseMenu, splashScreen};
         foreach (UIMenu menu in menuList) {menu.Initialize();}
     }
@@ -81,6 +83,17 @@ public class UIManager : MonoBehaviour
         OpenMenuViaState(MenuState.NONE);
     }
     
+    public void Reset(){
+        FadeScreen.Instance.FadeInOut(1, 5, 1);
+        OpenMenuViaState(MenuState.NONE, customFadeOut: 0);
+        StartCoroutine(ResetNumerator());
+    }
+
+    IEnumerator ResetNumerator(){
+        yield return new WaitForSecondsRealtime(1.5f);
+        SceneSystem.Instance.LoadMainMenuScene();
+    }
+    
     public void OpenMenuViaState(MenuState newState, bool doCoroutine = true, bool crossFade = false, float customFadeOut = -1){
         if(switchingMenus) {return;}
         lastState = state;
@@ -88,6 +101,8 @@ public class UIManager : MonoBehaviour
         if(doCoroutine){
             StartCoroutine(SwitchMenuCoroutine(crossFade, customFadeOut));
         }
+
+        areYouSure.SetActive(false);
 
         // try{
         //     for (int i = 0; i < menuList.Count; i++) { menuList[i].SetActive((int)newState == i); }

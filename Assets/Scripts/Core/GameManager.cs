@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour
     void Awake()
     {
         DontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(gameObject);
     }
 
     // Update is called once per frame

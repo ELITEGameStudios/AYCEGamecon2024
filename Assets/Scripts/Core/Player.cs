@@ -32,6 +32,7 @@ public class Player : MonoBehaviour
         if(main == null) main = this;
         else if(main != this) Destroy(gameObject);
         DontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(gameObject);
     }
     
     public void Die(bool immediate = false){
@@ -71,6 +72,18 @@ public class Player : MonoBehaviour
         foreach (SpriteRenderer renderer in movement.SpriteList){
             renderer.enabled = true;
         }
+    }
+
+    public IEnumerator ResetLevel(){
+        UIManager.Instance.OpenMenuViaState(UIManager.MenuState.NONE, false);
+        FadeScreen.Instance.FadeInOut(1, 1, 1);
+        yield return new WaitForSecondsRealtime(1.5f);
+        SetToScenePos();
+    }
+
+    public void SetToScenePos(){
+        transform.position = SceneData.currentScene.transform.position;
+        CameraFollowScript.Instance.SetToPlayer();
     }
 
     public void Respawn(){
