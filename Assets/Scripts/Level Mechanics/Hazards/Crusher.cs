@@ -45,7 +45,7 @@ public class Crusher : MonoBehaviour
             cycleTimer += Time.deltaTime;
             if (crushStatus.IsCrushingPlayer && crushed)
             {
-                Player.main.Die();
+                Player.main.Die(true);
             }
         }
     }

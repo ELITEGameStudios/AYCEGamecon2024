@@ -13,6 +13,7 @@ namespace SoundSystems{
             if(instance == null){instance = this;}
             else if(instance != this){Destroy(this);}
             DontDestroyOnLoad(this);
+            SceneSystem.AddDontDestroyOnLoad(this);
             
             sounds ??= new();
 

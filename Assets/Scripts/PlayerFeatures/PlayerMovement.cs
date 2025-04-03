@@ -19,10 +19,11 @@ public class PlayerMovement : MonoBehaviour
 
     private PlayerAnimations animations;
     [SerializeField] private SpriteRenderer[] spriteList;
+    public SpriteRenderer[] SpriteList {get{return spriteList;}}
 
     public float Speed {get { return speed; }}
     public bool Grounded {get { return grounded; }}
-    public bool IsWalking {get { return Mathf.Abs(velocity.x) > 0.7f && moveState == PlayerMoveState.ONGROUND && !IsCrouched; }}
+    public bool IsWalking {get { return Mathf.Abs(velocity.x) > 0.7f && moveState == PlayerMoveState.ONGROUND && !IsCrouched && !IsLedged; }}
     public bool IsRocketJumping {get { return rocketJumpTimer > 0f; }}
     public bool IsCharging {get { return rocketJumpTimer > 0f; }}
     public bool IsLedged {get { return ledge != null; }}
@@ -110,6 +111,14 @@ public class PlayerMovement : MonoBehaviour
             ledge = null;
         }
 
+        UpdateVVSpriteFlip();
+        CheckAnimations();
+
+    }
+
+    void UpdateVVSpriteFlip(){
+        if(IsLedged){return;}
+
         foreach (SpriteRenderer sprite in spriteList)
         {
             if (velocity.x > 0)
@@ -117,8 +126,15 @@ public class PlayerMovement : MonoBehaviour
             else if (velocity.x < 0)
                 sprite.flipX = false;
         }
+    }
 
-        CheckAnimations();
+    void UpdateVVSpriteFlip(bool left){
+        if(IsLedged){return;}
+
+        foreach (SpriteRenderer sprite in spriteList)
+        {
+            sprite.flipX = left;
+        }
     }
 
     void FixedUpdate(){
@@ -155,7 +171,11 @@ public class PlayerMovement : MonoBehaviour
                 * rocketJumpStrength * Time.fixedDeltaTime, ForceMode2D.Impulse);
         }   
 
-        if(moveState != PlayerMoveState.CLIMBING && moveState != PlayerMoveState.MAGNETIZING){
+        if(
+            moveState != PlayerMoveState.CLIMBING 
+            && moveState != PlayerMoveState.MAGNETIZING 
+            && !IsLedged
+        ){
             if(InputManager.X != 0){
                 flipDir = (int)(InputManager.X / Math.Abs(InputManager.X)); 
             }
@@ -272,6 +292,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void SetLedge(LedgeScript ledge){
         if(ledge == null){return;}
+        
+        UpdateVVSpriteFlip(ledge.Left);
         this.ledge = ledge;
 
     }

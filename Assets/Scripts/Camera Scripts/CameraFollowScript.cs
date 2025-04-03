@@ -13,17 +13,25 @@ public class CameraFollowScript : MonoBehaviour
     public static CameraFollowScript Instance {get; private set;}
     public Vector2 TargetOffset {get {return currentTargetOffset;}}
 
+    [Header("For camera shake debug")]
+    [SerializeField] private int frequency; 
+    [SerializeField] private int shakeTime; 
+    [SerializeField] private float shakeTimer, intensity; 
+    public bool isShaking {get {return shakeTimer > 0;}}
+
+
     void Awake(){
         if(Instance == null) Instance = this;
         else if(Instance != this) Destroy(this);
 
-        if(cam == null){cam = GetComponent<Camera>();}
+        // if(cam == null){cam = transform.GetChild(0).GetComponent<Camera>();}
         target = null;
         currentKp = Kp;
         currentZoomKp = zoomKp;
         default_zoom = cam.orthographicSize;
         target_zoom = default_zoom;
         DontDestroyOnLoad(gameObject);
+        SceneSystem.AddDontDestroyOnLoad(gameObject);
     }
 
     void Start()
@@ -31,6 +39,10 @@ public class CameraFollowScript : MonoBehaviour
         if(playerObj == null){
             playerObj = Player.main.gameObject;
         }
+    }
+
+    public void SetToPlayer(){
+        transform.position = Player.main.transform.position;
     }
 
     // Update is called once per frame
@@ -52,8 +64,21 @@ public class CameraFollowScript : MonoBehaviour
         currentTargetOffset = defaultTargetOffset;
         currentTargetOffset.x *= Player.main.Movement.flipDirRaw;
 
-        transform.position += (Vector3)direction * distance * currentKp;
+        if(!Player.main.dead){
+            transform.position += (Vector3)direction * distance * currentKp;
+        }
         cam.orthographicSize = Mathf.Lerp(cam.orthographicSize, target_zoom, currentZoomKp);
+        
+        // For screen shake
+        if(isShaking){
+            float shakeX = 0.5f * Mathf.Sin(2*Mathf.PI * (frequency*(shakeTimer/shakeTime) * shakeTimer - 0.25f)) + 0.5f;
+            cam.transform.localPosition = Vector3.back + Vector3.right * shakeX ;
+            shakeTimer -= Time.deltaTime;
+        }
+        else{
+            cam.transform.localPosition = Vector3.back;
+        }
+
     }
 
     public void SetTarget(CameraTargetZone zone){
@@ -69,5 +94,12 @@ public class CameraFollowScript : MonoBehaviour
         offsetInTargetMode = zone.Offset;
         currentKp = zone.ModifiesEasing ? zone.customEasing : Kp;
         target_zoom = zone.ModifiesZoom ? zone.zoom : default_zoom;
+    }
+
+    public void Shake(int frequency, float intensity, int time){
+        shakeTime = time;
+        shakeTimer = time;
+        this.frequency = frequency;
+        this.intensity = intensity;
     }
 }

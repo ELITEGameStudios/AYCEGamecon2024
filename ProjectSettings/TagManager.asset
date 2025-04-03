@@ -40,3 +40,9 @@ TagManager:
   - name: Boss
     uniqueID: 3730840963
     locked: 0
+  - name: FadeScreen
+    uniqueID: 42716197
+    locked: 0
+  - name: RenderOverEverything
+    uniqueID: 2976320245
+    locked: 0
