@@ -39,6 +39,8 @@ public class RespawnSystem : MonoBehaviour
                 Player.main.transform.position + 
                 (Vector3)CameraFollowScript.Instance.TargetOffset +
                 Vector3.forward * CameraFollowScript.Instance.transform.position.z;
+
+            nextPoint.onRespawn.Invoke();
         }
         else{
             SceneManager.LoadScene(nextPoint.sceneTarget);

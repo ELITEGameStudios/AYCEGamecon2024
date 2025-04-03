@@ -4,10 +4,17 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+
+    [SerializeField] private TutorialUI[] startingTutorialUI;
     [SerializeField] private int targetFPS;
+    public static GameManager Instance {get; private set;}
+
     // Start is called before the first frame update
     void Awake()
     {
+        if(Instance == null) {Instance = this;}
+        else if(Instance != this) {Destroy(this);}
+
         DontDestroyOnLoad(gameObject);
         SceneSystem.AddDontDestroyOnLoad(gameObject);
     }
@@ -16,6 +23,13 @@ public class GameManager : MonoBehaviour
     void FixedUpdate()
     {
         Application.targetFrameRate = targetFPS;
+    }
+    public void EnableStartingTutorialUI(){
+
+        if(startingTutorialUI != null){
+            foreach(TutorialUI ui in startingTutorialUI) ui.enabled = true;
+        }
+
     }
 
     public void SetMainPlayerFootsteps(bool toLab){

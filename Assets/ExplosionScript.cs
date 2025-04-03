@@ -6,14 +6,17 @@ using UnityEngine.Rendering.Universal;
 public class ExplosionScript : MonoBehaviour
 {
     [SerializeField] private Light2D fireLight, warnLight;
-    [SerializeField] private GameObject warningPart;
+    [SerializeField] private GameObject warningPart, deathZone;
     [SerializeField] private GameObject[] expParticles;
     [SerializeField] private float maxBrightness = 0.8f, warnBrightness = 11f, expTime, timer, warnTime;
     [SerializeField] private bool isActive;
     [SerializeField] private bool isWarning;
-    // Start is called before the first frame update
-    void Awake(){
-        // expTime = BossFightManager.Instance.ExplosionTime * 3;
+    public static ExplosionScript Instance {get; private set;}
+
+    void Awake()
+    {
+        if(Instance == null) {Instance = this;}
+        else if(Instance != this) {Destroy(this);}
         expTime = 5;
     }
 
@@ -23,7 +26,7 @@ public class ExplosionScript : MonoBehaviour
         isWarning = true;
 
         warningPart.SetActive(true);
-        warnLight.enabled = true;
+        warnLight.gameObject.SetActive(true);
         foreach (GameObject particle in expParticles) { particle.SetActive(false); }
     }
 
@@ -32,6 +35,8 @@ public class ExplosionScript : MonoBehaviour
         isActive = true;
         isWarning = false;
         warningPart.SetActive(false);
+        warnLight.gameObject.SetActive(true);
+        deathZone.SetActive(true);
         foreach (GameObject particle in expParticles) { particle.SetActive(true); }
     }
 
@@ -39,8 +44,8 @@ public class ExplosionScript : MonoBehaviour
         timer = 0;
         isActive = false;
 
-        warnLight.enabled = false;
         warningPart.SetActive(false);
+        warnLight.gameObject.SetActive(false);
         foreach (GameObject particle in expParticles) { particle.SetActive(false); }
     }
 
@@ -56,12 +61,14 @@ public class ExplosionScript : MonoBehaviour
             if(isActive){
                 fireLight.intensity = timer / expTime * maxBrightness;
                 warnLight.intensity = timer / expTime * warnBrightness;
+                if(timer/expTime < 0.75f && deathZone.activeInHierarchy){deathZone.SetActive(false);}
                 return;
             }
 
             fireLight.intensity = 0;
             warnLight.intensity = 0;
             warningPart.SetActive(false);
+            warnLight.gameObject.SetActive(false);
         }
         else{
             if(isActive){

@@ -28,7 +28,6 @@ public class BossScript : MonoBehaviour
     [Header("Setup boss related scripts")]
     [SerializeField] private BossAnimationScript animScript;
     [SerializeField] private BossAudio audio;
-    [SerializeField] private ExplosionScript expScript;
 
     [Header("Animation Required properties")]
     public float dashTiltAngle;
@@ -176,7 +175,7 @@ public class BossScript : MonoBehaviour
 
         animScript.SetOscilation(5, 0);
         animScript.TiltHead(explosionTilt, explosionCurve, BossFightManager.Instance.ExplosionTime + 0.2f);
-        animScript.ExplosionBoom();
+        BossFightManager.Instance.ExplosionBoom();
         audio.StopMain();
         audio.Explode();
     
@@ -215,8 +214,8 @@ public class BossScript : MonoBehaviour
         animScript.SetOscilation(5, explodeWindupTime);
         animScript.TiltHead(windupTilt, AnimationCurve.EaseInOut(0, 0, 1, 1), explodeWindupTime);
         animScript.SetPose(false);
-        expScript.gameObject.SetActive(true);
-        expScript.WarnExplosion(explodeWindupTime);
+        ExplosionScript.Instance.gameObject.SetActive(true);
+        ExplosionScript.Instance.WarnExplosion(explodeWindupTime);
         
     }
 

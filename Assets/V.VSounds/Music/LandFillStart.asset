@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 259af4be2add19d4fb6a192006aa3540, type: 3}
+  m_Name: LandFillStart
+  m_EditorClassIdentifier: 
+  bpm: 108
+  beatsPerBar: 4
+  barsPerMeasure: 4
+  totalMeasures: 9
+  totalBars: 0
+  mainClip: {fileID: 8300000, guid: 6b17c4a44f21c7145b4bdb32b3d58a0f, type: 3}
+  transitionClip: {fileID: 0}
+  transitionClipBars: 0
+  naturalTransition: 0
+  loop: 0
+  volumeConstant: 0.5
+  fadeInSeconds: 1
+  fadeOutSeconds: 1
