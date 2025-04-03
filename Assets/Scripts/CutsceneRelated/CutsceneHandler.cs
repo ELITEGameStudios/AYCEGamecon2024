@@ -6,7 +6,9 @@ public class CutsceneHandler : MonoBehaviour
 {
     private PlayerMovement player;
     private PlayerAnimations animations;
+    private CameraFollowScript cameraFollowScript;
     private Rigidbody2D rb;
+    private Animator animator;
 
     [SerializeField] private string cutsceneName = "";
     private string landfill = "StartingCutscene";
@@ -26,6 +28,8 @@ public class CutsceneHandler : MonoBehaviour
         animations = FindObjectOfType<PlayerAnimations>();
         rb = player.GetComponent<Rigidbody2D>();
         originalGrav = rb.gravityScale;
+        cameraFollowScript = FindObjectOfType<CameraFollowScript>();
+        animator = player.GetComponentInChildren<Animator>();
     }
 
     public void StartCutscene(string cutsceneName)
@@ -57,6 +61,9 @@ public class CutsceneHandler : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = false;
 
         animations.ChangeAnimation("HorizontalFalling");
+
+        //camera adjust
+
         Time.timeScale = slowMotionTimeScale;
         rb.gravityScale = newGravScale;
         
@@ -66,9 +73,22 @@ public class CutsceneHandler : MonoBehaviour
 
     private void StandingUp()
     {
+        CameraFollowScript.Instance.Shake(5, 2.5f, 1);
         animations.ChangeAnimation("Standing");
         Time.timeScale = 1; // Restore normal time
         rb.gravityScale = originalGrav; // Restore normal gravity
-        player.GetComponent<PlayerMovement>().enabled = false; // Re-enable movement
+
+        // Wait for animation to finish before enabling movement
+        StartCoroutine(WaitForAnimation("Standing"));
+    }
+
+    private IEnumerator WaitForAnimation(string animationName)
+    {
+        while (PlayerAnimations.currentAnimation == "Standing")
+        {
+            yield return null; // Wait until the animation is done
+        }
+
+        player.GetComponent<PlayerMovement>().enabled = true; // Re-enable movement
     }
 }
