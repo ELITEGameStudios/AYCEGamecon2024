@@ -43,7 +43,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7251199684526948909}
   - component: {fileID: 497648235461005664}
-  - component: {fileID: 1653934932473441239}
+  - component: {fileID: 788125553380981563}
   m_Layer: 0
   m_Name: PlateBody
   m_TagString: Untagged
@@ -118,8 +118,8 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &1653934932473441239
-BoxCollider2D:
+--- !u!70 &788125553380981563
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -150,19 +150,9 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.06166617}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.5, w: 1.625}
-    pivot: {x: 0.375, y: 0.078}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.5, y: 0.19}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.00030375278, y: -0.062794395}
+  m_Size: {x: 1.507653, y: 0.1864223}
+  m_Direction: 1
 --- !u!1 &7411675961514734336
 GameObject:
   m_ObjectHideFlags: 0
@@ -174,7 +164,7 @@ GameObject:
   - component: {fileID: 3013356636593323551}
   - component: {fileID: 8886760526166280900}
   - component: {fileID: 7732982228060888110}
-  - component: {fileID: 6780452884129365012}
+  - component: {fileID: 4784827669759697769}
   m_Layer: 0
   m_Name: PressurePlateCore
   m_TagString: Untagged
@@ -239,7 +229,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 22feb7c8328e30e4881f115878171b4e, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.76792455, b: 0.8710716, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -274,8 +264,8 @@ MonoBehaviour:
   _timer: 0
   _bufferTime: 0.5
   plateSteepness: 0.1
---- !u!61 &6780452884129365012
-BoxCollider2D:
+--- !u!70 &4784827669759697769
+CapsuleCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -306,16 +296,6 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0.5, w: 1.6875}
-    pivot: {x: 0.375, y: 0.078}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 1, y: 1}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  serializedVersion: 2
-  m_Size: {x: 1.3, y: 0.2}
-  m_EdgeRadius: 0
+  m_Offset: {x: -0.00039243698, y: 0.0004875363}
+  m_Size: {x: 1.2581134, y: 0.19706401}
+  m_Direction: 1
