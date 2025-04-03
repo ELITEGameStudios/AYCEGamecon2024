@@ -396,7 +396,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df8145ff958b39e4b9ee2c96c415787e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 0}
+  soundToPlay: {fileID: 11400000, guid: 0c80e2fe87f5211488e41528540794d1, type: 2}
   nameOfSound: PowerableSound
   isSwitch: 0
   unaffectedByPulse: 0
@@ -415,5 +415,6 @@ MonoBehaviour:
   interactableRange: 2
   left: 0
   isInteractable: 1
+  listenToInteractable: 0
   interactableColor: {r: 0.33663222, g: 0.9056604, b: 0.33663222, a: 1}
   nonInteractableColor: {r: 0.89019614, g: 0.19607845, b: 0.31764707, a: 1}

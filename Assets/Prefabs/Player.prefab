@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1204325916347592510}
   - component: {fileID: 2611745304175931100}
   - component: {fileID: 7793165296484688750}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: PlayerAudio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 3504870989814456883}
   - component: {fileID: 9090085684311604197}
   - component: {fileID: 1270136695526777189}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: FeetHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -617,13 +617,13 @@ GameObject:
   - component: {fileID: 6318154017940296134}
   - component: {fileID: 6166145121607335956}
   - component: {fileID: 2727075896797329288}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6318154017940296134
 Transform:
   m_ObjectHideFlags: 0
@@ -721,7 +721,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7423743633305114649}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: FOW
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -755,7 +755,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7557899815477951481}
   - component: {fileID: 414033375172024643}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: alphaRadialGradient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -844,7 +844,7 @@ GameObject:
   - component: {fileID: 9056160359660423999}
   - component: {fileID: 275501098052011479}
   - component: {fileID: 5310869524483830515}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -985,7 +985,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4998629965385820691}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
   m_Name: 
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 896876832832778778}
   - component: {fileID: 5425298517785794664}
   - component: {fileID: 8591313894987464743}
-  m_Layer: 5
+  m_Layer: 10
   m_Name: FadeCanvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1255,13 +1255,14 @@ GameObject:
   - component: {fileID: 2065345163508880122}
   - component: {fileID: 7065696167139857998}
   - component: {fileID: 2733578180661205978}
-  m_Layer: 9
+  - component: {fileID: 3417657761689303844}
+  m_Layer: 10
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &2065345163508880122
 Transform:
   m_ObjectHideFlags: 0
@@ -1350,6 +1351,56 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3417657761689303844
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5628575666249511734}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 073797afb82c5a1438f328866b10b3f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_ComponentVersion: 1
+  m_LightType: 2
+  m_BlendStyleIndex: 0
+  m_FalloffIntensity: 0.5
+  m_Color: {r: 0, g: 0.85882354, b: 1, a: 1}
+  m_Intensity: 1253.99
+  m_LightVolumeIntensity: 0.5
+  m_LightVolumeIntensityEnabled: 1
+  m_ApplyToSortingLayers: 4b85689500000000239faacf831d60de
+  m_LightCookieSprite: {fileID: 21300000, guid: 6380a63c57cf70749803e50e0319cfc3, type: 3}
+  m_DeprecatedPointLightCookieSprite: {fileID: 0}
+  m_LightOrder: 0
+  m_AlphaBlendOnOverlap: 0
+  m_OverlapOperation: 1
+  m_NormalMapDistance: 3
+  m_NormalMapQuality: 2
+  m_UseNormalMap: 0
+  m_ShadowIntensityEnabled: 0
+  m_ShadowIntensity: 0.75
+  m_ShadowVolumeIntensityEnabled: 0
+  m_ShadowVolumeIntensity: 0.75
+  m_LocalBounds:
+    m_Center: {x: -0.015625, y: -0.390625, z: 0}
+    m_Extent: {x: 0.203125, y: 0.203125, z: 0}
+  m_PointLightInnerAngle: 360
+  m_PointLightOuterAngle: 360
+  m_PointLightInnerRadius: 0
+  m_PointLightOuterRadius: 1
+  m_ShapeLightParametricSides: 5
+  m_ShapeLightParametricAngleOffset: 0
+  m_ShapeLightParametricRadius: 1
+  m_ShapeLightFalloffSize: 0.5
+  m_ShapeLightFalloffOffset: {x: 0, y: 0}
+  m_ShapePath:
+  - {x: -0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: -0.5, z: 0}
+  - {x: 0.5, y: 0.5, z: 0}
+  - {x: -0.5, y: 0.5, z: 0}
 --- !u!1 &6460202932942633611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1361,13 +1412,13 @@ GameObject:
   - component: {fileID: 6573854047276817115}
   - component: {fileID: 9112053984218224309}
   - component: {fileID: 2635150339572894990}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &6573854047276817115
 Transform:
   m_ObjectHideFlags: 0
@@ -1466,7 +1517,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1117078334888346090}
   - component: {fileID: 7314055510774435899}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: GameObject_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1627,7 +1678,7 @@ GameObject:
   - component: {fileID: 2944330152619102935}
   - component: {fileID: 8060654494475194506}
   - component: {fileID: 8262577071437620601}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: V.V
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1691,7 +1742,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: bc1b8471a4b9c7349b2ebcfce4b1be01, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -1818,13 +1869,13 @@ GameObject:
   - component: {fileID: 7904518139516001179}
   - component: {fileID: 8447481887547822585}
   - component: {fileID: 6877911494214467366}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &7904518139516001179
 Transform:
   m_ObjectHideFlags: 0

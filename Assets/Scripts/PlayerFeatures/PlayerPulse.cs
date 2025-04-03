@@ -65,6 +65,14 @@ public class PlayerPulse : MonoBehaviour
 
         // Gets all colliders in the radius of the push
         Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, pushRadius);
+        bool hasBoxes = false;
+        
+        foreach (Collider2D col in colliders){
+            if(col.gameObject.tag == "Breakable"){col.GetComponent<Breakable>().BreakBox();}
+            hasBoxes = true;
+        }
+
+        if(hasBoxes) colliders = Physics2D.OverlapCircleAll(transform.position, pushRadius);
         foreach (Collider2D col in colliders)
         {
             try{

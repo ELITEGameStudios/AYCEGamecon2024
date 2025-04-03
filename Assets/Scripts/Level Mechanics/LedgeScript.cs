@@ -9,6 +9,8 @@ public class LedgeScript : MonoBehaviour
     public bool Left {get{return left;}} // flips the offset based on the intended direction
     [SerializeField] private bool ready {get {return timer <= 0;}}
     [SerializeField] private float cooldown = 0.5f, timer;
+    [SerializeField] private AudioClip ledgeClip;
+    [SerializeField] private AudioSource source;
 
     // Start is called before the first frame update
     void Awake()
@@ -25,6 +27,10 @@ public class LedgeScript : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other) {
         if(other == Player.main.MainCol && !Player.main.Movement.IsLedged && ready){
             Player.main.Movement.SetLedge(this);
+            if(source.isPlaying){source.Stop();}
+            source.clip = ledgeClip;
+            source.volume = AudioSystem.volume;
+            source.Play();
             // timer = cooldown;
         }
     }

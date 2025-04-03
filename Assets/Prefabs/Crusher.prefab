@@ -252,6 +252,7 @@ MonoBehaviour:
   cycleTimer: 0
   active: 1
   crushed: 0
+  approxCrushed: 0
   crushStatus: {fileID: 6887730091797674852}
   mover: {fileID: 1090072309106259459}
 --- !u!114 &1090072309106259459

@@ -14,7 +14,7 @@ public class Crusher : MonoBehaviour
     [SerializeField] private float startOffset, cycleTime, holdTime;
     [SerializeField] private float slamTime, retractTime, timer, cycleTimer;
     [SerializeField] private bool TimerCondition {get{return timer <= 0;}}
-    [SerializeField] private bool active = true, crushed = false;
+    [SerializeField] private bool active = true, crushed = false, approxCrushed = false;
     [SerializeField] private bool Active {get{return active;}}
     [SerializeField] private CrusherCollider crushStatus;
     [SerializeField] private CrusherMover mover;
@@ -43,7 +43,7 @@ public class Crusher : MonoBehaviour
         {
             if (!TimerCondition) { timer -= Time.deltaTime; }
             cycleTimer += Time.deltaTime;
-            if (crushStatus.IsCrushingPlayer && crushed)
+            if (crushStatus.IsCrushingPlayer && approxCrushed)
             {
                 Player.main.Die(true);
             }
@@ -85,6 +85,10 @@ public class Crusher : MonoBehaviour
             timer = slamTime;
             while (!TimerCondition){
                 mover.Offset = Mathf.Lerp(crushedOffset, OpenOffset, timer / slamTime);
+                if(Mathf.Abs(crushedOffset - mover.Offset) <= 1.5f){
+                    approxCrushed = true;
+                }
+                
                 yield return null;
             }
 
@@ -92,6 +96,7 @@ public class Crusher : MonoBehaviour
             crushed = true;
             yield return new WaitForSeconds(holdTime);
             crushed = false;
+            approxCrushed = false;
 
             // Retracting
             timer = retractTime;

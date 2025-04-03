@@ -582,8 +582,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 380804efca52d254f885a327f8225310, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundToPlay: {fileID: 0}
-  nameOfSound: PowerableSound
+  soundToPlay: {fileID: 11400000, guid: 874474a59d9fabf48ac5dcb0421d6cdb, type: 2}
+  nameOfSound: SwitchSound
   isSwitch: 0
   unaffectedByPulse: 0
   onPoweredOnEvent:
@@ -603,6 +603,9 @@ MonoBehaviour:
   targetRot: {x: 0, y: 0, z: 0, w: 0}
   left: 1
   state: 0
+  animate: 1
+  flipOnce: 0
+  flippedOnce: 0
   leverAnimator: {fileID: 1773637735783642466}
   lightAnimator: {fileID: 2759112409533833541}
 --- !u!1 &8863756272956317519

@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 2424091230538862936}
   m_Layer: 0
   m_Name: Breakable
-  m_TagString: Untagged
+  m_TagString: Breakable
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -172,4 +172,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   kills: 0
+  breakWithPlayer: 0
   effect: {fileID: 1565964907056799442, guid: 43298eabd6f511a499251ef9acf4f7f2, type: 3}
+  envSound: {fileID: 11400000, guid: 10de4dada7dc3244c83f61abb0e9df29, type: 2}

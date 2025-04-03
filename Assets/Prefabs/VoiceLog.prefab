@@ -192,6 +192,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3154937693387557291}
   - component: {fileID: 3255003722629241738}
+  - component: {fileID: 4680809667928384428}
   m_Layer: 0
   m_Name: RadioLIGHTS
   m_TagString: Untagged
@@ -266,3 +267,65 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &4680809667928384428
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7940593622401685885}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 380804efca52d254f885a327f8225310, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundToPlay: {fileID: 0}
+  nameOfSound: AL
+  isSwitch: 0
+  unaffectedByPulse: 0
+  onPoweredOnEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3255003722629241738}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_material
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2100000, guid: 7c049dbb7a539544a8feafaff7330556, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPoweredOffEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3255003722629241738}
+        m_TargetAssemblyTypeName: UnityEngine.Renderer, UnityEngine
+        m_MethodName: set_material
+        m_Mode: 2
+        m_Arguments:
+          m_ObjectArgument: {fileID: 2100000, guid: 34001886cf709af4680093524c9392e2, type: 2}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Material, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  _timer: 0
+  _bufferTime: 1
+  interactableRange: 2
+  switchAngle: 60
+  interactableSignifier: {fileID: 0}
+  activeRot: {x: 0.00007615242, y: 0.008726203, z: 0.008726203, w: 0.9999238}
+  inactiveRot: {x: 0.008726203, y: 0.00007615242, z: -0.008726203, w: 0.9999238}
+  startRot: {x: 0, y: 0, z: 0, w: 0}
+  targetRot: {x: 0, y: 0, z: 0, w: 0}
+  left: 1
+  state: 0
+  animate: 0
+  flipOnce: 1
+  flippedOnce: 0
+  leverAnimator: {fileID: 0}
+  lightAnimator: {fileID: 0}

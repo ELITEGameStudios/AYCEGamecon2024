@@ -23,6 +23,7 @@ public class ExplosionScript : MonoBehaviour
         isWarning = true;
 
         warningPart.SetActive(true);
+        warnLight.enabled = true;
         foreach (GameObject particle in expParticles) { particle.SetActive(false); }
     }
 
@@ -38,6 +39,7 @@ public class ExplosionScript : MonoBehaviour
         timer = 0;
         isActive = false;
 
+        warnLight.enabled = false;
         warningPart.SetActive(false);
         foreach (GameObject particle in expParticles) { particle.SetActive(false); }
     }

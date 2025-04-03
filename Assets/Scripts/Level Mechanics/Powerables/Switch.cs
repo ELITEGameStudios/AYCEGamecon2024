@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using SoundSystems;
 using UnityEngine;
 
 public class Switch : PowerableObject
@@ -11,6 +12,7 @@ public class Switch : PowerableObject
     [SerializeField] private Quaternion startRot, targetRot;
     [SerializeField] private bool left;
     [SerializeField] private bool state = false;
+    [SerializeField] private bool animate = true, flipOnce, flippedOnce;
 
     [SerializeField] private Animator leverAnimator;
     [SerializeField] private Animator lightAnimator;
@@ -21,7 +23,7 @@ public class Switch : PowerableObject
     void Awake(){
         BaseSetup();
         
-        isSwitch = true; // Must be a switch to function correctly
+        if(!nameOfSound.Contains("AL")) {isSwitch = true;} // Must be a switch to function correctly, unless audio log is integrated within this script
         unaffectedByPulse = true; 
         
         if(left){
@@ -34,7 +36,7 @@ public class Switch : PowerableObject
         }
 
         transform.rotation = inactiveRot;
-        interactableSignifier.SetActive(false); //discontinuing this until further notice
+        if(interactableSignifier != null) interactableSignifier.SetActive(false); //discontinuing this until further notice
     }
     // Start is called before the first frame update
     void Update()
@@ -59,14 +61,24 @@ public class Switch : PowerableObject
 
     public override void Power(bool active)
     {
+        if(flippedOnce && flipOnce){return;}
+
         base.Power(active);
         _timer = _bufferTime;
         SetAnimation();
+        
+        if(playsSound){
+            Debug.Log("Probably an audio log");
+            EnvironmentalSoundSystem.instance.CreateEnvSound(nameOfSound, soundToPlay, gameObject);
+        }
+        flippedOnce = true;
     }
 
     void SetAnimation(){
-        startRot = transform.rotation; 
-        targetRot = active ? activeRot : inactiveRot;
+        if(animate){
+            startRot = transform.rotation; 
+            targetRot = active ? activeRot : inactiveRot;
+        }
     }
 
     void DoAnimation(){

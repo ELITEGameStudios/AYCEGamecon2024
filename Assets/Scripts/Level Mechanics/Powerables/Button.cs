@@ -45,8 +45,8 @@ public class Button : PowerableObject
 
         if (isInteractable)
         {
-            if (interactableSignifier.activeInHierarchy != InRange)
-            { interactableSignifier.SetActive(InRange); }
+            // if (interactableSignifier.activeInHierarchy != InRange)
+            // { interactableSignifier.SetActive(InRange); }
 
             if (Animating) {
                 _animTimer -= Time.deltaTime;
@@ -69,8 +69,8 @@ public class Button : PowerableObject
     }
 
     void CheckStatusChange(){
-        if( (!active && InRange && InputManager.interact.pressedThisFrame) || active )
-        { Toggle(); }
+        // if( (!active && InRange && InputManager.interact.pressedThisFrame) || active )
+        // { Toggle(); }
     }
 
     void Toggle(){

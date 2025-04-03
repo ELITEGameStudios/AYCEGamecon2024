@@ -9,12 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 9b663155836fb074191b90d7ff7fc193, type: 3}
   m_Name: ButtonPress
-  m_EditorClassIdentifier: Assembly-CSharp:SoundSystems:EnvironmentalSound
+  m_EditorClassIdentifier: 
   clip: {fileID: 8300000, guid: 66f5650b3be3bac408bd388cce9a9ee0, type: 3}
   playOnce: 1
-  volumeMod: 0.8
-  pitchVar: 0.1
+  volumeMod: 1
+  pitchVar: 0
   fade: 0
-  randomPitchVariation: 1
+  randomPitchVariation: 0

@@ -12,6 +12,7 @@ TagManager:
   - chain
   - Mouse
   - FOWPoint
+  - Breakable
   layers:
   - Default
   - TransparentFX

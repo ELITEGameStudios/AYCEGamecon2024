@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9b663155836fb074191b90d7ff7fc193, type: 3}
+  m_Name: WoddenBoxSmash
+  m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: c570ba680b224ba439582184f6e5f046, type: 3}
+  playOnce: 1
+  volumeMod: 0.2
+  pitchVar: 0.25
+  fade: 0
+  randomPitchVariation: 1

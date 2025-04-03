@@ -1398,7 +1398,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: 0.7071068, w: 0.7071068}
   m_LocalPosition: {x: -2, y: 0, z: 0}
-  m_LocalScale: {x: 1.3299999, y: 10.878079, z: 1}
+  m_LocalScale: {x: 0.84, y: 8.55, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2248726872232183951}
@@ -1444,7 +1444,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 8e1d4db1c4cb71d4eac3219df3fa3b63, type: 3}
+  m_Sprite: {fileID: 21300000, guid: bea3ad8420e1e40419b4f57a4b43cdab, type: 3}
   m_Color: {r: 1, g: 0.0887338, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -2890,7 +2890,7 @@ MonoBehaviour:
   death: {fileID: 8300000, guid: e47a678fe8050b141af2940f9198c91c, type: 3}
   chargeUpLevel: 0
   stunnedLevel: 0
-  screamLevel: 0
+  screamLevel: 0.5
   takeDamageLevel: 0
   explosionLevel: 0
   smashLevel: 0
