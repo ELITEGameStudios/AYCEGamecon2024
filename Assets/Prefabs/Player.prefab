@@ -366,7 +366,7 @@ GameObject:
   - component: {fileID: 3504870989814456883}
   - component: {fileID: 9090085684311604197}
   - component: {fileID: 1270136695526777189}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: FeetHitbox
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -460,7 +460,7 @@ GameObject:
   - component: {fileID: 6318154017940296134}
   - component: {fileID: 6166145121607335956}
   - component: {fileID: 2727075896797329288}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Eyes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 9056160359660423999}
   - component: {fileID: 275501098052011479}
   - component: {fileID: 5310869524483830515}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -778,7 +778,7 @@ GameObject:
   - component: {fileID: 2065345163508880122}
   - component: {fileID: 7065696167139857998}
   - component: {fileID: 2733578180661205978}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Chest
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -884,7 +884,7 @@ GameObject:
   - component: {fileID: 6573854047276817115}
   - component: {fileID: 9112053984218224309}
   - component: {fileID: 2635150339572894990}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -992,7 +992,7 @@ GameObject:
   - component: {fileID: 2944330152619102935}
   - component: {fileID: 8060654494475194506}
   - component: {fileID: 8262577071437620601}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: V.V
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1183,7 +1183,7 @@ GameObject:
   - component: {fileID: 7904518139516001179}
   - component: {fileID: 8447481887547822585}
   - component: {fileID: 6877911494214467366}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Hands
   m_TagString: Untagged
   m_Icon: {fileID: 0}

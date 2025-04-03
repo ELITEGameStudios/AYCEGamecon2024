@@ -8,6 +8,8 @@ public class CrusherCollider : MonoBehaviour
     public List<Collider2D> collisionList;
     [SerializeField] private bool hasPlayer, hasEnvironment;
     [SerializeField] public bool IsCrushingPlayer {get{return hasPlayer;}}
+
+
     // [SerializeField] public bool IsCrushingPlayer {get{return hasPlayer && hasEnvironment;}}
     
     void Awake(){
@@ -23,6 +25,13 @@ public class CrusherCollider : MonoBehaviour
         if(other.gameObject.layer == LayerMask.NameToLayer("Environment")){
             triggerList.Add(other);
             hasEnvironment = true;
+        }
+        if(other.CompareTag("Mouse"))
+        {
+            MouseMovement mouse = FindObjectOfType<MouseMovement>();
+
+            if (mouse != null)
+                mouse.SetCrushed(true);
         }
     }
 

@@ -12,12 +12,18 @@ public class Button : PowerableObject
     [SerializeField] private GameObject interactableSignifier;
     [SerializeField] private float _bufferTimer, _bufferTime, _animTimer, _animTime, buttonSteepness, interactableRange;
     [SerializeField] private bool left;
-    [SerializeField] private bool isActive;
+
+    [SerializeField] private bool isInteractable = true;
+    private bool powerable1 = false;
+    private bool powerable2 = false;
+
     bool Buffering {get{return _bufferTimer > 0;}}
     bool Animating {get{return _animTimer > 0;}}
     bool InRange {get{return Vector2.Distance(Player.main.transform.position, transform.position) <= interactableRange;}}
 
-
+    [SerializeField] private Color interactableColor = Color.green; // When interactable
+    [SerializeField] private Color nonInteractableColor = Color.red; // When not interactable
+    private SpriteRenderer buttonLightRenderer;
 
     // Start is called before the first frame update
     void Awake(){
@@ -28,32 +34,58 @@ public class Button : PowerableObject
 
         inactivePos = transform.position;
         activePos = transform.position + ((left ? Vector3.right : Vector3.left) * buttonSteepness);
-        interactableSignifier.SetActive(false);
+
+        buttonLightRenderer = GetComponent<SpriteRenderer>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        // if(interactableSignifier.activeInHierarchy != InRange)
+        if (isInteractable)
+        {
+            if (interactableSignifier.activeInHierarchy != InRange)
+            { interactableSignifier.SetActive(InRange); }
 
-        isActive = active; // for debug
+            if (Animating)
+            {
+                _animTimer -= Time.deltaTime;
+                DoAnimation();
+            }
 
-        if(Animating){ 
-            _animTimer -= Time.deltaTime; 
-            DoAnimation();
+            if (Buffering) { _bufferTimer -= Time.deltaTime; }
+            else { CheckStatusChange(); }
+
+            UpdateLightColor();
         }
+        else
+        {
+            if (powerable1 && powerable2) //needed for puzzles where you need to activate multiple other things before a button is useable
+            {
+                isInteractable = true;
+            }
+            else
+            {
+                isInteractable = false;
+            }
+        }
+    }
 
-        if(Buffering){ _bufferTimer -= Time.deltaTime;  }
-        else{CheckStatusChange();}
+    private void UpdateLightColor()
+    {
+        if (buttonLightRenderer != null)
+        {
+            buttonLightRenderer.color = isInteractable ? interactableColor : nonInteractableColor;
+        }
     }
 
     void CheckStatusChange(){
-        // if( (!active && InRange && InputManager.interact.pressedThisFrame) || active )
-        // { Toggle(); }
+        if( (!active && InRange && InputManager.interact.pressedThisFrame) || active )
+        { Toggle(); }
     }
 
-    public override void Power(bool active){
-        base.Power(!this.active);
+    void Toggle(){
+
+        Power(!active);
         if(active){ 
             _bufferTimer = _bufferTime; 
             if(playsSound){
@@ -64,10 +96,6 @@ public class Button : PowerableObject
         SetAnimation();
     }
 
-    void Toggle(){
-        Power(!active);
-    }
-
     void SetAnimation(){
         startPos = transform.position; 
         targetPos = active ? activePos : inactivePos;
@@ -76,5 +104,20 @@ public class Button : PowerableObject
 
     void DoAnimation(){
         transform.position = Vector2.Lerp(targetPos, startPos, _animTimer / _animTime);
+    }
+
+    public void TogglePow1()
+    {
+        powerable1 = !powerable1;
+    }
+
+    public void Pow2On()
+    {
+        powerable2 = true;
+    }
+
+    public void Pow2Off()
+    {
+        powerable2 = false;
     }
 }

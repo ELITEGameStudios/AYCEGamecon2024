@@ -10,6 +10,7 @@ TagManager:
   - MetalBox
   - BossWall
   - chain
+  - Mouse
   layers:
   - Default
   - TransparentFX
@@ -23,26 +24,9 @@ TagManager:
   - Chain
   - Player
   - PlayerPost
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Mouse
+  - Push Box
+  - Box Blocker
   m_SortingLayers:
   - name: Background
     uniqueID: 2506655051

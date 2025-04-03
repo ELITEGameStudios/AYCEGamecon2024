@@ -249,6 +249,7 @@ GameObject:
   - component: {fileID: 7190422130582848059}
   - component: {fileID: 4627757543108488128}
   - component: {fileID: 4678496493646215097}
+  - component: {fileID: 9158996220173499056}
   m_Layer: 0
   m_Name: Elevator
   m_TagString: Untagged
@@ -355,8 +356,25 @@ MonoBehaviour:
   travelDirection: 1
   powered: 1
   state: 0
-  elevatorSound: {fileID: 11400000, guid: 41e671baba7b12248b7717189c201e1c, type: 2}
-  elevatorStopSound: {fileID: 11400000, guid: d89906bf48bffac4496be7196248e83c, type: 2}
+--- !u!251 &9158996220173499056
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2202835573583589376}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 1
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 169
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &2795952370097133796
 GameObject:
   m_ObjectHideFlags: 0

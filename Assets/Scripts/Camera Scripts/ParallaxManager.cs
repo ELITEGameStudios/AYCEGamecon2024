@@ -5,7 +5,8 @@ using UnityEngine;
 public class ParallaxManager : MonoBehaviour
 {
     public static float layerDepth {get; private set;} = 1;
-    [SerializeField] private float parallaxModifier;
+    [SerializeField] private float parallaxModifierX;
+    [SerializeField] private float parallaxModifierY;
 
     [SerializeField] private Transform referenceTf; 
     [SerializeField] private bool offsetFromReference { get {return referenceTf != null;}} 
@@ -28,7 +29,7 @@ public class ParallaxManager : MonoBehaviour
     void Update(){
         camOffset = startPos - (Vector2)cam.position;
         transform.position = new Vector2(
-            x ? startPos.x - (camOffset.x * parallaxModifier) : startPos.x, 
-            y ? startPos.y - (camOffset.y * parallaxModifier) : startPos.y);
+            x ? startPos.x - (camOffset.x * parallaxModifierX) : startPos.x, 
+            y ? startPos.y - (camOffset.y * parallaxModifierY) : startPos.y);
     }
 }
