@@ -7,7 +7,8 @@ public class MainMenu : MonoBehaviour
 {
     public void PlayGame()
     {
-        UIManager.Instance.OpenMenuViaState(UIManager.MenuState.NONE);
+        UIManager.Instance.StartGame();
+        GameManager.Instance.EnableStartingTutorialUI();
         // SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1);
     }
 

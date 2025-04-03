@@ -580,6 +580,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &64546166
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1082,6 +1085,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &128047544
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -3511,6 +3517,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &397305578
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -4559,47 +4568,21 @@ MonoBehaviour:
   timeInMeasure: 0
   mainSourceIndex: 0
   startupClip: {fileID: 0}
-  startupSample:
-    bpm: 0
-    beatsPerBar: 0
-    barsPerMeasure: 0
-    totalMeasures: 0
-    mainClip: {fileID: 0}
-    transitionClip: {fileID: 0}
-    transitionClipBars: 0
-    naturalTransition: 0
-    volumeConstant: 0
-    fadeInSeconds: 0
-    fadeOutSeconds: 0
+  startupSample: {fileID: 0}
   currentSample:
-    bpm: 0
-    beatsPerBar: 0
-    barsPerMeasure: 0
-    totalMeasures: 0
-    mainClip: {fileID: 0}
-    transitionClip: {fileID: 0}
-    transitionClipBars: 0
-    naturalTransition: 0
-    volumeConstant: 0
     fadeInSeconds: 0
     fadeOutSeconds: 0
+    sample: {fileID: 0}
   queuedSample:
-    bpm: 0
-    beatsPerBar: 0
-    barsPerMeasure: 0
-    totalMeasures: 0
-    mainClip: {fileID: 0}
-    transitionClip: {fileID: 0}
-    transitionClipBars: 0
-    naturalTransition: 0
-    volumeConstant: 0
     fadeInSeconds: 0
     fadeOutSeconds: 0
+    sample: {fileID: 0}
   volumeSlider: {fileID: 0}
   transitionMarker: 0
   transitionType: 0
   inTransition: 0
   active: 0
+  isPaused: 0
 --- !u!4 &512827429
 Transform:
   m_ObjectHideFlags: 0
@@ -7466,6 +7449,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 753030637190aa846afd7a86b0f1345a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingTutorialUI: []
   targetFPS: 60
 --- !u!1001 &840607215
 PrefabInstance:
@@ -8516,6 +8500,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &937290806
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -9881,6 +9868,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1103426789
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -11787,6 +11777,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1330525598
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -12315,6 +12308,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1409505418
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -15040,6 +15036,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1460870288
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -136027,6 +136026,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1640180730
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137689,6 +137691,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1796557147
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -137786,6 +137791,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1804607347
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138088,6 +138096,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1811360905
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -138931,6 +138942,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1919451925
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139167,6 +139181,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1924401377
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -139343,6 +139360,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &1930087121
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -140047,6 +140067,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   restartsScene: 0
   sceneTarget: 0
+  onRespawn:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!61 &2003876235
 BoxCollider2D:
   m_ObjectHideFlags: 0

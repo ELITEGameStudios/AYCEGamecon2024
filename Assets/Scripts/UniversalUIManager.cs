@@ -12,7 +12,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] private UIMenu settingsMenu, mainMenu, splashScreen, pauseMenu;
     [SerializeField] private List<UIMenu> menuList;
     [SerializeField] private Graphic[] splashImages;
-    [SerializeField] private bool inSplash, paused, switchingMenus;
+    [SerializeField] private bool inSplash, paused, switchingMenus, hasStarted;
     [SerializeField] private bool InMenu {
         get {
             return 
@@ -63,13 +63,14 @@ public class UIManager : MonoBehaviour
         if(InputManager.pause.pressedThisFrame){
             OpenMenuViaState( InMenu ? MenuState.NONE : MenuState.PAUSED);
         }
-
-        if(Time.timeScale != 1.0f || Time.timeScale != 0.0f){
-            Time.timeScale = Mathf.Clamp(
-                Time.timeScale + Time.unscaledDeltaTime * (InMenu ? -3 : 3),
-                0.0f,
-                1.0f
-            );
+        if(hasStarted){
+            if(Time.timeScale != 1.0f || Time.timeScale != 0.0f){
+                Time.timeScale = Mathf.Clamp(
+                    Time.timeScale + Time.unscaledDeltaTime * (InMenu ? -3 : 3),
+                    0.0f,
+                    1.0f
+                );
+            }
         }
     }
 
@@ -80,6 +81,10 @@ public class UIManager : MonoBehaviour
         OpenMenuViaState(lastState);
     }
     public void Resume(){
+        OpenMenuViaState(MenuState.NONE);
+    }
+    public void StartGame(){
+        hasStarted = true;
         OpenMenuViaState(MenuState.NONE);
     }
     

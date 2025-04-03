@@ -108,7 +108,7 @@ public class Door : MonoBehaviour
         startPosTop = closedPosTop;
         startPosBot = closedPosBot;
         state = DoorState.OPENING;
-        EnvironmentalSoundSystem.instance.CreateEnvSound("DoorOpen", soundData, soundOrgin: gameObject);
+        if(!startup) EnvironmentalSoundSystem.instance.CreateEnvSound("DoorOpen", soundData, soundOrgin: gameObject);
     }
 
     public void Close(bool startup = false){

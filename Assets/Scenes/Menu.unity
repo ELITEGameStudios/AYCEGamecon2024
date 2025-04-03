@@ -5181,42 +5181,15 @@ MonoBehaviour:
   timeInMeasure: 0
   mainSourceIndex: 0
   startupClip: {fileID: 8300000, guid: 7ef50608b323e8a40900f60eece977fd, type: 3}
-  startupSample:
-    bpm: 90
-    beatsPerBar: 4
-    barsPerMeasure: 4
-    totalMeasures: 2
-    mainClip: {fileID: 8300000, guid: 7ef50608b323e8a40900f60eece977fd, type: 3}
-    transitionClip: {fileID: 0}
-    transitionClipBars: 0
-    naturalTransition: 0
-    volumeConstant: 1
-    fadeInSeconds: 0
-    fadeOutSeconds: 2
+  startupSample: {fileID: 11400000, guid: b6829e3dbdc62fb44a611c442b187c4d, type: 2}
   currentSample:
-    bpm: 0
-    beatsPerBar: 0
-    barsPerMeasure: 0
-    totalMeasures: 1
-    mainClip: {fileID: 0}
-    transitionClip: {fileID: 0}
-    transitionClipBars: 0
-    naturalTransition: 0
-    volumeConstant: 0
     fadeInSeconds: 0
     fadeOutSeconds: 0
+    sample: {fileID: 0}
   queuedSample:
-    bpm: 0
-    beatsPerBar: 0
-    barsPerMeasure: 0
-    totalMeasures: 0
-    mainClip: {fileID: 0}
-    transitionClip: {fileID: 0}
-    transitionClipBars: 0
-    naturalTransition: 0
-    volumeConstant: 0
     fadeInSeconds: 0
     fadeOutSeconds: 0
+    sample: {fileID: 0}
   volumeSlider: {fileID: 557387675}
   transitionMarker: 0
   transitionType: 0
