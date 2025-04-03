@@ -10,6 +10,8 @@ public class Player : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private Collider2D mainCol;
     [SerializeField] private AudioSource audio;
+    [SerializeField] private float deathVel;
+    [SerializeField] private GameObject deathPart;
 
     public PlayerMovement Movement { get { return movement; } }
     public PlayerPulse Pulse { get { return pulse; } }
@@ -32,20 +34,50 @@ public class Player : MonoBehaviour
         DontDestroyOnLoad(gameObject);
     }
     
-    public void Die(){
+    public void Die(bool immediate = false){
         if(dead){return;}
 
         pulse.enabled = false;
         movement.enabled = false;
         GetComponent<Light2D>().enabled = false;
         dead = true;
-        Invoke(nameof(Respawn), 2);
+        
+
+        Invoke(nameof(Respawn), 2f);
+        Dissapear();
+
+        if(immediate){
+            FadeScreen.Instance.FadeInOut(0, 2, 1);
+        }
+        else{
+            Invoke(nameof(Dissapear), 0.5f);
+            // GetComponent<Rigidbody2D>().velocity = Vector2.up * deathVel;
+
+            CameraFollowScript.Instance.Shake(4, 1, 1);
+            FadeScreen.Instance.FadeInOut(1, 1, 1);
+            
+        }
+    }
+
+    public void Dissapear(){
+        foreach (SpriteRenderer renderer in movement.SpriteList){
+            renderer.enabled = false;
+        }
+        GameObject particles = Instantiate(deathPart, transform.position, transform.rotation);
+        Destroy(particles, 1);
+    }
+
+    public void Appear(){
+        foreach (SpriteRenderer renderer in movement.SpriteList){
+            renderer.enabled = true;
+        }
     }
 
     public void Respawn(){
         if(!dead){return;}
         RespawnSystem.Instance.RespawnPlayer();
         
+        Appear();
         pulse.enabled = true;
         movement.enabled = true;
         GetComponent<Light2D>().enabled = true;

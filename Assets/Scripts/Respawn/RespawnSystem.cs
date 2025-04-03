@@ -13,7 +13,12 @@ public class RespawnSystem : MonoBehaviour
 
     void Awake(){
         if(Instance == null){ Instance = this;}
-        else if(Instance != this){ Destroy(this);}
+        else if(Instance != this){ 
+            foreach (RespawnPoint point in respawnPoints){
+                Instance.AddRespawnPoint(point);
+            }
+            Destroy(this);
+        }
 
         respawnPoints = new();
     }
