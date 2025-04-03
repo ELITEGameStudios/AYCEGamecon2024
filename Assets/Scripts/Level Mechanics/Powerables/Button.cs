@@ -13,7 +13,7 @@ public class Button : PowerableObject
     [SerializeField] private float _bufferTimer, _bufferTime, _animTimer, _animTime, buttonSteepness, interactableRange;
     [SerializeField] private bool left;
 
-    [SerializeField] private bool isInteractable = true;
+    [SerializeField] private bool isInteractable = true, listenToInteractable;
     private bool powerable1 = false;
     private bool powerable2 = false;
 
@@ -41,13 +41,14 @@ public class Button : PowerableObject
     // Update is called once per frame
     void Update()
     {
+        isInteractable = powerable1 && powerable2;
+
         if (isInteractable)
         {
             if (interactableSignifier.activeInHierarchy != InRange)
             { interactableSignifier.SetActive(InRange); }
 
-            if (Animating)
-            {
+            if (Animating) {
                 _animTimer -= Time.deltaTime;
                 DoAnimation();
             }
@@ -55,25 +56,14 @@ public class Button : PowerableObject
             if (Buffering) { _bufferTimer -= Time.deltaTime; }
             else { CheckStatusChange(); }
 
-            UpdateLightColor();
         }
-        else
-        {
-            if (powerable1 && powerable2) //needed for puzzles where you need to activate multiple other things before a button is useable
-            {
-                isInteractable = true;
-            }
-            else
-            {
-                isInteractable = false;
-            }
-        }
+        //needed for puzzles where you need to activate multiple other things before a button is useable
+        UpdateLightColor();
     }
 
     private void UpdateLightColor()
     {
-        if (buttonLightRenderer != null)
-        {
+        if (buttonLightRenderer != null){
             buttonLightRenderer.color = isInteractable ? interactableColor : nonInteractableColor;
         }
     }
@@ -94,6 +84,16 @@ public class Button : PowerableObject
             }
         };
         SetAnimation();
+    }
+
+    public override void Power(bool state){ 
+        if(( !isSwitch || active == state) || (!isInteractable && listenToInteractable)){ return; }
+        active = state; 
+        
+        if(active) { OnPoweredOnEvent.Invoke(); }
+        else { OnPoweredOffEvent.Invoke(); 
+            Debug.Log("ROYOYOUUO OFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+        }
     }
 
     void SetAnimation(){

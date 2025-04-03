@@ -13,6 +13,8 @@ public class PowerableObject : MonoBehaviour
     public bool active {get; protected set;}
     [SerializeField] protected bool isSwitch, unaffectedByPulse; // IsSwitch only dictates if it be toggled on and off repeatedly
     [SerializeField] private UnityEvent onPoweredOnEvent, onPoweredOffEvent;
+    public UnityEvent OnPoweredOnEvent {get {return onPoweredOnEvent;}}
+    public UnityEvent OnPoweredOffEvent {get {return onPoweredOffEvent;}}
 
     void Awake(){
         BaseSetup();
@@ -46,6 +48,8 @@ public class PowerableObject : MonoBehaviour
         active = state; 
         
         if(active) { onPoweredOnEvent.Invoke(); }
-        else { onPoweredOffEvent.Invoke(); }
+        else { onPoweredOffEvent.Invoke(); 
+            Debug.Log("ROYOYOUUO OFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
+        }
     }
 }

@@ -11,6 +11,7 @@ TagManager:
   - BossWall
   - chain
   - Mouse
+  - FOWPoint
   layers:
   - Default
   - TransparentFX
@@ -27,6 +28,23 @@ TagManager:
   - Mouse
   - Push Box
   - Box Blocker
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
   m_SortingLayers:
   - name: Background
     uniqueID: 2506655051

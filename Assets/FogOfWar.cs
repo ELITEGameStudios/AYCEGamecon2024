@@ -5,58 +5,41 @@ using UnityEngine.Tilemaps;
 
 public class FogOfWar : MonoBehaviour
 {
-    [SerializeField] private Tilemap tilemap;
-    [SerializeField] private GameObject FOWObject;
-    [SerializeField] private bool hasPlayer;
-    [SerializeField] private float opacity, fadeRate, minOpacity;
-    [SerializeField] private Transform fowOffsetPoint;
-    [SerializeField] private bool X, Y;
+    [SerializeField] private Transform FOWObject;
+    [SerializeField] private Vector3 startScale;
+    [SerializeField] private float minDistance;
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
-        
+        startScale = FOWObject.transform.localScale;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if(hasPlayer){
-            if(opacity > 0){
-                tilemap.color = Color.Lerp(Color.clear, Color.white, opacity);
-                opacity -= Time.deltaTime * fadeRate;
-            }
-            else{
-                tilemap.color = minOpacity > 0 
-                    ? Color.Lerp(Color.clear, Color.white, opacity) 
-                    : Color.clear;
+        GameObject[] objs = GameObject.FindGameObjectsWithTag("FOWPoint");
+        
+        if(objs.Length > 0){
+
+            float closestDist = Mathf.Infinity;
+            GameObject closestObj = objs[0];
+
+            foreach (GameObject obj in objs){
+                float distance = Vector2.Distance(FOWObject.transform.position, transform.position);
+                if(distance < closestDist){
+                    closestObj = obj;
+                    closestDist = distance;
+                }
             }
 
-            UpdateFOWObject();
-        }
-        else if(opacity < 1){
-            tilemap.color = Color.Lerp(Color.clear, Color.white, opacity);
-            opacity += Time.deltaTime * fadeRate;
-        }
-        else{
-            tilemap.color = Color.white;
-        }
+            FOWObject.localScale = Vector3.Lerp(Vector3.one, Vector3.one * 0.2f, closestDist / minDistance);
 
+
+        }
     }
     void UpdateFOWObject(){
 
     }
-    void OnTriggerEnter2D(Collider2D col){
-        if(col == Player.main.MainCol){
-            hasPlayer = true;
-        }
-    }
-
-    void OnTriggerExit2D(Collider2D col){
-        if(col == Player.main.MainCol){
-            hasPlayer = false;
-        }
-    }
-
 }
