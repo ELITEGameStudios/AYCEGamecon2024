@@ -15,7 +15,7 @@ public class PlayerAudioManager : MonoBehaviour
     [SerializeField] private AudioClip pulseClip;
     [SerializeField] private AudioClip footstepsClip, labFootstepsClip;
     [SerializeField] private AudioClip jumpClip, chargeClip, chargeReleaseClip;
-    [SerializeField] private AudioClip pushClip;
+    [SerializeField] private AudioClip pushClip, deathClip;
     
     [SerializeField] private float 
         walkingFadeConstant, 
@@ -25,7 +25,8 @@ public class PlayerAudioManager : MonoBehaviour
         pulseAudioLevel = 1, 
         jumpAudioLevel = 1, 
         chargeAudioLevel = 1, 
-        chargeReleaseAudioLevel = 1;
+        chargeReleaseAudioLevel = 1,
+        deathAudioLevel = 1;
 
 
     public bool isLabFootsteps {get{return walkSource.clip == labFootstepsClip;}}
@@ -107,6 +108,12 @@ public class PlayerAudioManager : MonoBehaviour
 
     public void Pulse(){
         AudioSource.PlayClipAtPoint(pulseClip, transform.position, AudioSystem.volume * pulseAudioLevel);
+    }
+    public void DeathDelayed(){
+        Invoke(nameof(Death), 0.5f);
+    }
+    public void Death(){
+        AudioSource.PlayClipAtPoint(deathClip, transform.position, AudioSystem.volume * deathAudioLevel);
     }
     public void Push(){
         AudioSource.PlayClipAtPoint(pushClip, transform.position, AudioSystem.volume * pushAudioLevel);

@@ -45,13 +45,16 @@ public class Player : MonoBehaviour
         
 
         Invoke(nameof(Respawn), 2f);
-        Dissapear();
 
         if(immediate){
+            Dissapear();
             FadeScreen.Instance.FadeInOut(0, 2, 1);
+            PlayerAudioManager.instance.Death();
         }
         else{
             Invoke(nameof(Dissapear), 0.5f);
+            PlayerAudioManager.instance.DeathDelayed();
+            
             // GetComponent<Rigidbody2D>().velocity = Vector2.up * deathVel;
 
             CameraFollowScript.Instance.Shake(4, 1, 1);

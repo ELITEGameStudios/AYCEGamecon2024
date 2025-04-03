@@ -90,9 +90,9 @@ public class SceneSystem : MonoBehaviour
     
 
     void OffsetScene(string sceneName, Vector2 offsetPos){
-        Scene loadedScene = SceneManager.GetSceneByName(sceneName);
-        GameObject[] objects = loadedScene.GetRootGameObjects();
-        foreach (GameObject obj in loadedScene.GetRootGameObjects()) {  obj.transform.position += (Vector3)offsetPos;  }
+        // Scene loadedScene = SceneManager.GetSceneByName(sceneName);
+        // GameObject[] objects = loadedScene.GetRootGameObjects();
+        // foreach (GameObject obj in loadedScene.GetRootGameObjects()) {  obj.transform.position += (Vector3)offsetPos;  }
     }
 
     IEnumerator UnloadSceneCoroutine(Scene scene, Vector2 offsetPos){

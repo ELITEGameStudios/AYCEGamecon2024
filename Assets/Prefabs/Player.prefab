@@ -93,6 +93,7 @@ MonoBehaviour:
   chargeClip: {fileID: 8300000, guid: 386a3c8c501c3c1458899ba7cab07cc0, type: 3}
   chargeReleaseClip: {fileID: 8300000, guid: 4fa740e453525e74e8f89eabeb435146, type: 3}
   pushClip: {fileID: 8300000, guid: e191ac05e579eed4aa633f1dbc6ba736, type: 3}
+  deathClip: {fileID: 8300000, guid: 3f2efd2d1c1e56745ba1904b03b1ffa5, type: 3}
   walkingFadeConstant: 5
   walkAudiolevel: 0.4
   labWalkAudioLevel: 0.15
@@ -101,6 +102,7 @@ MonoBehaviour:
   jumpAudioLevel: 0.5
   chargeAudioLevel: 1
   chargeReleaseAudioLevel: 0.2
+  deathAudioLevel: 0.5
   charging: 0
 --- !u!82 &1204325916347592510
 AudioSource:
@@ -17076,7 +17078,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 2100000, guid: 9dfc825aed78fcd4ba02077103263b40, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -17098,7 +17100,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 30
   m_Sprite: {fileID: 21300000, guid: bc1b8471a4b9c7349b2ebcfce4b1be01, type: 3}
-  m_Color: {r: 0.8679245, g: 0.8679245, b: 0.8679245, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0

@@ -68,8 +68,15 @@ public class PlayerPulse : MonoBehaviour
         bool hasBoxes = false;
         
         foreach (Collider2D col in colliders){
-            if(col.gameObject.tag == "Breakable"){col.GetComponent<Breakable>().BreakBox();}
-            hasBoxes = true;
+            if(col.gameObject.tag == "Breakable"){
+                if(col.GetComponent<Breakable>() != null){
+                    col.GetComponent<Breakable>().BreakBox();
+                    hasBoxes = true;
+                }
+                else{
+                    col.gameObject.GetComponent<TutorialUI>().DissapearForGood();
+                }
+            }
         }
 
         if(hasBoxes) colliders = Physics2D.OverlapCircleAll(transform.position, pushRadius);
