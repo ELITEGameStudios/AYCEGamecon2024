@@ -13,6 +13,8 @@ public class CameraFollowScript : MonoBehaviour
     public static CameraFollowScript Instance {get; private set;}
     public Vector2 TargetOffset {get {return currentTargetOffset;}}
 
+    public float zoomAfterZone = -1f;
+
     void Awake(){
         if(Instance == null) Instance = this;
         else if(Instance != this) Destroy(this);
@@ -61,7 +63,12 @@ public class CameraFollowScript : MonoBehaviour
             target = null;
             offsetInTargetMode = Vector2.zero;
             currentKp = Kp;
-            target_zoom = default_zoom;
+
+            if (zoomAfterZone < 0)
+                target_zoom = default_zoom;
+            else
+                target_zoom = zoomAfterZone;
+
             return;
         }
 
@@ -69,5 +76,10 @@ public class CameraFollowScript : MonoBehaviour
         offsetInTargetMode = zone.Offset;
         currentKp = zone.ModifiesEasing ? zone.customEasing : Kp;
         target_zoom = zone.ModifiesZoom ? zone.zoom : default_zoom;
+    }
+
+    public void SetZoomAfterZone(float zoom)
+    {
+        zoomAfterZone = zoom;
     }
 }

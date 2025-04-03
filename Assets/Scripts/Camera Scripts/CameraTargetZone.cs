@@ -13,6 +13,8 @@ public class CameraTargetZone : MonoBehaviour
     public float customEasing;
     public float zoom = 0.0f;
 
+    public float zoomAfterZone = -1f;
+
     // Start is called before the first frame update
     void OnTriggerEnter2D(Collider2D other) {
         if(other.attachedRigidbody == Player.main.Rb){
@@ -26,6 +28,7 @@ public class CameraTargetZone : MonoBehaviour
                 CameraFollowScript.Instance.target == transform
             )
             {
+                CameraFollowScript.Instance.SetZoomAfterZone(zoomAfterZone);
                 CameraFollowScript.Instance.SetTarget(null);
             }
         }

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: eaf0b06a1dfb3c84789871d38f5a434f
+guid: 722834ddf0c881e45a89c5c9b99add11
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -43,7 +43,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -108,49 +108,7 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites:
-    - serializedVersion: 2
-      name: Scene6_RuinedMetal_0
-      rect:
-        serializedVersion: 2
-        x: 51
-        y: 207
-        width: 325
-        height: 124
-      alignment: 9
-      pivot: {x: 0.45163298, y: 0.6267685}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: cc715a044c4a79740891ae807a0ffc2d
-      internalID: -606284417
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Scene6_RuinedMetal_1
-      rect:
-        serializedVersion: 2
-        x: 409
-        y: 136
-        width: 342
-        height: 216
-      alignment: 9
-      pivot: {x: 0.5492461, y: 0.6247563}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 59255040d9300b343b6c95bd32703728
-      internalID: -537143488
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
+    sprites: []
     outline: []
     physicsShape: []
     bones: []
@@ -161,9 +119,7 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable:
-      Scene6_RuinedMetal_0: -606284417
-      Scene6_RuinedMetal_1: -537143488
+    nameFileIdTable: {}
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
