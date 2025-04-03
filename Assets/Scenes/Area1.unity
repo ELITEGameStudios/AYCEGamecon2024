@@ -2353,7 +2353,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bda7647ea585b14faa2db5d1cf123f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 4
+  waitTime: 8
   fadeTime: 1
   interval: 0.2
   postWaitTime: 2.5
@@ -5466,7 +5466,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bda7647ea585b14faa2db5d1cf123f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 6
+  waitTime: 8
   fadeTime: 1
   interval: 0.3
   postWaitTime: 3.5
@@ -5510,7 +5510,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bda7647ea585b14faa2db5d1cf123f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 8
+  waitTime: 10
   fadeTime: 1
   interval: 0.3
   postWaitTime: 3.5
