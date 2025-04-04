@@ -23,17 +23,19 @@ public class Switch : PowerableObject
     void Awake(){
         BaseSetup();
         
-        if(!nameOfSound.Contains("AL")) {isSwitch = true;} // Must be a switch to function correctly, unless audio log is integrated within this script
-        unaffectedByPulse = true; 
+        if(!nameOfSound.Contains("AL")) {
+            unaffectedByPulse = true; 
+            isSwitch = true;
+            if(left){
+                activeRot = Quaternion.Euler(Vector3.back * (180 + switchAngle));
+                inactiveRot= Quaternion.Euler(Vector3.back * (180 - switchAngle));
+            }
+            else{
+                activeRot = Quaternion.Euler(Vector3.forward * switchAngle);
+                inactiveRot= Quaternion.Euler(Vector3.forward * -switchAngle);
+            }
+        } // Must be a switch to function correctly, unless audio log is integrated within this script
         
-        if(left){
-            activeRot = Quaternion.Euler(Vector3.back * (180 + switchAngle));
-            inactiveRot= Quaternion.Euler(Vector3.back * (180 - switchAngle));
-        }
-        else{
-            activeRot = Quaternion.Euler(Vector3.forward * switchAngle);
-            inactiveRot= Quaternion.Euler(Vector3.forward * -switchAngle);
-        }
 
         transform.rotation = inactiveRot;
         if(interactableSignifier != null) interactableSignifier.SetActive(false); //discontinuing this until further notice

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using SoundSystems;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class Button : PowerableObject
 {
@@ -24,6 +25,7 @@ public class Button : PowerableObject
     [SerializeField] private Color interactableColor = Color.green; // When interactable
     [SerializeField] private Color nonInteractableColor = Color.red; // When not interactable
     private SpriteRenderer buttonLightRenderer;
+    [SerializeField] private Light2D buttonLight;
 
     // Start is called before the first frame update
     void Awake(){
@@ -42,6 +44,8 @@ public class Button : PowerableObject
     void Update()
     {
         isInteractable = powerable1 && powerable2;
+        //needed for puzzles where you need to activate multiple other things before a button is useable
+        UpdateLightColor();
 
         if (isInteractable)
         {
@@ -57,14 +61,13 @@ public class Button : PowerableObject
             else { CheckStatusChange(); }
 
         }
-        //needed for puzzles where you need to activate multiple other things before a button is useable
-        UpdateLightColor();
     }
 
     private void UpdateLightColor()
     {
-        if (buttonLightRenderer != null){
+        if (buttonLightRenderer != null && listenToInteractable){
             buttonLightRenderer.color = isInteractable ? interactableColor : nonInteractableColor;
+            buttonLightRenderer.color = isInteractable ? Color.green : Color.red;
         }
     }
 

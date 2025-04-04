@@ -18,6 +18,7 @@ public class PlayerPulse : MonoBehaviour
 
     void Pulse(){
         chargeTimer = chargeTime;
+        animation.ChangeAnimation("Charging");
         PowerableObject[] powerables = FindObjectsByType<PowerableObject>(FindObjectsSortMode.None);
         foreach (PowerableObject powerable in powerables)
         {
@@ -26,7 +27,6 @@ public class PlayerPulse : MonoBehaviour
             }
         }
         TryMagnetize();
-        animation.ChangeAnimation("Charging");
         PlayerAudioManager.instance.Pulse();
     }
 
@@ -103,8 +103,8 @@ public class PlayerPulse : MonoBehaviour
             }
             catch (System.NullReferenceException) { continue; } // Skips any errors based on if the collider has a rigidbody or not. 
 
-            animation.ChangeAnimation("Pulsing");
         }
+        animation.ChangeAnimation("Pulsing");
         PlayerAudioManager.instance.Push();
     }
 

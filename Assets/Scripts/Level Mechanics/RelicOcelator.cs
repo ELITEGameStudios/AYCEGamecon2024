@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class RelicOcelator : MonoBehaviour
 {
     [SerializeField] private float amplitude = 1.0f;
     [SerializeField] private float speed = 2f;
+    [SerializeField] private UnityEvent onCollect;
 
     private Vector2 startPos;
     // Start is called before the first frame update
@@ -23,6 +25,7 @@ public class RelicOcelator : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        onCollect.Invoke();
         Destroy(gameObject);
     }
 }

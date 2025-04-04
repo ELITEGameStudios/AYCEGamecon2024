@@ -18,6 +18,9 @@ public class Sample : ScriptableObject
     public bool hasTransitionClip {get {return transitionClip != null;}}
     public bool hasTransition {get {return hasTransition || naturalTransition;}}
     public bool usesTotalBars {get {return totalBars > 0;}}
+    public bool hasNextSample {get {return nextSample != null;}}
+    public Sample nextSample;
+    public AudioSystem.TransitionType transitionType;
 
     public float volumeConstant; // Can only be between 0 and 1, is a multiplier to the volume set by the system itself to add an extra "mixer" systme to each sample
 
@@ -26,7 +29,7 @@ public class Sample : ScriptableObject
     public float fadeInSeconds;
     public float fadeOutSeconds;
 
-    public Sample(AudioClip clip, int bpm, int beatsPerBar, int barsPerMeasure, int totalMeasures, float volumeConstant, AudioClip transitionClip = null, int transitionClipBars = -1, bool naturalTransition = true, float fadeIn = 2, float fadeOut = 2, int totalBars = 0, bool loop = false){
+    public Sample(AudioClip clip, int bpm, int beatsPerBar, int barsPerMeasure, int totalMeasures, float volumeConstant, AudioClip transitionClip = null, int transitionClipBars = -1, bool naturalTransition = true, float fadeIn = 2, float fadeOut = 2, int totalBars = 0, bool loop = false, Sample nextSample = null, AudioSystem.TransitionType transition = AudioSystem.TransitionType.SEGMENTED){
         this.mainClip = clip;
         this.bpm = bpm;
         this.beatsPerBar = beatsPerBar;
@@ -38,6 +41,8 @@ public class Sample : ScriptableObject
         this.volumeConstant = volumeConstant;
         this.loop = loop;
         this.totalBars =totalBars;
+        this.nextSample =nextSample;
+        this.transitionType =transition;
         fadeInSeconds = fadeIn;
         fadeOutSeconds = fadeOut;
     }

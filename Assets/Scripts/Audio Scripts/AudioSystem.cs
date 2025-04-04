@@ -151,7 +151,7 @@ public class AudioSystem : MonoBehaviour
         }
         Debug.Log("Bar");
         
-        if(measuresElapsed >= currentSample.sample.totalBars && currentSample.sample.usesTotalBars){
+        if(barsElapsed >= currentSample.sample.totalBars && currentSample.sample.usesTotalBars){
             if(!inTransition && transitionMarker == TransitionOnMarker.END){
                 StartCoroutine(TransitionAudio());
             }
@@ -233,7 +233,6 @@ public class AudioSystem : MonoBehaviour
         newSource.clip = queuedSample.sample.mainClip;
         float tempTimer;
 
-        ResetTimers();
         switch(transitionType){
             case TransitionType.SEAMLESS:
                 // Just immediately starts the new sample
@@ -241,6 +240,7 @@ public class AudioSystem : MonoBehaviour
                 if(newSource.clip != null){newSource.Play(); Debug.Log("Playing on new source");}
                 if(newSource != oldSource){oldSource.Stop();}
                 timer = 0;
+                ResetTimers();
                 
                 // Debug.Log("Executed Seamless transition");
                 break;
@@ -252,6 +252,7 @@ public class AudioSystem : MonoBehaviour
                     currentSample.fadeOutSeconds;
                 tempTimer = 0;
                 timer = 0;
+                ResetTimers();
                 
                 if(newSource.clip != null){newSource.Play();}
                 while (tempTimer < resultantFadeTime){
@@ -293,6 +294,7 @@ public class AudioSystem : MonoBehaviour
                 if(newSource.clip != null){
                     newSource.Play();
                     timer = 0;
+                    ResetTimers();
                 }
                 
                 while (tempTimer > 0){
@@ -309,7 +311,8 @@ public class AudioSystem : MonoBehaviour
         currentSample = queuedSample;
         transitionMarker = TransitionOnMarker.NONE;
         inTransition = false;
-        QueueNewSample(queuedSample.sample.loop ? queuedSample.sample : Sample.NothingSample, TransitionOnMarker.END, TransitionType.SEGMENTED);
+        if(queuedSample.sample.hasNextSample) {QueueNewSample(queuedSample.sample.nextSample, TransitionOnMarker.END, queuedSample.sample.transitionType);}
+        else{QueueNewSample(queuedSample.sample.loop ? queuedSample.sample : Sample.NothingSample, TransitionOnMarker.END, TransitionType.SEGMENTED);}
     }
 }
 
