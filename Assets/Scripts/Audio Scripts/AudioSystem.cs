@@ -123,7 +123,7 @@ public class AudioSystem : MonoBehaviour
 
     public void QueueNewSample(Sample sample, TransitionOnMarker transitionOn, TransitionType type, float fadeIn = -1, float fadeOut = -1){
         if(transitionOn == TransitionOnMarker.NONE){return;} // NONE is not meant for creating transitions, it is meant to notate that nothing is queued. This is invalid.
-
+        if(sample == null){sample = Sample.NothingSample;}
         queuedSample = new SampleContext(sample);
 
         if(fadeIn != -1){sample.fadeInSeconds = fadeIn;}

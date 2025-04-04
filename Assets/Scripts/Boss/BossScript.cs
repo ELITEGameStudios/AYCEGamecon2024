@@ -91,6 +91,10 @@ public class BossScript : MonoBehaviour
 
     }
 
+    public void StartupDelayActivate(){
+        Invoke(nameof(ActivateRobot), 4);
+    }
+
     public void ActivateRobot(){
         // state = BossState.NORMAL;
         Invoke(nameof(ReturnToNormal), hurtTime);
@@ -149,7 +153,7 @@ public class BossScript : MonoBehaviour
         animScript.TiltHead(dashTiltAngle, dashCurve, windupTime);
         animScript.SetColor(Color.clear, windupTime);
         animScript.DashWarn();
-        audio.Scream();
+        // audio.Scream();
     }
 
     void ExplosionWindup(){
@@ -166,6 +170,7 @@ public class BossScript : MonoBehaviour
         animScript.SetModel(false);
         animScript.SetOscilation(0, 0);
         audio.Footstep();
+        BossFightManager.Instance.UpdateNormalAudio(lives);
     }
 
     void Explode(){
@@ -227,6 +232,7 @@ public class BossScript : MonoBehaviour
         animScript.SetColor(Color.clear, shutdownTiltTime);
         animScript.SetOscilation(0, 0);
         animScript.TiltHead(shutdownTilt, shutdownCurve, shutdownTiltTime);
+        BossFightManager.Instance.UpdateStunnedAudio(lives);
         audio.Stun();
     }
 

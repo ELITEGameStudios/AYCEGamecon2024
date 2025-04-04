@@ -9,7 +9,10 @@ public class CutsceneHandler : MonoBehaviour
     private CameraFollowScript cameraFollowScript;
     private Rigidbody2D rb;
     private Animator animator;
-    [SerializeField] private GameObject cutsceneZones, postCutZones;
+    [SerializeField] private GameObject cutsceneZones, postCutZones, mousePrefab;
+    [SerializeField] private MouseNodes mouseNode;
+    [SerializeField] private AudioClip fallAudioClip;
+    [SerializeField] private AudioSource fallAudioSource;
 
     [SerializeField] private string cutsceneName = "";
     private string landfill = "StartingCutscene";
@@ -22,6 +25,7 @@ public class CutsceneHandler : MonoBehaviour
     [SerializeField] private float slowMotionTimeScale = 0.2f;
     [SerializeField] private float newGravScale = 0.2f;
     private float originalGrav;
+    private bool playedMouseCutscene;
 
     void Start()
     {
@@ -43,9 +47,9 @@ public class CutsceneHandler : MonoBehaviour
         {
             //PlayLandfillCutscene();
         }
-        else if (cutsceneName == mouse)
+        else if (cutsceneName == mouse && !playedMouseCutscene)
         {
-            //PlayMouseCutscene();
+            PlayMouseCutscene();
         }
         else if (cutsceneName == boss)
         {
@@ -62,6 +66,10 @@ public class CutsceneHandler : MonoBehaviour
         player.GetComponent<PlayerMovement>().enabled = false;
 
         animations.ChangeAnimation("HorizontalFalling");
+        
+        fallAudioSource.clip = fallAudioClip;
+        fallAudioSource.volume = AudioSystem.volume;
+        fallAudioSource.Play();
 
         //camera adjust
 
@@ -70,6 +78,22 @@ public class CutsceneHandler : MonoBehaviour
         
         Invoke(nameof(StandingUp), timeToStandUp * slowMotionTimeScale);
         //player.GetComponent<PlayerMovement>().enabled = true;
+    }
+
+    private void PlayMouseCutscene()
+    {
+        playedMouseCutscene = true;
+        player.GetComponent<PlayerMovement>().enabled = false;
+        GameObject mouse = Instantiate(mousePrefab, mouseNode.transform.position, mouseNode.transform.rotation);
+
+        mouse.GetComponent<MouseAnimations>().ChangeAnimation("Burrowing");
+        animations.ChangeAnimation("MouseMeet");
+        
+        Invoke(nameof(ReenableMovement), 4);
+    }
+
+    private void ReenableMovement(){
+        player.GetComponent<PlayerMovement>().enabled = true;
     }
 
     private void StandingUp()

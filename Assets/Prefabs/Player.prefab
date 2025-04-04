@@ -408,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5271902568166176293
 Transform:
   m_ObjectHideFlags: 0
@@ -6173,6 +6173,7 @@ MonoBehaviour:
   audio: {fileID: 1204325916347592510}
   deathVel: 3
   deathPart: {fileID: 7149563175402597118, guid: adc73b2b353f5514b90ce351d3068d71, type: 3}
+  playerAnimations: {fileID: 5310869524483830515}
 --- !u!114 &275501098052011479
 MonoBehaviour:
   m_ObjectHideFlags: 0

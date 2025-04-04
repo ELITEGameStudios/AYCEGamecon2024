@@ -275,8 +275,9 @@ public class PlayerMovement : MonoBehaviour
         ledge = null;
         if(moveState == PlayerMoveState.CLIMBING){
             rb.AddForce(
-                Vector2.right * playerSide * jumpStrength * 1.5f
-                + Vector2.up * jumpStrength / 2, ForceMode2D.Impulse);
+                Vector2.right * playerSide * jumpStrength * (IsRocketJumping ? 1.2f : 0.5f) 
+                + Vector2.up * jumpStrength / 4, ForceMode2D.Impulse);
+
             moveState = PlayerMoveState.OFFWALL;
             // Debug.Log(Vector2.right * playerSide * jumpStrength * 3 + "\n PlayerSide: " + playerSide);
         }

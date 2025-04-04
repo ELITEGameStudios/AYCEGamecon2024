@@ -132,7 +132,7 @@ CapsuleCollider2D:
     m_Bits: 0
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1024
   m_LayerOverridePriority: 0
   m_ForceSendLayers:
     serializedVersion: 2
@@ -165,12 +165,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
-  mouseSpeed: 4.8
+  mouseSpeed: 5
   acceleration: 6
   jumpHeight: 5
-  followDistance: 5
+  followDistance: 3
   feet: {fileID: 3042574735970920103}
-  burrowDistance: 7.5
+  burrowDistance: 9
   emergeOffset: 0
   passedNodes: []
   currentPassedNode: {fileID: 0}
@@ -299,4 +299,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e438b3ed236cd464c8d080adc9882a3b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isGrounded: 0

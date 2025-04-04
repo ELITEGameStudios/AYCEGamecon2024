@@ -15,6 +15,10 @@ public class BossFightManager : MonoBehaviour
     [SerializeField] private float explosionTime, timer, explosionDistance, explosionForce;
     public float ExplosionTime {get {return explosionTime;}}
     bool Elapsed {get {return timer <= 0;}}
+    [SerializeField] private Sample[] bossStunned;
+    [SerializeField] private Sample[] bossBackground;
+    [SerializeField] private Sample brassIntro, brassOutro;
+    [SerializeField] private Sample bossSong;
 
     private bool isDead = false;
 
@@ -38,6 +42,7 @@ public class BossFightManager : MonoBehaviour
         GameObject newBoss = Instantiate(bossPrefab, bossSpawnPoint.position, bossSpawnPoint.rotation);
         boss = newBoss.GetComponent<BossScript>();
         entryDoor.Open(true);
+        AudioSystem.Instance.QueueNewSample(Sample.NothingSample, AudioSystem.TransitionOnMarker.BAR, AudioSystem.TransitionType.SEGMENTED);
     } 
 
     public void DropMetalBox(){
@@ -53,6 +58,15 @@ public class BossFightManager : MonoBehaviour
     public void OnDeath(){
         exitDoor.Open();
         isDead = true;
+        AudioSystem.Instance.QueueNewSample(brassOutro, AudioSystem.TransitionOnMarker.BAR, AudioSystem.TransitionType.SEAMLESS);
+    }
+
+    public void UpdateStunnedAudio(int bossLife){
+        // AudioSystem.Instance.QueueNewSample(bossStunned[bossLife-1], AudioSystem.TransitionOnMarker.BAR, AudioSystem.TransitionType.SEAMLESS);
+    }
+
+    public void UpdateNormalAudio(int bossLife, bool immediate = false){
+        // AudioSystem.Instance.QueueNewSample(bossBackground[bossLife-1], immediate ? AudioSystem.TransitionOnMarker.IMMEDIATE : AudioSystem.TransitionOnMarker.BAR, AudioSystem.TransitionType.SEAMLESS);
     }
 
     public void ExplosionBoom(){
@@ -88,7 +102,9 @@ public class BossFightManager : MonoBehaviour
     void OnTriggerEnter2D(Collider2D col){
         if(col == Player.main.MainCol && !isDead){
             entryDoor.Close();
-            boss.ActivateRobot();
+            boss.StartupDelayActivate();
+            // AudioSystem.Instance.QueueNewSample(bossSong, AudioSystem.TransitionOnMarker.IMMEDIATE, AudioSystem.TransitionType.SEGMENTED, 2);
+            // UpdateNormalAudio(3, true);
         }
     }
 }

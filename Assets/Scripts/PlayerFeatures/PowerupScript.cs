@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class PowerupScript : MonoBehaviour
 {
@@ -8,6 +9,9 @@ public class PowerupScript : MonoBehaviour
     [SerializeField] private bool inRange;
     [SerializeField] private GameObject signifier;
     [SerializeField] private float pressedTargetTime, pressedTimer;
+    [SerializeField] private UnityEvent onClaimEvent;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource source;
 
 
     // Start is called before the first frame update
@@ -30,6 +34,12 @@ public class PowerupScript : MonoBehaviour
 
     void ClaimPower(){
         Player.main.SetUnlock(targetPowerLevel);
+        onClaimEvent.Invoke();
+        if(source != null){
+            source.clip = clip;
+            source.volume = AudioSystem.volume;
+            source.Play();
+        }
         Destroy(gameObject);
     }
 

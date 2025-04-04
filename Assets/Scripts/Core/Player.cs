@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     [SerializeField] private AudioSource audio;
     [SerializeField] private float deathVel;
     [SerializeField] private GameObject deathPart;
+    [SerializeField] private PlayerAnimations playerAnimations;
 
     public PlayerMovement Movement { get { return movement; } }
     public PlayerPulse Pulse { get { return pulse; } }
@@ -102,6 +103,8 @@ public class Player : MonoBehaviour
 
     public void SetUnlock(int newUnlock){
         main.powerLevel = newUnlock;
+        if(newUnlock == 1){playerAnimations.ChangeAnimation("Charging");}
+        // else if(newUnlock == 2){playerAnimations.ChangeAnimation("");}
     }
     
 }
