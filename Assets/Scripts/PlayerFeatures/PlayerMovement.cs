@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering.Universal;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -15,6 +16,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] private Rigidbody2D rb;
     [SerializeField] private float speed, jumpStrength, rocketJumpStrength, rocketJumpTime, rocketJumpTimer, chargeJumpMaxTime, chargeJumpTimer, magTime, magTimer, initGravScale;
     [SerializeField] private FeetScript feet; 
+    [SerializeField] private Light2D feetLight, pulseLightX; 
     private float playerSide;
 
     private PlayerAnimations animations;
@@ -72,6 +74,8 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        pulseLightX.enabled = Player.main.unlockedCharge;
+        feetLight.enabled = Player.main.unlockedPowerJump;
 
         if(grounded || moveState == PlayerMoveState.CLIMBING){
             if(InputManager.crouch.pressed)

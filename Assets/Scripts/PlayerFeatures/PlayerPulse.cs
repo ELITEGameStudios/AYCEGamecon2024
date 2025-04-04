@@ -103,8 +103,8 @@ public class PlayerPulse : MonoBehaviour
             }
             catch (System.NullReferenceException) { continue; } // Skips any errors based on if the collider has a rigidbody or not. 
 
-            animation.ChangeAnimation("Pulsing");
         }
+        animation.ChangeAnimation("Pulsing");
         PlayerAudioManager.instance.Push();
     }
 
