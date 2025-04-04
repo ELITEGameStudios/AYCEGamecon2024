@@ -10444,6 +10444,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3738302452742768341, guid: 426fb5b74b2563047806aa33dc3460dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 3807866219587282837, guid: 426fb5b74b2563047806aa33dc3460dd, type: 3}
       propertyPath: m_Name
       value: VoiceLog3.5
@@ -78875,7 +78879,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff2035dd83b7456459e148c432fded49, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetPowerLevel: 3
+  targetPowerLevel: 1
   inRange: 0
   signifier: {fileID: 1215546931}
   pressedTargetTime: 1
@@ -83077,6 +83081,10 @@ PrefabInstance:
     - target: {fileID: 3358182969828534974, guid: 426fb5b74b2563047806aa33dc3460dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3738302452742768341, guid: 426fb5b74b2563047806aa33dc3460dd, type: 3}
+      propertyPath: m_audioClip
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 3807866219587282837, guid: 426fb5b74b2563047806aa33dc3460dd, type: 3}
       propertyPath: m_Name

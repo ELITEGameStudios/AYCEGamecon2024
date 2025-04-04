@@ -22,7 +22,7 @@ public class Player : MonoBehaviour
         
     public static Player main {get; private set;}
     public bool dead {get; private set;} = false; 
-    public int powerLevel {get; private set;} = 2; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
+    public int powerLevel {get; private set;} = 0; // Just represents the amount of mechanics we unlocked, this isnt shown to the user
     public bool unlockedCharge {get {return powerLevel >= 1;}}
     public bool unlockedWallRun {get {return powerLevel >= 1;}}
     public bool unlockedPowerJump {get {return powerLevel >= 2;}}

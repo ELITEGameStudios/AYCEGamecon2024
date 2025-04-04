@@ -4,14 +4,17 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Video;
 
 public class TextScroll : MonoBehaviour
 {
     [SerializeField] private TextEntry[] entries;
-    [SerializeField] private Image bg;
+    [SerializeField] private Image bg, whiteBg;
+    [SerializeField] private RawImage vidtex;
+    [SerializeField] private VideoPlayer v_player;
     [SerializeField] private Color bgColor;
     [SerializeField] private TMP_Text text;
-    [SerializeField] private float timer, bgFadeTime, pauseSeconds = 2;
+    [SerializeField] private float timer, bgFadeTime, pauseSeconds = 2, videoTime = 50;
 
     // Update is called once per frame
     public void BeginSequence(){
@@ -19,6 +22,20 @@ public class TextScroll : MonoBehaviour
     }
 
     IEnumerator ScrollCoroutine(){
+
+
+        while (timer < bgFadeTime)
+        {
+            whiteBg.color = Color.Lerp(Color.clear, Color.white, timer / bgFadeTime);
+            timer += Time.deltaTime;
+            yield return null;
+        }
+        whiteBg.color = bgColor;
+        v_player.enabled = true;
+        vidtex.enabled = true;
+        yield return new WaitForSeconds(videoTime);
+
+
         while (timer < bgFadeTime){
             bg.color = Color.Lerp(Color.clear, bgColor, timer / bgFadeTime);
             timer += Time.deltaTime;

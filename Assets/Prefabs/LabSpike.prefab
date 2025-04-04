@@ -274,8 +274,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   active: 0
   destroys: 0
-  kills: 1
-  collides: 1
+  kills: 0
+  collides: 0
   colliderInitEnabled: 0
   effect: {fileID: 0}
   fallSound: {fileID: 11400000, guid: 9eecf2e75264a5949991a9b7a4dc6b34, type: 2}

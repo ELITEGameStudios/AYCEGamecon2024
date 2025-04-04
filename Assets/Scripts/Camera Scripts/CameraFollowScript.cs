@@ -39,6 +39,11 @@ public class CameraFollowScript : MonoBehaviour
     {
         if(playerObj == null){
             playerObj = Player.main.gameObject;
+            transform.position = new Vector3(
+                transform.position.x,
+                transform.position.y,
+                -50
+            );
         }
     }
 
@@ -50,7 +55,7 @@ public class CameraFollowScript : MonoBehaviour
     void Update()
     {
 
-        // Debug.Log(target_zoom + " zoom");
+         Debug.Log(transform.position+ " normal camera");
 
         Vector2 targetPos = 
             targetObjMode ? 
