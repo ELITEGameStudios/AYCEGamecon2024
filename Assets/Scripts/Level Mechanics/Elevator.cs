@@ -57,6 +57,7 @@ public class Elevator : MonoBehaviour
         Debug.Log(gameObject.name + " Elevator deactivated");
         StopCoroutine(MainCycleCoroutine());
         state = ElevatorState.RESTING;
+        Invoke(nameof(Activate), 3);
     }
 
     void FixedUpdate(){

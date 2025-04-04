@@ -9,6 +9,7 @@ public class CutsceneHandler : MonoBehaviour
     private CameraFollowScript cameraFollowScript;
     private Rigidbody2D rb;
     private Animator animator;
+    [SerializeField] private GameObject cutsceneZones, postCutZones;
 
     [SerializeField] private string cutsceneName = "";
     private string landfill = "StartingCutscene";
@@ -90,5 +91,7 @@ public class CutsceneHandler : MonoBehaviour
         }
 
         player.GetComponent<PlayerMovement>().enabled = true; // Re-enable movement
+        cutsceneZones.SetActive(false);
+        postCutZones.SetActive(true);
     }
 }

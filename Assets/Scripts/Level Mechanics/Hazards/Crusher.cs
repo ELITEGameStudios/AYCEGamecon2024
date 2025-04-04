@@ -11,13 +11,15 @@ public class Crusher : MonoBehaviour
     [SerializeField] private bool startsClosed = false;
     [SerializeField] private float startsClosedInitTimer = 1.25f; //dont worry about this if it doesnt start closed
 
-    [SerializeField] private float startOffset, cycleTime, holdTime;
+    [SerializeField] private float startOffset, cycleTime, holdTime, volumeCoefficient;
     [SerializeField] private float slamTime, retractTime, timer, cycleTimer;
     [SerializeField] private bool TimerCondition {get{return timer <= 0;}}
     [SerializeField] private bool active = true, crushed = false, approxCrushed = false;
     [SerializeField] private bool Active {get{return active;}}
     [SerializeField] private CrusherCollider crushStatus;
     [SerializeField] private CrusherMover mover;
+    [SerializeField] private AudioSource source;
+    [SerializeField] private AudioClip clip;
 
     private void OnValidate()
     {
@@ -33,7 +35,9 @@ public class Crusher : MonoBehaviour
     void Start(){
         if (startsClosed)
             mover.Offset = crushedOffset;
-        
+
+        if(clip != null){source = GetComponent<AudioSource>();}
+
         if (active)
             StartCoroutine(MainCycleCoroutine());
     }
@@ -91,7 +95,11 @@ public class Crusher : MonoBehaviour
                 
                 yield return null;
             }
-
+            if(clip != null){
+                source.clip = clip;
+                source.volume = AudioSystem.volume * volumeCoefficient;
+                source.Play();
+            }
             // Crush hold
             crushed = true;
             yield return new WaitForSeconds(holdTime);

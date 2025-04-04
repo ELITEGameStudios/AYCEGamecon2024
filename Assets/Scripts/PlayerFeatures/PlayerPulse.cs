@@ -18,6 +18,7 @@ public class PlayerPulse : MonoBehaviour
 
     void Pulse(){
         chargeTimer = chargeTime;
+        animation.ChangeAnimation("Charging");
         PowerableObject[] powerables = FindObjectsByType<PowerableObject>(FindObjectsSortMode.None);
         foreach (PowerableObject powerable in powerables)
         {
@@ -26,7 +27,6 @@ public class PlayerPulse : MonoBehaviour
             }
         }
         TryMagnetize();
-        animation.ChangeAnimation("Charging");
         PlayerAudioManager.instance.Pulse();
     }
 
