@@ -1,6 +1,5 @@
 using System;
 using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -71,14 +70,10 @@ public class TextScroll : MonoBehaviour
 }
 
 
-[Serializable]
+[System.Serializable]
 public class TextEntry{
-
-
     public float fade;
     public float hold;
     public string phrase;
     public Color color;
-
-
 }
