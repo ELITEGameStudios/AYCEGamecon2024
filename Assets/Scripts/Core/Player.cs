@@ -53,7 +53,8 @@ public class Player : MonoBehaviour
             PlayerAudioManager.instance.Death();
         }
         else{
-            Invoke(nameof(Dissapear), 0.5f);
+            //Invoke(nameof(Dissapear), 0.5f);
+            Dissapear();
             PlayerAudioManager.instance.DeathDelayed();
             
             // GetComponent<Rigidbody2D>().velocity = Vector2.up * deathVel;

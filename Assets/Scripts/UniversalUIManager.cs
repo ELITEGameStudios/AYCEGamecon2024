@@ -194,10 +194,10 @@ public class UIManager : MonoBehaviour
         
         Debug.Log("Loaded scene");
         OpenMenuViaState(MenuState.NONE);
-        yield return StartCoroutine(SwitchMenuCoroutine(false, 2));
-        yield return new WaitForSecondsRealtime(3);
-        OpenMenuViaState(MenuState.MAIN);
+        //yield return StartCoroutine(SwitchMenuCoroutine(false, 2));
+        //yield return new WaitForSecondsRealtime(3);
+        //OpenMenuViaState(MenuState.MAIN);
         
-        Debug.Log("Done");
+        //Debug.Log("Done");
     }
 }
