@@ -15306,14 +15306,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bda7647ea585b14faa2db5d1cf123f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 10
+  waitTime: 5
   fadeTime: 1
   interval: 0.3
   postWaitTime: 3.5
   active: 0
   inZone: 0
   appeared: 0
-  disableImmediately: 1
+  disableImmediately: 0
   graphics:
   - {fileID: 151610950}
   - {fileID: 26210779}
@@ -15334,14 +15334,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bda7647ea585b14faa2db5d1cf123f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  waitTime: 8
+  waitTime: 3
   fadeTime: 1
   interval: 0.3
   postWaitTime: 3.5
   active: 0
   inZone: 0
   appeared: 0
-  disableImmediately: 1
+  disableImmediately: 0
   graphics:
   - {fileID: 1280272158}
   - {fileID: 1594139159}
