@@ -15,6 +15,9 @@ public class CollapsingRoof : MonoBehaviour
     [SerializeField] private float explosionTorque = 5.0f;
     [SerializeField] private float gScale = 1.2f;
 
+    [SerializeField] private AudioClip fallAudioClip;
+    [SerializeField] private AudioSource fallAudioSource;
+
     private void Start()
     {
         // Ensure all objects start as Static
@@ -55,6 +58,10 @@ public class CollapsingRoof : MonoBehaviour
     private IEnumerator ActivateExplosion()
     {
         yield return new WaitForSeconds(0.1f);
+
+        fallAudioSource.clip = fallAudioClip;
+        fallAudioSource.volume = AudioSystem.volume;
+        fallAudioSource.Play();
 
         foreach (Rigidbody2D rb in fallingObjects)
         {

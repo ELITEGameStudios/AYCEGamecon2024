@@ -2872,7 +2872,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '- Noah Simmons (A dumbass)'
+  m_Text: '- Some Famous Pirate'
 --- !u!222 &720482110
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -4904,7 +4904,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: A Very Meaningful Splash Screen Quote
+  m_Text: The world... What a glorious place...
 --- !u!222 &1555321637
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5195,6 +5195,7 @@ MonoBehaviour:
   transitionType: 0
   inTransition: 0
   active: 0
+  isPaused: 0
 --- !u!1 &1728366725
 GameObject:
   m_ObjectHideFlags: 0
@@ -5411,6 +5412,7 @@ MonoBehaviour:
   inSplash: 1
   paused: 0
   switchingMenus: 0
+  hasStarted: 0
   splashScreenFadeTime: 3
   splashScreenHoldTimeMin: 1
   scenes: []

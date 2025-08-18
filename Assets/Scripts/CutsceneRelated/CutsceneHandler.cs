@@ -67,9 +67,9 @@ public class CutsceneHandler : MonoBehaviour
 
         animations.ChangeAnimation("HorizontalFalling");
         
-        fallAudioSource.clip = fallAudioClip;
-        fallAudioSource.volume = AudioSystem.volume;
-        fallAudioSource.Play();
+        //fallAudioSource.clip = fallAudioClip;
+        //fallAudioSource.volume = AudioSystem.volume;
+        //fallAudioSource.Play();
 
         //camera adjust
 
