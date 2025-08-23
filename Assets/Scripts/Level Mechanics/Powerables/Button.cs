@@ -13,6 +13,7 @@ public class Button : PowerableObject
     [SerializeField] private GameObject interactableSignifier;
     [SerializeField] private float _bufferTimer, _bufferTime, _animTimer, _animTime, buttonSteepness, interactableRange;
     [SerializeField] private bool left;
+    [SerializeField] private bool activateOnce, activated;
 
     [SerializeField] private bool isInteractable = true, listenToInteractable;
     private bool powerable1 = false;
@@ -89,14 +90,19 @@ public class Button : PowerableObject
         SetAnimation();
     }
 
-    public override void Power(bool state){ 
-        if(( !isSwitch || active == state) || (!isInteractable && listenToInteractable)){ return; }
-        active = state; 
-        
-        if(active) { OnPoweredOnEvent.Invoke(); }
-        else { OnPoweredOffEvent.Invoke(); 
+    public override void Power(bool state)
+    {
+        if ((!isSwitch || active == state) || (!isInteractable && listenToInteractable) || (activated && activateOnce)) { return; }
+        active = state;
+        activated = true;
+
+        if (active) { OnPoweredOnEvent.Invoke(); }
+        else
+        {
+            OnPoweredOffEvent.Invoke();
             Debug.Log("ROYOYOUUO OFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF");
         }
+
     }
 
     void SetAnimation(){

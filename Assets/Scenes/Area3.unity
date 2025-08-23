@@ -153313,6 +153313,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Button_1
       objectReference: {fileID: 0}
+    - target: {fileID: 4698251525828594064, guid: 12c02a7e3d50a714ab937159dd8e3613, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

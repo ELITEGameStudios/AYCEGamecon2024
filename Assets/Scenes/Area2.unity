@@ -38,7 +38,6 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -851,6 +850,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 946284951}
     m_Modifications:
     - target: {fileID: 1343626371159245612, guid: 12c02a7e3d50a714ab937159dd8e3613, type: 3}
+      propertyPath: activateOnce
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1343626371159245612, guid: 12c02a7e3d50a714ab937159dd8e3613, type: 3}
       propertyPath: onPoweredOnEvent.m_PersistentCalls.m_Calls.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -1507,7 +1510,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4698251525828594064, guid: 12c02a7e3d50a714ab937159dd8e3613, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4917818284175749891, guid: 12c02a7e3d50a714ab937159dd8e3613, type: 3}
       propertyPath: m_Color.g
@@ -6336,12 +6339,12 @@ MonoBehaviour:
   m_RequiresColorTexture: 0
   m_Version: 2
   m_TaaSettings:
-    quality: 3
-    frameInfluence: 0.1
-    jitterScale: 1
-    mipBias: 0
-    varianceClampScale: 0.9
-    contrastAdaptiveSharpening: 0
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
 --- !u!81 &488712611
 AudioListener:
   m_ObjectHideFlags: 0
