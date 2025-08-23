@@ -7,6 +7,7 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private TutorialUI[] startingTutorialUI;
     [SerializeField] private int targetFPS;
+   // [SerializeField] private string tagToDisable = "HideOnStart"; //set tag in inspector to hide
     public static GameManager Instance {get; private set;}
 
     // Start is called before the first frame update
@@ -18,6 +19,17 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         SceneSystem.AddDontDestroyOnLoad(gameObject);
     }
+
+    //private void Start()
+    //{
+    //    GameObject[] objectsToDisable = GameObject.FindGameObjectsWithTag(tagToDisable);
+
+    //    foreach (GameObject obj in objectsToDisable) //hides each object with tag set
+    //    {
+    //        obj.SetActive(false);
+    //        Debug.Log("Objects tagged with " + tagToDisable + " have been disabled.");
+    //    }
+    //}
 
     // Update is called once per frame
     void FixedUpdate()
